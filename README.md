@@ -5,7 +5,7 @@
 ```bash
 - 👋 Hello I'am Jn03 ( Jean )
 
-- ⚡ Working (Full Stack Dev)  Discord bot develope , Discord , Website develope , Tiktok & Instagram effect develope , other
+- ⚡ Working (Full Stack Dev)  Discord bot , ai , Website develope , Tiktok & Instagram effect develope , etc.
 
 </pre><br>
 ```
