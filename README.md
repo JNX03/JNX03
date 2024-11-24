@@ -1,5 +1,5 @@
-## Hi there 👋
-
+## Hi there 👋 <br>
+Jean was here 🛰️ <br>
 <h2 align="center">About Me</h2>
 
 ```bash
