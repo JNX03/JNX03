@@ -11,5 +11,3 @@
 ```
 I create this on my 16 year birthday (3/11/2024) 🎂
 
-
-<h3> If you think that you can now copy my code as before <b>"YOU CAN'T NOW" i lost trust it your guy sry for that</b></h3>
