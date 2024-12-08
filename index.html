@@ -3,105 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JNX03's Space Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+    <title>Mystery Countdown</title>
     <style>
         body {
-            font-family: 'Space Mono', monospace;
-        }
-        .terminal-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
             overflow: hidden;
-            border-right: .15em solid #10B981;
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: .15em;
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
         }
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+        .container {
+            position: relative;
         }
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #10B981; }
+        .timer {
+            font-size: 3em;
+            letter-spacing: 0.1em;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+        .hidden-message {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.8em;
+            opacity: 0.2;
+            cursor: pointer;
         }
     </style>
 </head>
-<body class="bg-black text-green-400 min-h-screen">
-    <div id="loading" class="fixed inset-0 z-50 flex items-center justify-center bg-black">
-        <div class="text-2xl terminal-text">Loading JNX03's Space Portfolio...</div>
-    </div>
-
-    <div id="content" class="hidden">
-        <header class="py-6 px-4">
-            <h1 class="text-4xl font-bold text-center">JNX03's Space Portfolio</h1>
-        </header>
-
-        <main class="container mx-auto px-4">
-            <section class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">About Me</h2>
-                <p class="mb-2">Name: Jean (JNX03)</p>
-                <p class="mb-2">From: Earth 🌍 Or not maybe :D</p>
-                <p class="mb-2">Interests: Everything</p>
-                <p class="mb-2">Currently Learning: "Everything I can get my hands on!"</p>
-                <p>Goal: "I want to make the world better with my cool tech stuff and change the world"</p>
-            </section>
-
-            <section class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">Favorite Tech</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Languages</h3>
-                        <ul class="list-disc list-inside">
-                            <li>JavaScript</li>
-                            <li>Python</li>
-                            <li>C++</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Tools</h3>
-                        <ul class="list-disc list-inside">
-                            <li>React</li>
-                            <li>Node.js</li>
-                            <li>Docker</li>
-                            <li>Git</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">Connect with Me</h2>
-                <div class="flex flex-wrap gap-4">
-                    <a href="https://www.instagram.com/jxxn03z/" target="_blank" class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-colors">Instagram</a>
-                    <a href="https://www.youtube.com/@Jnx03" target="_blank" class="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition-colors">YouTube (Main)</a>
-                    <a href="https://www.youtube.com/@Jnx03Studio" target="_blank" class="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition-colors">YouTube (Production)</a>
-                    <a href="https://www.tiktok.com/@jxxn03z" target="_blank" class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors border border-white">TikTok</a>
-                    <a href="https://github.com/JNX03" target="_blank" class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 transition-colors">GitHub</a>
-                </div>
-            </section>
-
-            <section class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">GitHub Contributions</h2>
-                <div class="relative h-64 overflow-hidden rounded-lg">
-                    <img src="https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg" alt="GitHub contribution grid snake animation" class="absolute inset-0 w-full h-full object-cover">
-                </div>
-            </section>
-        </main>
-
-        <footer class="text-center py-6">
-            <p>"My genius doesn't stop here haha, Let it go"</p>
-            <p class="text-sm mt-2">© 2024 JNX03. All rights reserved.</p>
-        </footer>
+<body>
+    <div class="container">
+        <div class="message" id="coreMessage">***** ********** time in</div><br>
+        <div class="timer" id="timer">00:00:00</div>
+        <div class="message">T!me I$ Dead and Mean-ing Has No Mean!ng</div>
+        <div class="hidden-message" id="hiddenMessage">The truth within...</div> <!--WHy the  <beep? Be> eelll That yyo!?! Lo0k$k !n <4040404040040404> M): c0DDe-->
     </div>
 
     <script>
-        setTimeout(() => {
-            document.getElementById('loading').classList.add('hidden');
-            document.getElementById('content').classList.remove('hidden');
-        }, 4000);
+        function randomTime() {
+            const hours = Math.floor(Math.random() * 24);
+            const minutes = Math.floor(Math.random() * 60);
+            const seconds = Math.floor(Math.random() * 60);
+            const symbols = ['@', '#', '$', '%', '&', '*', '!', '?'];
+            const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+            return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}${randomSymbol}`;
+        }
+
+        function randomCharacters() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+            let result = '';
+            for (let i = 0; i < 10; i++) {
+                result += chars[Math.floor(Math.random() * chars.length)];
+            }
+            return result;
+        }
+
+        function updateCoreMessage() {
+            let coreText = `${randomCharacters()} ${randomCharacters()} time in`;
+            
+            coreText = coreText.replace(/o/g, () => Math.random() < 0.5 ? '0' : 'o');
+            
+            const lastIndex = coreText.lastIndexOf("i");
+            if (lastIndex !== -1) {
+                coreText = coreText.substring(0, lastIndex) 
+                    + (Math.random() < 0.5 ? "!" : "?") 
+                    + coreText.substring(lastIndex + 1);
+            }
+
+            document.getElementById('coreMessage').textContent = coreText;
+            setTimeout(updateCoreMessage, 10);
+        }
+
+        function updateTimer() {
+            document.getElementById('timer').textContent = randomTime();
+            setTimeout(updateTimer,  100);
+        }
+
+        document.getElementById('hiddenMessage').addEventListener('click', function() {
+            alert('You have discovered the hidden message.');
+        });
+
+        updateTimer();
+        updateCoreMessage();
     </script>
 </body>
 </html>
-
