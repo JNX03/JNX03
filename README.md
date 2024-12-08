@@ -13,6 +13,7 @@ I’m **Jean (JNX03)**, a developer and tech enthusiast. I created this profile 
 ```yaml
 name: Jean (JNX03)
 from: Earth 🌍 Or not may be :D
+website : https://jnx03.xyz/  see my spooky stuff or it Just a mystery thing?
 interests: Everything 
 currently_learning: "Everything I can get my hands on!"
 favorite_tech:
