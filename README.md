@@ -75,3 +75,5 @@ Copy this into your `README.md` for a sleek and professional look! 🚀
 </picture>
 
 ---
+
+![](https://github-readme-stats.vercel.app/api?username=jnx03&theme=dark&show_icons=true&hide_border=false&count_private=true)![](https://github-readme-streak-stats.herokuapp.com/?user=jnx03&theme=dark&hide_border=false)
