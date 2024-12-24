@@ -53,10 +53,6 @@ Goal : Yeah It come to the same question i ask my self year ago the answer is " 
 
 ---
 
-Copy this into your `README.md` for a sleek and professional look! 🚀
-
----
-
 > "My genius dosn't stop here haha, Let it go" Watch my cooooooooool Stuff thing on every Project ✨ <!ERR404> Opps I got an Error may be I an AI who know? 🛰️
 
 <picture>
