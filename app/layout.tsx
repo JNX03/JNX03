@@ -34,7 +34,7 @@ export default function RootLayout({
           <CommandMenu />
           <Toaster />
           <div className="fixed bottom-0 left-0 right-0 flex justify-between items-center border-t border-t-muted bg-background p-2 text-sm text-muted-foreground print:hidden">
-            <span>All Services Operational</span>
+            <a href="https//status.jnx03.xyz"><span>All Services Operational</span></a>
             <p>
               Press{" "}
               <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
