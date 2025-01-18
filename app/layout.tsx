@@ -11,6 +11,9 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "JNX03 - Developer Portfolio",
   description: "Jean (JNX03)'s personal portfolio showcasing projects and skills",
+  icons: {
+    icon: "https://avatars.githubusercontent.com/u/112270477?v=4"
+  }
 }
 
 export default function RootLayout({
@@ -34,7 +37,7 @@ export default function RootLayout({
           <CommandMenu />
           <Toaster />
           <div className="fixed bottom-0 left-0 right-0 flex justify-between items-center border-t border-t-muted bg-background p-2 text-sm text-muted-foreground print:hidden">
-            <a href="https//status.jnx03.xyz"><span>All Services Operational</span></a>
+
             <p>
               Press{" "}
               <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
