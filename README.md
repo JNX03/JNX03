@@ -51,7 +51,7 @@ Goal : Yeah It come to the same question i ask my self year ago the answer is " 
 [![TikTok](https://img.shields.io/badge/-TikTok-000000?style=flat&logo=TikTok&logoColor=white)](https://www.tiktok.com/@jxxn03z)
 [![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat&logo=GitHub&logoColor=white)](https://github.com/JNX03)
 [![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=flat&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/chawabhon-netisingha-4a60a034a/)
-
+[![Kaggle](https://img.shields.io/badge/-Kaggle-20BEFF?style=flat&logo=Kaggle&logoColor=white)](https://www.kaggle.com/jxxn03x)
 
 ---
 
