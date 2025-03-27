@@ -20,29 +20,31 @@ const education = [
 
 export default function EducationPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navigation />
-      <main className="container mx-auto p-4 pt-8">
+      <main className="flex-grow container mx-auto px-4 py-8">
         <Card>
           <CardHeader>
             <CardTitle>Education Timeline</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="relative border-l-2 border-muted-foreground/20 pl-4 ml-4">
+            <div className="relative border-l-2 border-muted-foreground/20 pl-4 ml-4 space-y-10">
               {education.map((edu, index) => (
-                <div key={edu.school} className="mb-10 relative">
+                <div key={edu.school} className="relative">
                   <div className="absolute -left-[29px] w-4 h-4 bg-primary rounded-full border-4 border-background" />
-                  <div className="bg-card rounded-lg p-4 shadow-sm">
-                    <div className="flex flex-col space-y-2">
-                      <h3 className="font-bold text-xl">{edu.school}</h3>
-                      <div className="text-sm text-muted-foreground space-y-1">
-                        <p className="font-semibold">{edu.period}</p>
-                        <p>{edu.location}</p>
-                        <p>{edu.type}</p>
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="flex flex-col space-y-2">
+                        <h3 className="font-bold text-lg sm:text-xl">{edu.school}</h3>
+                        <div className="text-sm text-muted-foreground space-y-1">
+                          <p className="font-semibold">{edu.period}</p>
+                          <p>{edu.location}</p>
+                          <p>{edu.type}</p>
+                        </div>
+                        <p className="text-muted-foreground mt-2 text-sm">{edu.description}</p>
                       </div>
-                      <p className="text-muted-foreground mt-2">{edu.description}</p>
-                    </div>
-                  </div>
+                    </CardContent>
+                  </Card>
                 </div>
               ))}
               <div className="absolute -left-[13px] bottom-0 w-4 h-4 bg-primary rounded-full border-4 border-background" />

@@ -41,9 +41,9 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navigation />
-      <main className="container mx-auto p-4 pt-8">
+      <main className="flex-grow container mx-auto px-4 py-8">
         <div className="space-y-6">
           <Card>
             <CardHeader>
@@ -53,29 +53,31 @@ export default function ProjectsPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid gap-6">
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {projects.map((project) => (
-                  <div key={project.name} className="border rounded-lg p-4">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-semibold text-lg">
-                        {project.name}
-                      </h3>
-                      <Badge variant={project.status === "Live" ? "default" : "secondary"}>
-                        {project.status}
-                      </Badge>
-                    </div>
-                    <p className="text-muted-foreground mb-4">{project.description}</p>
-                    {project.url && (
-                      <Link 
-                        href={project.url}
-                        className="text-blue-500 hover:underline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Visit Project →
-                      </Link>
-                    )}
-                  </div>
+                  <Card key={project.name}>
+                    <CardHeader>
+                      <div className="flex justify-between items-start">
+                        <CardTitle className="text-lg">{project.name}</CardTitle>
+                        <Badge variant={project.status === "Live" ? "default" : "secondary"}>
+                          {project.status}
+                        </Badge>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+                      {project.url && (
+                        <Link 
+                          href={project.url}
+                          className="text-blue-500 hover:underline text-sm"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Visit Project →
+                        </Link>
+                      )}
+                    </CardContent>
+                  </Card>
                 ))}
               </div>
             </CardContent>

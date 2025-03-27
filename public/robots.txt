@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jnx03.xyz/sitemap.xml
+

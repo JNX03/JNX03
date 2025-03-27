@@ -4,11 +4,13 @@ import Link from "next/link"
 
 export function Connect() {
   const socialLinks = [
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/chawabhon-netisingha-4a60a034a", color: "bg-blue-600" },
+    { name: "GitHub", url: "https://github.com/JNX03", color: "bg-gray-800" },
+    { name: "Kaggle", url: "https://www.kaggle.com/jxxn03x", color: "bg-[#20BEFF]" },
     { name: "Instagram", url: "https://www.instagram.com/jxxn03z/", color: "bg-pink-600" },
     { name: "YouTube (Main)", url: "https://www.youtube.com/@Jnx03", color: "bg-red-600" },
     { name: "YouTube (Production)", url: "https://www.youtube.com/@Jnx03Studio", color: "bg-red-600" },
     { name: "TikTok", url: "https://www.tiktok.com/@jxxn03z", color: "bg-black" },
-    { name: "GitHub", url: "https://github.com/JNX03", color: "bg-gray-800" },
   ]
 
   return (

@@ -27,9 +27,9 @@ const experiences = [
 
 export default function ExperiencePage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navigation />
-      <main className="container mx-auto p-4 pt-8">
+      <main className="flex-grow container mx-auto px-4 py-8">
         <Card>
           <CardHeader>
             <CardTitle>Professional Experience</CardTitle>
@@ -38,12 +38,14 @@ export default function ExperiencePage() {
           <CardContent>
             <div className="space-y-6">
               {experiences.map((exp, index) => (
-                <div key={index} className="border rounded-lg p-4">
-                  <h3 className="font-semibold text-lg">{exp.role}</h3>
-                  <p className="text-muted-foreground">{exp.organization}</p>
-                  <p className="text-sm text-muted-foreground">{exp.location} | {exp.period}</p>
-                  <p className="mt-2">{exp.description}</p>
-                </div>
+                <Card key={index}>
+                  <CardContent className="p-4">
+                    <h3 className="font-semibold text-lg">{exp.role}</h3>
+                    <p className="text-muted-foreground">{exp.organization}</p>
+                    <p className="text-sm text-muted-foreground">{exp.location} | {exp.period}</p>
+                    <p className="mt-2 text-sm">{exp.description}</p>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </CardContent>
