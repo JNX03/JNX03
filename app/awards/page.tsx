@@ -1,8 +1,13 @@
+"use client"
+
 import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Footer } from "@/components/footer"
+import { useTheme } from "next-themes"
+import { motion } from "framer-motion"
+import { useState } from "react"
 
 interface Award {
   name: string
@@ -26,7 +31,7 @@ const awards: Award[] = [
     position: "Winner (1st Place)",
     description: "Recognized for innovative contributions in AI technology.",
     color: "gold",
-    image: "/awards/ai-innovator-2024.jpg",
+    image: "/img/ai-innovator-award.png",
   },
   {
     name: "Thailand ICT Awards 2023",
@@ -34,14 +39,14 @@ const awards: Award[] = [
     category: "Senior Category",
     description: "Awarded for outstanding achievements in Information and Communication Technology.",
     color: "gold",
-    image: "/awards/thailand-ict-2023.jpg",
+    image: "/img/thailand-ict-award.png",
   },
   {
     name: "Asia Pacific ICT Alliance Award 2023 (APICTA2023)",
     position: "Merit Award",
     description: "Received recognition for excellence in ICT on an international level.",
     color: "silver",
-    image: "/awards/apicta-2023.jpg",
+    image: "/img/apicta-award.png",
   },
   {
     name: "Super AI Engineer Hackathon Online",
@@ -105,55 +110,117 @@ const awards: Award[] = [
   },
 ]
 
-const getBadgeColor = (color: Award["color"]) => {
-  switch (color) {
-    case "gold":
-      return "bg-yellow-500 text-black"
-    case "silver":
-      return "bg-gray-300 text-black"
-    case "bronze":
-      return "bg-amber-600 text-white"
-    case "blue":
-    default:
-      return "bg-blue-500 text-white"
+const getBadgeColor = (color: Award["color"], theme: string | undefined) => {
+  if (theme === "light") {
+    switch (color) {
+      case "gold":
+        return "bg-amber-400 text-amber-900"
+      case "silver":
+        return "bg-gray-300 text-gray-800"
+      case "bronze":
+        return "bg-amber-600 text-white"
+      case "blue":
+      default:
+        return "bg-indigo-500 text-white"
+    }
+  } else {
+    switch (color) {
+      case "gold":
+        return "bg-yellow-500 text-black"
+      case "silver":
+        return "bg-gray-300 text-black"
+      case "bronze":
+        return "bg-amber-600 text-white"
+      case "blue":
+      default:
+        return "bg-blue-500 text-white"
+    }
   }
 }
 
 export default function AwardsPage() {
+  const { theme } = useTheme()
+  const [failedImages, setFailedImages] = useState<Record<number, boolean>>({})
+
+  const handleImageError = (index: number) => {
+    setFailedImages((prev) => ({
+      ...prev,
+      [index]: true,
+    }))
+  }
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
       <main className="flex-grow container mx-auto px-4 py-8">
-        <Card>
+        <Card className={theme === "light" ? "bg-white border-gray-200 shadow-md" : ""}>
           <CardHeader>
-            <CardTitle>Awards and Achievements</CardTitle>
-            <CardDescription>Recognitions and participations in various competitions</CardDescription>
+            <CardTitle className={theme === "light" ? "text-gray-900" : ""}>Awards and Achievements</CardTitle>
+            <CardDescription className={theme === "light" ? "text-gray-600" : ""}>
+              Recognitions and participations in various competitions
+            </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <motion.div
+              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+              variants={container}
+              initial="hidden"
+              animate="show"
+            >
               {awards.map((award, index) => (
-                <Card key={index} className="overflow-hidden">
-                  <div className="relative h-48 w-full">
-                    <Image
-                      src={
-                        award.image || `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(award.name)}`
-                      }
-                      alt={award.name}
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </div>
-                  <CardContent className="p-4">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-semibold text-lg">{award.name}</h3>
-                      {award.position && <Badge className={getBadgeColor(award.color)}>{award.position}</Badge>}
+                <motion.div key={index} variants={item}>
+                  <Card
+                    className={`overflow-hidden ${theme === "light" ? "bg-white border-gray-200 shadow-sm hover:shadow-md transition-shadow" : "hover:bg-accent/50 transition-colors"}`}
+                  >
+                    <div className="relative h-48 w-full">
+                      <Image
+                        src={
+                          failedImages[index]
+                            ? `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(award.name)}`
+                            : award.image ||
+                              `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(award.name)}`
+                        }
+                        alt={award.name}
+                        layout="fill"
+                        objectFit="cover"
+                        onError={() => handleImageError(index)}
+                      />
                     </div>
-                    {award.category && <p className="text-sm text-muted-foreground mb-2">{award.category}</p>}
-                    <p className="text-sm">{award.description}</p>
-                  </CardContent>
-                </Card>
+                    <CardContent className="p-4">
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className={`font-semibold text-lg ${theme === "light" ? "text-gray-900" : ""}`}>
+                          {award.name}
+                        </h3>
+                        {award.position && (
+                          <Badge className={getBadgeColor(award.color, theme)}>{award.position}</Badge>
+                        )}
+                      </div>
+                      {award.category && (
+                        <p className={`text-sm ${theme === "light" ? "text-gray-500" : "text-muted-foreground"} mb-2`}>
+                          {award.category}
+                        </p>
+                      )}
+                      <p className={`text-sm ${theme === "light" ? "text-gray-600" : ""}`}>{award.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </CardContent>
         </Card>
       </main>

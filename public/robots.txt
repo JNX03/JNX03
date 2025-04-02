@@ -1,5 +1,11 @@
 User-agent: *
 Allow: /
 
+# Prevent indexing of utility routes
+Disallow: /api/
+Disallow: /s/
+
+# Sitemaps
 Sitemap: https://jnx03.xyz/sitemap.xml
+Sitemap: https://jnx03.xyz/sitemap-index.xml
 

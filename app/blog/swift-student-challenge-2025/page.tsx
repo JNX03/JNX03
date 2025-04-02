@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Github, Youtube, Globe } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { ClientImage } from "@/components/client-image"
+import Script from "next/script"
 
 export default function SwiftStudentChallengeBlogPage() {
   return (
@@ -190,6 +191,37 @@ export default function SwiftStudentChallengeBlogPage() {
         </Card>
       </main>
       <Footer />
+      <Script id="blog-post-schema" type="application/ld+json">
+        {`
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Swift Student Challenge 2025 Winner!",
+      "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-PcDiryVpDmgMgr3xXGbYGh1mMu3fvs.png",
+      "datePublished": "2025-03-28T00:00:00+00:00",
+      "dateModified": "${new Date().toISOString()}",
+      "author": {
+        "@type": "Person",
+        "name": "Jean (JNX03)",
+        "url": "https://jnx03.xyz"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "JNX03 Portfolio",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://avatars.githubusercontent.com/u/112270477?v=4"
+        }
+      },
+      "description": "Chawabhon Netisingha (JNX03) wins the Swift Student Challenge 2025 with Syntaxia project",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://jnx03.xyz/blog/swift-student-challenge-2025"
+      },
+      "keywords": ["SwiftStudentChallenge", "Apple", "SwiftUI", "Syntaxia", "CodingEducation", "StudentDeveloper"]
+    }
+  `}
+      </Script>
     </div>
   )
 }

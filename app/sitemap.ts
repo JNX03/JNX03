@@ -1,55 +1,153 @@
 import type { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const baseUrl = "https://jnx03.xyz"
+  const currentDate = new Date()
+
+  // Main pages
+  const mainPages = [
     {
-      url: "https://jnx03.xyz",
-      lastModified: new Date(),
-      changeFrequency: "daily",
+      url: baseUrl,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
       priority: 1,
     },
     {
-      url: "https://jnx03.xyz/dex/terminal",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/projects`,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/education`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     {
-      url: "https://jnx03.xyz/ads.txt",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.1,
+      url: `${baseUrl}/experience`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     },
     {
-      url: "https://jnx03.xyz/atom.xml",
-      lastModified: new Date(),
-      changeFrequency: "daily",
+      url: `${baseUrl}/awards`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: "daily" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/research`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/dex/terminal`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
       priority: 0.6,
     },
     {
-      url: "https://jnx03.xyz/sitemap.xml",
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.4,
+      url: `${baseUrl}/terminal-guide`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
     },
     {
-      url: "https://jnx03.xyz/sitemap-index.xml",
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.4,
+      url: `${baseUrl}/terminal-dex`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
     },
     {
-      url: "https://jnx03.xyz/blog/swift-student-challenge-2025",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
+      url: `${baseUrl}/game`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     },
     {
-      url: "https://jnx03.xyz/blog/cancer-plus-prc-x",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
+      url: `${baseUrl}/tools`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     },
   ]
+
+  // Blog posts
+  const blogPosts = [
+    {
+      url: `${baseUrl}/blog/swift-student-challenge-2025`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/blog/cancer-plus-prc-x`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/blog/social-media-project`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/super-ai-engineer-ss5`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+  ]
+
+  // Utility pages
+  const utilityPages = [
+    {
+      url: `${baseUrl}/ads.txt`,
+      lastModified: currentDate,
+      changeFrequency: "yearly" as const,
+      priority: 0.1,
+    },
+    {
+      url: `${baseUrl}/atom.xml`,
+      lastModified: currentDate,
+      changeFrequency: "daily" as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/rss.xml`,
+      lastModified: currentDate,
+      changeFrequency: "daily" as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/sitemap.xml`,
+      lastModified: currentDate,
+      changeFrequency: "daily" as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/sitemap-index.xml`,
+      lastModified: currentDate,
+      changeFrequency: "daily" as const,
+      priority: 0.4,
+    },
+  ]
+
+  return [...mainPages, ...blogPosts, ...utilityPages]
 }
 

@@ -5,7 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import Image from "next/image"
+// Import the OptimizedImage component
+import { OptimizedImage } from "@/components/optimized-image"
 
 interface Project {
   name: string
@@ -41,7 +42,7 @@ export function Projects({ projects }: ProjectsProps) {
           {projects.map((project, index) => (
             <Card key={index} className="overflow-hidden">
               <div className="aspect-video relative">
-                <Image
+                <OptimizedImage
                   src={
                     failedImages[index]
                       ? `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(project.name)}`
@@ -49,10 +50,11 @@ export function Projects({ projects }: ProjectsProps) {
                         `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(project.name)}`
                   }
                   alt={`Preview of ${project.name}`}
-                  layout="fill"
-                  objectFit="cover"
+                  width={400}
+                  height={200}
+                  className="w-full h-full object-cover"
                   loading="lazy"
-                  onError={() => handleImageError(index)}
+                  onLoad={() => {}}
                 />
               </div>
               <CardContent className="p-4">

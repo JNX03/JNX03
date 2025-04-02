@@ -1,6 +1,6 @@
 {
   "name": "Jnx03-project",
-  "version": "1.1.0",
+  "version": "2.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -45,7 +45,7 @@
     "embla-carousel-react": "8.5.1",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
-    "next": "15.1.0",
+    "next": "15.2.4",
     "next-themes": "latest",
     "react": "^19",
     "react-day-picker": "8.10.1",
@@ -71,9 +71,15 @@
     "tsparticles-engine": "latest",
     "tsparticles-slim": "latest",
     "nanoid": "latest",
+    "cloudinary": "latest",
+    "workbox-core": "latest",
+    "workbox-expiration": "latest",
+    "workbox-precaching": "latest",
+    "workbox-routing": "latest",
+    "workbox-strategies": "latest",
+    "nodemailer": "latest",
     "@vercel/speed-insights": "latest",
-    "@vercel/analytics": "latest",
-    "cloudinary": "latest"
+    "@vercel/analytics": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",

@@ -1,8 +1,15 @@
+"use client"
+
 import Link from "next/link"
+import { useTheme } from "next-themes"
+import { useLanguage } from "@/lib/i18n"
 
 export function Footer() {
+  const { theme } = useTheme()
+  const { t } = useLanguage()
+
   return (
-    <footer className="mt-16 pb-8">
+    <footer className={`mt-16 pb-8 ${theme === "light" ? "bg-gray-50" : ""}`}>
       <div className="container mx-auto px-4">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-8">
           <iframe
@@ -37,39 +44,71 @@ export function Footer() {
 
         <div className="grid gap-8 md:grid-cols-3 mb-8 text-sm">
           <div>
-            <h3 className="font-semibold mb-2">About JNX03</h3>
-            <p className="text-muted-foreground">
+            <h3 className={`font-semibold mb-2 ${theme === "light" ? "text-gray-900" : ""}`}>About JNX03</h3>
+            <p className={theme === "light" ? "text-gray-600" : "text-muted-foreground"}>
               Developer and tech enthusiast focused on AI, cybersecurity, and accessibility technology. Creating
               innovative solutions to make a positive impact on society.
             </p>
           </div>
           <div>
-            <h3 className="font-semibold mb-2">Quick Links</h3>
+            <h3 className={`font-semibold mb-2 ${theme === "light" ? "text-gray-900" : ""}`}>Quick Links</h3>
             <ul className="space-y-1">
               <li>
-                <Link href="/projects" className="text-muted-foreground hover:text-foreground">
-                  Projects
+                <Link
+                  href="/projects"
+                  className={
+                    theme === "light"
+                      ? "text-gray-600 hover:text-indigo-600"
+                      : "text-muted-foreground hover:text-foreground"
+                  }
+                >
+                  {t("projects")}
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-muted-foreground hover:text-foreground">
-                  Blog
+                <Link
+                  href="/blog"
+                  className={
+                    theme === "light"
+                      ? "text-gray-600 hover:text-indigo-600"
+                      : "text-muted-foreground hover:text-foreground"
+                  }
+                >
+                  {t("blog")}
                 </Link>
               </li>
               <li>
-                <Link href="/awards" className="text-muted-foreground hover:text-foreground">
-                  Awards
+                <Link
+                  href="/awards"
+                  className={
+                    theme === "light"
+                      ? "text-gray-600 hover:text-indigo-600"
+                      : "text-muted-foreground hover:text-foreground"
+                  }
+                >
+                  {t("awards")}
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-foreground">
-                  Contact
+                <Link
+                  href="/contact"
+                  className={
+                    theme === "light"
+                      ? "text-gray-600 hover:text-indigo-600"
+                      : "text-muted-foreground hover:text-foreground"
+                  }
+                >
+                  {t("contact")}
                 </Link>
               </li>
               <li>
                 <Link
                   href="https://status.jnx03.xyz"
-                  className="text-muted-foreground hover:text-foreground"
+                  className={
+                    theme === "light"
+                      ? "text-gray-600 hover:text-indigo-600"
+                      : "text-muted-foreground hover:text-foreground"
+                  }
                   target="_blank"
                 >
                   Status Page
@@ -78,19 +117,27 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold mb-2">System Status</h3>
-            <p className="text-muted-foreground mb-2">
+            <h3 className={`font-semibold mb-2 ${theme === "light" ? "text-gray-900" : ""}`}>System Status</h3>
+            <p className={`${theme === "light" ? "text-gray-600" : "text-muted-foreground"} mb-2`}>
               All systems are monitored 24/7. Check the status of all JNX03 services at
-              <Link href="https://status.jnx03.xyz" className="text-blue-500 hover:underline ml-1" target="_blank">
+              <Link
+                href="https://status.jnx03.xyz"
+                className={`${theme === "light" ? "text-indigo-600" : "text-blue-500"} hover:underline ml-1`}
+                target="_blank"
+              >
                 status.jnx03.xyz
               </Link>
             </p>
-            <p className="text-xs text-muted-foreground">Last updated: {new Date().toLocaleString()}</p>
+            <p className={`text-xs ${theme === "light" ? "text-gray-500" : "text-muted-foreground"}`}>
+              Last updated: {new Date().toLocaleString()}
+            </p>
           </div>
         </div>
 
-        <div className="border-t border-border pt-4 text-center">
-          <p className="text-sm text-muted-foreground">© 2024-2025 JNX03. All rights reserved.</p>
+        <div className={`border-t ${theme === "light" ? "border-gray-200" : "border-border"} pt-4 text-center`}>
+          <p className={`text-sm ${theme === "light" ? "text-gray-500" : "text-muted-foreground"}`}>
+            © 2024-2025 JNX03. {t("allRightsReserved")}.
+          </p>
         </div>
       </div>
     </footer>
