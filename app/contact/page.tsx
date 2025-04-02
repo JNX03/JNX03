@@ -14,7 +14,6 @@ import { Footer } from "@/components/footer"
 import { useTheme } from "next-themes"
 import { motion } from "framer-motion"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { useLanguage } from "@/lib/i18n"
 
 export default function ContactPage() {
   const [name, setName] = useState("")
@@ -25,7 +24,6 @@ export default function ContactPage() {
   const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">("idle")
   const [errorMessage, setErrorMessage] = useState("")
   const { theme } = useTheme()
-  const { t } = useLanguage()
 
   const container = {
     hidden: { opacity: 0 },
@@ -97,8 +95,8 @@ export default function ContactPage() {
       // Success
       setFormStatus("success")
       toast({
-        title: t("messageSent"),
-        description: t("thankYou"),
+        title: "Message Sent",
+        description: "Thank you for your message. I'll get back to you soon!",
       })
 
       // Reset form
@@ -112,13 +110,29 @@ export default function ContactPage() {
       setErrorMessage(error instanceof Error ? error.message : "An unexpected error occurred")
 
       toast({
-        title: t("error"),
-        description: t("failedToSend"),
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
         variant: "destructive",
       })
     } finally {
       setIsLoading(false)
     }
+  }
+
+  const t = (key: string) => {
+    const translations: { [key: string]: string } = {
+      name: "Name",
+      email: "Email",
+      subject: "Subject (Optional)",
+      message: "Message",
+      sending: "Sending...",
+      sendMessage: "Send Message",
+      error: "Error",
+      failedToSend: "There was a problem sending your message. Please try again.",
+      messageSent: "Success!",
+      thankYou: "Your message has been sent successfully. I'll get back to you soon.",
+    }
+    return translations[key] || key
   }
 
   return (
@@ -135,7 +149,7 @@ export default function ContactPage() {
               }
             >
               <CardHeader>
-                <CardTitle className={theme === "light" ? "text-gray-900" : ""}>{t("getInTouch")}</CardTitle>
+                <CardTitle className={theme === "light" ? "text-gray-900" : ""}>Get in Touch</CardTitle>
                 <CardDescription className={theme === "light" ? "text-gray-600" : ""}>
                   Fill out the form below and I'll get back to you as soon as possible.
                 </CardDescription>
@@ -145,16 +159,14 @@ export default function ContactPage() {
                   <Alert variant="destructive" className="mb-6">
                     <AlertCircle className="h-4 w-4" />
                     <AlertTitle>{t("error")}</AlertTitle>
-                    <AlertDescription>
-                      {errorMessage || "There was a problem sending your message. Please try again."}
-                    </AlertDescription>
+                    <AlertDescription>{errorMessage || t("failedToSend")}</AlertDescription>
                   </Alert>
                 )}
 
                 {formStatus === "success" && (
                   <Alert className="mb-6 border-green-500 text-green-500">
                     <CheckCircle className="h-4 w-4" />
-                    <AlertTitle>Success!</AlertTitle>
+                    <AlertTitle>{t("messageSent")}</AlertTitle>
                     <AlertDescription>{t("thankYou")}</AlertDescription>
                   </Alert>
                 )}

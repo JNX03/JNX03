@@ -9,12 +9,11 @@ import Link from "next/link"
 import { PerformanceImage } from "@/components/performance-image"
 import { useLanguage } from "@/lib/i18n"
 
-const titles = ["AI Developer", "Tech Innovator", "Cybersecurity Enthusiast"]
-
 export function Hero() {
+  const { t } = useLanguage()
+  const titles = [t("aiDeveloper"), t("techInnovator"), t("cybersecurityEnthusiast")]
   const [titleIndex, setTitleIndex] = useState(0)
   const [displayedTitle, setDisplayedTitle] = useState("")
-  const { t } = useLanguage()
 
   useEffect(() => {
     // Add structured data for the person
@@ -62,7 +61,7 @@ export function Hero() {
     }, 100)
 
     return () => clearInterval(typing)
-  }, [titleIndex])
+  }, [titleIndex, titles])
 
   return (
     <section className="py-20">
@@ -78,11 +77,11 @@ export function Hero() {
             <h2 className="text-2xl mb-4 h-8">{displayedTitle}</h2>
             <p className="text-xl mb-6 text-muted-foreground">{t("heroDescription")}</p>
             <div className="flex flex-wrap gap-2 mb-6">
-              <Badge variant="secondary">Machine Learning</Badge>
-              <Badge variant="secondary">Computer Vision</Badge>
-              <Badge variant="secondary">Natural Language Processing</Badge>
-              <Badge variant="secondary">Full Stack Development</Badge>
-              <Badge variant="secondary">Cybersecurity</Badge>
+              <Badge variant="secondary">{t("machineLearning")}</Badge>
+              <Badge variant="secondary">{t("computerVision")}</Badge>
+              <Badge variant="secondary">{t("naturalLanguageProcessing")}</Badge>
+              <Badge variant="secondary">{t("fullStackDevelopment")}</Badge>
+              <Badge variant="secondary">{t("cybersecurity")}</Badge>
             </div>
             <Button asChild>
               <Link href="/contact">

@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import Script from "next/script"
 import "./globals.css"
@@ -93,10 +93,17 @@ export const metadata: Metadata = {
     email: true,
     url: true,
   },
+    generator: 'v0.dev'
+}
+
+// Move themeColor to viewport export
+export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
+  width: "device-width",
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -107,7 +114,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="google-adsense-account" content="ca-pub-6423546523017297" />
         <link rel="canonical" href="https://jnx03.xyz" />
         <link
@@ -152,7 +158,7 @@ export default function RootLayout({
           `}
         </style>
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} pt-14`}>
         <LanguageProvider>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
             {children}

@@ -73,7 +73,7 @@ export function Navigation() {
     <>
       <header
         className={cn(
-          "sticky top-0 z-50 w-full transition-all duration-300 ease-in-out",
+          "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out",
           isFloating ? "py-2" : "py-0",
           theme === "light"
             ? "bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-gray-200"

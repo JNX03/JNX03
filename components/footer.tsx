@@ -2,11 +2,11 @@
 
 import Link from "next/link"
 import { useTheme } from "next-themes"
-import { useLanguage } from "@/lib/i18n"
+import { useTranslation } from "react-i18next"
 
 export function Footer() {
   const { theme } = useTheme()
-  const { t } = useLanguage()
+  const { t } = useTranslation()
 
   return (
     <footer className={`mt-16 pb-8 ${theme === "light" ? "bg-gray-50" : ""}`}>
@@ -62,7 +62,7 @@ export function Footer() {
                       : "text-muted-foreground hover:text-foreground"
                   }
                 >
-                  {t("projects")}
+                  Projects
                 </Link>
               </li>
               <li>
@@ -74,7 +74,7 @@ export function Footer() {
                       : "text-muted-foreground hover:text-foreground"
                   }
                 >
-                  {t("blog")}
+                  Blog
                 </Link>
               </li>
               <li>
@@ -86,7 +86,7 @@ export function Footer() {
                       : "text-muted-foreground hover:text-foreground"
                   }
                 >
-                  {t("awards")}
+                  Awards
                 </Link>
               </li>
               <li>
@@ -98,7 +98,7 @@ export function Footer() {
                       : "text-muted-foreground hover:text-foreground"
                   }
                 >
-                  {t("contact")}
+                  Contact
                 </Link>
               </li>
               <li>
@@ -136,7 +136,7 @@ export function Footer() {
 
         <div className={`border-t ${theme === "light" ? "border-gray-200" : "border-border"} pt-4 text-center`}>
           <p className={`text-sm ${theme === "light" ? "text-gray-500" : "text-muted-foreground"}`}>
-            © 2024-2025 JNX03. {t("allRightsReserved")}.
+            © 2024-2025 JNX03. {t("allRightsReserved")}
           </p>
         </div>
       </div>
