@@ -60,6 +60,7 @@
     "zod": "^3.24.1",
     "@emotion/is-prop-valid": "latest",
     "three": "latest",
+    "i18next": "latest",
     "@sveltejs/kit": "latest",
     "svelte": "latest",
     "vue": "latest",
@@ -78,6 +79,7 @@
     "workbox-routing": "latest",
     "workbox-strategies": "latest",
     "nodemailer": "latest",
+    "react-i18next": "latest",
     "@vercel/speed-insights": "latest",
     "@vercel/analytics": "latest"
   },
