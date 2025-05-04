@@ -9,6 +9,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 import { CookieConsent } from "@/components/cookie-consent"
 import { LanguageProvider } from "@/lib/i18n"
+import { Suspense } from "react"
 
 // Optimize font loading
 const inter = Inter({
@@ -161,7 +162,7 @@ export default function RootLayout({
       <body className={`${inter.className} pt-14`}>
         <LanguageProvider>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-            {children}
+            <Suspense>{children}</Suspense>
             <Toaster />
             <CookieConsent />
             <SpeedInsights />
@@ -247,7 +248,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-import './globals.css'

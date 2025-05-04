@@ -26,6 +26,20 @@ export function Navigation() {
   const { theme } = useTheme()
   const [searchOpen, setSearchOpen] = useState(false)
   const { t } = useLanguage()
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    handleScroll() // Check initial position
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
 
   // Define routes with translations
   const routes = [
@@ -72,13 +86,9 @@ export function Navigation() {
   return (
     <>
       <header
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out",
-          isFloating ? "py-2" : "py-0",
-          theme === "light"
-            ? "bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-gray-200"
-            : "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
-        )}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+          isScrolled ? "bg-background/80 backdrop-blur-md shadow-sm" : "bg-background"
+        }`}
       >
         <div
           className={cn(
@@ -91,25 +101,27 @@ export function Navigation() {
               <span className="font-bold text-lg">JNX03</span>
             </Link>
 
-            <nav className="hidden md:flex items-center justify-center flex-1 space-x-1">
-              {routes.map((route) => (
-                <Link
-                  key={route.href}
-                  href={route.href}
-                  className={cn(
-                    "px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
-                    route.active || pathname === route.href
-                      ? theme === "light"
-                        ? "text-indigo-600 font-semibold"
-                        : "text-foreground"
-                      : theme === "light"
-                        ? "text-gray-600"
-                        : "text-foreground/60",
-                  )}
-                >
-                  {route.label}
-                </Link>
-              ))}
+            <nav className="hidden md:flex items-center justify-center flex-1 overflow-x-auto">
+              <div className="flex items-center space-x-1 px-1">
+                {routes.map((route) => (
+                  <Link
+                    key={route.href}
+                    href={route.href}
+                    className={cn(
+                      "px-2 py-2 rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground whitespace-nowrap",
+                      route.active || pathname === route.href
+                        ? theme === "light"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-foreground"
+                        : theme === "light"
+                          ? "text-gray-600"
+                          : "text-foreground/60",
+                    )}
+                  >
+                    {route.label}
+                  </Link>
+                ))}
+              </div>
             </nav>
 
             <div className="flex items-center space-x-2">
@@ -194,4 +206,3 @@ export function Navigation() {
     </>
   )
 }
-

@@ -12,4 +12,3 @@ Policy: https://jnx03.xyz/security-policy
     },
   })
 }
-

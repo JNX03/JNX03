@@ -217,4 +217,3 @@ export default function CancerPlusPrcXBlogPage() {
     </div>
   )
 }
-

@@ -170,4 +170,3 @@ export function SearchDialog({ open, onOpenChange }: SearchDialogProps) {
     </Dialog>
   )
 }
-

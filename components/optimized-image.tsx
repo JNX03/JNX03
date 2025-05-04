@@ -87,4 +87,3 @@ export function OptimizedImage({
     </div>
   )
 }
-

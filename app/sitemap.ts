@@ -150,4 +150,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...mainPages, ...blogPosts, ...utilityPages]
 }
-

@@ -375,8 +375,8 @@ export default function Home() {
                 <FloatingElement>
                   <div className="relative w-72 h-72 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
                     <Image
-                      src="https://media.licdn.com/dms/image/v2/D4D03AQGGUriUQXl-Kw/profile-displayphoto-shrink_800_800/B4DZTcKo4yHIAc-/0/1738860565159?e=1745452800&v=beta&t=JHFPZzyh-K3hQ00A7vm5bys3PYec16oD2ETUEyntA30"
-                      alt="Chawabhon Netisingha"
+                      src="/img/profile.png"
+                      alt="Chawabhon Netisingha at Arundel Cathedral"
                       layout="fill"
                       objectFit="cover"
                       className="rounded-full"
@@ -671,4 +671,3 @@ export default function Home() {
     </div>
   )
 }
-

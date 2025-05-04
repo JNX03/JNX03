@@ -8,4 +8,3 @@ Disallow: /s/
 # Sitemaps
 Sitemap: https://jnx03.xyz/sitemap.xml
 Sitemap: https://jnx03.xyz/sitemap-index.xml
-

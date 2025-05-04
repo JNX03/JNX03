@@ -456,4 +456,3 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
 
   return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>
 }
-

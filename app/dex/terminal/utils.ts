@@ -241,4 +241,3 @@ export const resolvePath = (currentPath: string, inputPath: string): string => {
 
   return "/" + resolvedParts.join("/")
 }
-

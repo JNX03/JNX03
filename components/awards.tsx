@@ -80,4 +80,3 @@ export function Awards({ awards }: AwardsProps) {
     </Card>
   )
 }
-

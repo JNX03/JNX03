@@ -23,8 +23,7 @@ export function Hero() {
       name: "Chawabhon Netisingha",
       alternateName: "JNX03",
       description: "AI Developer, Tech Innovator, and Cybersecurity Enthusiast",
-      image:
-        "https://media.licdn.com/dms/image/v2/D4D03AQGGUriUQXl-Kw/profile-displayphoto-shrink_800_800/B4DZTcKo4yHIAc-/0/1738860565159?e=1745452800&v=beta&t=JHFPZzyh-K3hQ00A7vm5bys3PYec16oD2ETUEyntA30",
+      image: "https://jnx03.xyz/img/profile.png",
       url: "https://jnx03.xyz",
       sameAs: [
         "https://github.com/JNX03",
@@ -61,7 +60,7 @@ export function Hero() {
     }, 100)
 
     return () => clearInterval(typing)
-  }, [titleIndex, titles])
+  }, [titleIndex])
 
   return (
     <section className="py-20">
@@ -97,15 +96,15 @@ export function Hero() {
           >
             <div className="relative w-64 h-64 mx-auto lg:mx-0">
               <PerformanceImage
-                src="https://media.licdn.com/dms/image/v2/D4D03AQGGUriUQXl-Kw/profile-displayphoto-shrink_800_800/B4DZTcKo4yHIAc-/0/1738860565159?e=1745452800&v=beta&t=JHFPZzyh-K3hQ00A7vm5bys3PYec16oD2ETUEyntA30"
-                alt="Chawabhon Netisingha - JNX03 Developer Portfolio"
+                src="/img/profile.png"
+                alt="Chawabhon Netisingha at Arundel Cathedral with flowers in the background"
                 width={256}
                 height={256}
                 className="rounded-full border-4 border-primary/20 shadow-xl"
                 priority={true}
                 quality={85}
                 placeholder="blur"
-                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PC9zdmc+"
+                blurDataURL="/img/profile.png"
               />
             </div>
             <motion.div
@@ -123,4 +122,3 @@ export function Hero() {
     </section>
   )
 }
-
