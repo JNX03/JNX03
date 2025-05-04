@@ -95,7 +95,7 @@ const nextConfig = {
   },
   // Optimize performance
   experimental: {
-    optimizeCss: true,
+    // Removing optimizeCss to fix the 'critters' module error
     scrollRestoration: true,
     optimizePackageImports: ['framer-motion', 'lucide-react'],
   },
