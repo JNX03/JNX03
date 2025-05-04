@@ -94,7 +94,6 @@ export const metadata: Metadata = {
     email: true,
     url: true,
   },
-    generator: 'v0.dev'
 }
 
 // Move themeColor to viewport export
