@@ -77,3 +77,7 @@ Goal : Yeah It come to the same question i ask my self year ago the answer is " 
 ---
 
 ![](https://github-readme-stats.vercel.app/api?username=jnx03&theme=dark&show_icons=true&hide_border=false&count_private=true)![](https://github-readme-streak-stats.herokuapp.com/?user=jnx03&theme=dark&hide_border=false)
+![](https://github-contributor-stats.vercel.app/api?username=jnx03&limit=5&theme=dark&combine_all_yearly_contributions=true)
+## 🏆 GitHub Trophies
+![](https://github-profile-trophy.vercel.app/?username=jnx03&theme=radical&no-frame=false&no-bg=true&margin-w=4)
+
