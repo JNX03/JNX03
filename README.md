@@ -10,7 +10,7 @@ I’m **Jean (JNX03)**, a developer and tech enthusiast. I created this profile 
 
 <h2 align="center">About Meeeeeeeeeeeeeee ✨</h2>
 
-```yaml
+\`\`\`yaml
 name: Jean (JNX03)
 from: Earth 🌍 Or not may be :D
 website : https://jnx03.xyz/  see my spooky stuff or it Just a mystery thing?
@@ -20,7 +20,7 @@ favorite_tech:
   - Languages: [JavaScript, Python, C++]
   - Tools: [React, Node.js, Docker, Git]
 Goal : Yeah It come to the same question i ask my self year ago the answer is " I want to make the world better with my cool tech stuff and change the world "
-```
+\`\`\`
 
 ---
 
@@ -80,4 +80,3 @@ Goal : Yeah It come to the same question i ask my self year ago the answer is " 
 ![](https://github-contributor-stats.vercel.app/api?username=jnx03&limit=5&theme=dark&combine_all_yearly_contributions=true)
 ## 🏆 GitHub Trophies
 ![](https://github-profile-trophy.vercel.app/?username=jnx03&theme=radical&no-frame=false&no-bg=true&margin-w=4)
-
