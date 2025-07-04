@@ -1,28 +1,39 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { OptimizedImage } from "@/components/optimized-image"
-import { useTheme } from "next-themes"
-import { useLanguage } from "@/lib/i18n"
 import { useState } from "react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import Image from "next/image"
 
 interface Award {
-  title: string
-  organization: string
-  date: string
+  name: string
+  position?: string
+  category?: string
   description: string
+  color?: "gold" | "silver" | "bronze" | "blue"
   imageUrl: string
-  link?: string
 }
 
 interface AwardsProps {
   awards: Award[]
 }
 
+const getBadgeColor = (color: Award["color"]) => {
+  switch (color) {
+    case "gold":
+      return "bg-yellow-500 text-black"
+    case "silver":
+      return "bg-gray-300 text-black"
+    case "bronze":
+      return "bg-amber-600 text-white"
+    case "blue":
+    default:
+      return "bg-blue-500 text-white"
+  }
+}
+
 export function Awards({ awards }: AwardsProps) {
-  const { theme } = useTheme()
-  const { t } = useLanguage()
+  // Use state to track which images have failed to load
   const [failedImages, setFailedImages] = useState<Record<number, boolean>>({})
 
   const handleImageError = (index: number) => {
@@ -33,58 +44,37 @@ export function Awards({ awards }: AwardsProps) {
   }
 
   return (
-    <Card className="mb-8">
+    <Card>
       <CardHeader>
-        <CardTitle>🏆 {t("awardsAndRecognition")}</CardTitle>
+        <CardTitle>Awards and Achievements</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {awards.map((award, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="overflow-hidden rounded-xl"
-            >
-              <Card className={`h-full overflow-hidden border-0 shadow-lg ${theme === "light" ? "bg-white" : ""}`}>
-                <div className="relative h-48 w-full overflow-hidden">
-                  <OptimizedImage
-                    src={
-                      failedImages[index]
-                        ? `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(award.title)}`
-                        : award.imageUrl ||
-                          `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(award.title)}`
-                    }
-                    alt={award.title}
-                    width={400}
-                    height={200}
-                    className="transition-transform duration-500 hover:scale-110"
-                    loading="lazy" // Ensure lazy loading
-                    onError={() => handleImageError(index)}
-                  />
+            <Card key={index} className="overflow-hidden">
+              <div className="relative h-48 w-full">
+                <Image
+                  src={
+                    failedImages[index]
+                      ? `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(award.name)}`
+                      : award.imageUrl || `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(award.name)}`
+                  }
+                  alt={award.name}
+                  layout="fill"
+                  objectFit="cover"
+                  onError={() => handleImageError(index)}
+                  loading="lazy" // Explicitly set to lazy load
+                />
+              </div>
+              <CardContent className="p-4">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="font-semibold text-lg">{award.name}</h3>
+                  {award.position && <Badge className={getBadgeColor(award.color)}>{award.position}</Badge>}
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{award.title}</h3>
-                  <p className="text-muted-foreground text-sm mb-2">
-                    {award.organization} - {award.date}
-                  </p>
-                  <p className={`${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                    {award.description}
-                  </p>
-                  {award.link && (
-                    <a
-                      href={award.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-indigo-500 hover:underline mt-4 inline-block"
-                    >
-                      {t("learnMore")}
-                    </a>
-                  )}
-                </CardContent>
-              </Card>
-            </motion.div>
+                {award.category && <p className="text-sm text-muted-foreground mb-2">{award.category}</p>}
+                <p className="text-sm">{award.description}</p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </CardContent>
