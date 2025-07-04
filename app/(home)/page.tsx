@@ -159,6 +159,11 @@ const ProjectCard = ({
   delay?: number
 }) => {
   const { theme } = useTheme()
+  const [imageError, setImageError] = useState(false)
+
+  const handleImageError = () => {
+    setImageError(true)
+  }
 
   return (
     <motion.div
@@ -171,11 +176,17 @@ const ProjectCard = ({
         <Card className={`h-full overflow-hidden border-0 shadow-lg ${theme === "light" ? "bg-white" : ""}`}>
           <div className="relative h-48 w-full overflow-hidden">
             <Image
-              src={image || "/placeholder.svg"}
+              src={
+                imageError
+                  ? `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(title)}`
+                  : image || "/placeholder.svg"
+              }
               alt={title}
               layout="fill"
               objectFit="cover"
               className="transition-transform duration-500 hover:scale-110"
+              loading="lazy" // Ensure lazy loading for project images
+              onError={handleImageError}
             />
           </div>
           <CardContent className="p-6">
@@ -191,6 +202,13 @@ const ProjectCard = ({
 export default function Home() {
   const { theme } = useTheme()
   const { t } = useLanguage()
+  const [aiInnovatorImageError, setAiInnovatorImageError] = useState(false)
+  const [thailandIctImageError, setThailandIctImageError] = useState(false)
+  const [apictaImageError, setApictaImageError] = useState(false)
+
+  const handleAiInnovatorImageError = () => setAiInnovatorImageError(true)
+  const handleThailandIctImageError = () => setThailandIctImageError(true)
+  const handleApictaImageError = () => setApictaImageError(true)
 
   // Parallax effect for background elements
   const y = useMotionValue(0)
@@ -495,6 +513,10 @@ export default function Home() {
                         ? "bg-gradient-to-b from-gray-50 to-white"
                         : "bg-gradient-to-b from-background to-background/50"
                     } p-4`}
+                    loading="lazy" // Ensure lazy loading for Yuki-Chan image
+                    onError={() => {
+                      /* handle error if needed */
+                    }}
                   />
                 </div>
               </FloatingElement>
@@ -526,11 +548,17 @@ export default function Home() {
                 <Card className={`h-full overflow-hidden border-0 shadow-lg ${theme === "light" ? "bg-white" : ""}`}>
                   <div className="relative h-48 w-full overflow-hidden">
                     <Image
-                      src="/img/ai-innovator-award.png"
+                      src={
+                        aiInnovatorImageError
+                          ? `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(t("aiInnovatorAward"))}`
+                          : "/img/ai-innovator-award.png"
+                      }
                       alt="AI Innovator Award 2024"
                       layout="fill"
                       objectFit="cover"
                       className="transition-transform duration-500 hover:scale-110"
+                      loading="lazy" // Ensure lazy loading
+                      onError={handleAiInnovatorImageError}
                     />
                   </div>
                   <CardContent className="p-6">
@@ -554,11 +582,17 @@ export default function Home() {
                 <Card className={`h-full overflow-hidden border-0 shadow-lg ${theme === "light" ? "bg-white" : ""}`}>
                   <div className="relative h-48 w-full overflow-hidden">
                     <Image
-                      src="/img/thailand-ict-award.png"
+                      src={
+                        thailandIctImageError
+                          ? `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(t("thailandICTAwards"))}`
+                          : "/img/thailand-ict-award.png"
+                      }
                       alt="Thailand ICT Awards 2023"
                       layout="fill"
                       objectFit="cover"
                       className="transition-transform duration-500 hover:scale-110"
+                      loading="lazy" // Ensure lazy loading
+                      onError={handleThailandIctImageError}
                     />
                   </div>
                   <CardContent className="p-6">
@@ -582,11 +616,17 @@ export default function Home() {
                 <Card className={`h-full overflow-hidden border-0 shadow-lg ${theme === "light" ? "bg-white" : ""}`}>
                   <div className="relative h-48 w-full overflow-hidden">
                     <Image
-                      src="/img/apicta-award.png"
+                      src={
+                        apictaImageError
+                          ? `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(t("apicta2023"))}`
+                          : "/img/apicta-award.png"
+                      }
                       alt="APICTA 2023"
                       layout="fill"
                       objectFit="cover"
                       className="transition-transform duration-500 hover:scale-110"
+                      loading="lazy" // Ensure lazy loading
+                      onError={handleApictaImageError}
                     />
                   </div>
                   <CardContent className="p-6">
@@ -662,7 +702,10 @@ export default function Home() {
                 "Swift Student Challenge 2025 Winner",
                 "AI Innovator Award 2024",
                 "Thailand ICT Awards 2023 Winner",
-                "Asia Pacific ICT Alliance Award 2023 Merit Award"
+                "Asia Pacific ICT Alliance Award 2023 Merit Award",
+                "Moodeng AI Challenge Winner",
+                "Thailand Innovation Awards (TIA) Participant",
+                "National Software Contest (NSC) Participant"
               ]
             }
           }
