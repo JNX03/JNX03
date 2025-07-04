@@ -15,6 +15,9 @@ import { useTheme } from "next-themes"
 import { motion } from "framer-motion"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
+// Import the validation utility
+import { validateEmail } from "@/lib/validation"
+
 export default function ContactPage() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -40,6 +43,7 @@ export default function ContactPage() {
     show: { opacity: 1, y: 0 },
   }
 
+  // Update the validateForm function
   const validateForm = () => {
     if (!name.trim()) {
       setErrorMessage("Please enter your name")
@@ -51,8 +55,7 @@ export default function ContactPage() {
       return false
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
+    if (!validateEmail(email)) {
       setErrorMessage("Please enter a valid email address")
       return false
     }
@@ -65,6 +68,7 @@ export default function ContactPage() {
     return true
   }
 
+  // Update the form submission handling
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setFormStatus("idle")
@@ -89,7 +93,7 @@ export default function ContactPage() {
       const data = await response.json()
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to send message")
+        throw new Error(data.error || data.details || "Failed to send message")
       }
 
       // Success

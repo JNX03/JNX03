@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
-import { Calculator, Calendar, Clock, Terminal, Settings, Smile, User, FileText, Github, Instagram, Youtube, Rocket } from 'lucide-react'
+import { Clock, Terminal, FileText, Github, Instagram, Youtube, Rocket } from "lucide-react"
 
 import {
   CommandDialog,
@@ -59,19 +59,19 @@ export function CommandMenu() {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Actions">
-            <CommandItem
-              onSelect={() => runCommand(() => router.push('/dex/terminal'))}
-            >
+            <CommandItem onSelect={() => runCommand(() => router.push("/dex/terminal"))}>
               <Terminal className="mr-2 h-4 w-4" />
               Open Terminal
             </CommandItem>
             <CommandItem
-              onSelect={() => runCommand(() => {
-                toast({
-                  title: "Current Time",
-                  description: time.toLocaleTimeString(),
+              onSelect={() =>
+                runCommand(() => {
+                  toast({
+                    title: "Current Time",
+                    description: time.toLocaleTimeString(),
+                  })
                 })
-              })}
+              }
             >
               <Clock className="mr-2 h-4 w-4" />
               Show Current Time
@@ -79,41 +79,31 @@ export function CommandMenu() {
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Projects">
-            <CommandItem
-              onSelect={() => runCommand(() => window.open('https://notex.jnx03.xyz', '_blank'))}
-            >
+            <CommandItem onSelect={() => runCommand(() => window.open("https://notex.jnx03.xyz", "_blank"))}>
               <FileText className="mr-2 h-4 w-4" />
               Open Notex
             </CommandItem>
-            <CommandItem
-              onSelect={() => runCommand(() => window.open('https://nova.jnx03.xyz', '_blank'))}
-            >
+            <CommandItem onSelect={() => runCommand(() => window.open("https://nova.jnx03.xyz", "_blank"))}>
               <Rocket className="mr-2 h-4 w-4" />
               Open Nova
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Social">
-            <CommandItem
-              onSelect={() => runCommand(() => window.open('https://github.com/JNX03', '_blank'))}
-            >
+            <CommandItem onSelect={() => runCommand(() => window.open("https://github.com/JNX03", "_blank"))}>
               <Github className="mr-2 h-4 w-4" />
               GitHub
             </CommandItem>
-            <CommandItem
-              onSelect={() => runCommand(() => window.open('https://www.instagram.com/jxxn03z/', '_blank'))}
-            >
+            <CommandItem onSelect={() => runCommand(() => window.open("https://www.instagram.com/jxxn03z/", "_blank"))}>
               <Instagram className="mr-2 h-4 w-4" />
               Instagram
             </CommandItem>
-            <CommandItem
-              onSelect={() => runCommand(() => window.open('https://www.youtube.com/@Jnx03', '_blank'))}
-            >
+            <CommandItem onSelect={() => runCommand(() => window.open("https://www.youtube.com/@Jnx03", "_blank"))}>
               <Youtube className="mr-2 h-4 w-4" />
               YouTube (Main)
             </CommandItem>
             <CommandItem
-              onSelect={() => runCommand(() => window.open('https://www.youtube.com/@Jnx03Studio', '_blank'))}
+              onSelect={() => runCommand(() => window.open("https://www.youtube.com/@Jnx03Studio", "_blank"))}
             >
               <Youtube className="mr-2 h-4 w-4" />
               YouTube (Production)

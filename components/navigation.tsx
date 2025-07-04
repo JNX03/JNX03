@@ -44,7 +44,6 @@ export function Navigation() {
   // Define routes with translations
   const routes = [
     { href: "/", label: t("home") },
-    { href: "/research", label: t("research") },
     { href: "/projects", label: t("projects") },
     { href: "/education", label: t("education") },
     { href: "/experience", label: t("experience") },

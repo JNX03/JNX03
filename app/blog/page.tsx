@@ -38,6 +38,279 @@ export default function BlogPage() {
             >
               <CardHeader>
                 <CardTitle className={`text-2xl sm:text-3xl ${theme === "light" ? "text-gray-900" : ""}`}>
+                  Thailand Innovation Awards (TIA): Selected for INDEX and Camp! 🎉
+                </CardTitle>
+                <CardDescription className={theme === "light" ? "text-gray-500" : ""}>
+                  Posted on June 27, 2025
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="prose dark:prose-invert max-w-none">
+                <p className={`text-base sm:text-lg mb-4 ${theme === "light" ? "text-gray-700" : ""}`}>
+                  I'm excited to announce my selection for the Thailand Innovation Awards (TIA) program, including the
+                  INDEX and Camp initiatives! This is a fantastic opportunity to develop innovative solutions and
+                  collaborate with other talented individuals.
+                </p>
+
+                <Button
+                  asChild
+                  className={
+                    theme === "light"
+                      ? "bg-indigo-600 hover:bg-indigo-700 text-white"
+                      : "bg-blue-600 hover:bg-blue-700 text-white"
+                  }
+                >
+                  <Link href="/blog/tia-index-camp" className="no-underline">
+                    Read more →
+                  </Link>
+                </Button>
+
+                <div className="text-sm text-muted-foreground mt-4 flex flex-wrap gap-2">
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    TIA
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Innovation
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Thailand
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Award
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Camp
+                  </Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={item}>
+            <Card
+              className={`mb-8 ${theme === "light" ? "bg-white border-gray-200 shadow-md hover:shadow-lg transition-shadow" : "hover:bg-accent/50 transition-colors"}`}
+            >
+              <CardHeader>
+                <CardTitle className={`text-2xl sm:text-3xl ${theme === "light" ? "text-gray-900" : ""}`}>
+                  Moodeng AI Challenge Winners: AI for Augmenting Zoo Keepers 🏆
+                </CardTitle>
+                <CardDescription className={theme === "light" ? "text-gray-500" : ""}>
+                  Posted on June 25, 2025
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="prose dark:prose-invert max-w-none">
+                <p className={`text-base sm:text-lg mb-4 ${theme === "light" ? "text-gray-700" : ""}`}>
+                  I'm thrilled to announce that I've been recognized as a winner in the Moodeng AI Challenge for Track
+                  3: AI for Augmenting Zoo Keepers! My project, MooDong, utilizes multi-task LSTM and vision models to
+                  extract pose, mood, hunger, and future-movement predictions for animals, all without requiring manual
+                  labels.
+                </p>
+
+                <Button
+                  asChild
+                  className={
+                    theme === "light"
+                      ? "bg-indigo-600 hover:bg-indigo-700 text-white"
+                      : "bg-blue-600 hover:bg-blue-700 text-white"
+                  }
+                >
+                  <Link href="/blog/moodeng-ai-challenge" className="no-underline">
+                    Read more →
+                  </Link>
+                </Button>
+
+                <div className="text-sm text-muted-foreground mt-4 flex flex-wrap gap-2">
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    AI
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Challenge
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Zoo
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    LSTM
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Vision
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    MooDong
+                  </Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={item}>
+            <Card
+              className={`mb-8 ${theme === "light" ? "bg-white border-gray-200 shadow-md hover:shadow-lg transition-shadow" : "hover:bg-accent/50 transition-colors"}`}
+            >
+              <CardHeader>
+                <CardTitle className={`text-2xl sm:text-3xl ${theme === "light" ? "text-gray-900" : ""}`}>
+                  WWDC SSC25 (Thailand Meeting) 🍎
+                </CardTitle>
+                <CardDescription className={theme === "light" ? "text-gray-500" : ""}>
+                  Posted on June 22, 2025
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="prose dark:prose-invert max-w-none">
+                <p className={`text-base sm:text-lg mb-4 ${theme === "light" ? "text-gray-700" : ""}`}>
+                  I had the privilege of attending the WWDC Swift Student Challenge 2025 Thailand meeting! It was an
+                  inspiring event, connecting with fellow developers and learning about the latest advancements from
+                  Apple.
+                </p>
+
+                <Button
+                  asChild
+                  className={
+                    theme === "light"
+                      ? "bg-indigo-600 hover:bg-indigo-700 text-white"
+                      : "bg-blue-600 hover:bg-blue-700 text-white"
+                  }
+                >
+                  <Link href="/blog/wwdc-ssc25-thailand-meeting" className="no-underline">
+                    Read more →
+                  </Link>
+                </Button>
+
+                <div className="text-sm text-muted-foreground mt-4 flex flex-wrap gap-2">
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    WWDC
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    SSC25
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Apple
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Thailand
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Meeting
+                  </Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={item}>
+            <Card
+              className={`mb-8 ${theme === "light" ? "bg-white border-gray-200 shadow-md hover:shadow-lg transition-shadow" : "hover:bg-accent/50 transition-colors"}`}
+            >
+              <CardHeader>
+                <CardTitle className={`text-2xl sm:text-3xl ${theme === "light" ? "text-gray-900" : ""}`}>
+                  National Software Contest (NSC): Selected for INDEX! 💻
+                </CardTitle>
+                <CardDescription className={theme === "light" ? "text-gray-500" : ""}>
+                  Posted on June 13, 2025
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="prose dark:prose-invert max-w-none">
+                <p className={`text-base sm:text-lg mb-4 ${theme === "light" ? "text-gray-700" : ""}`}>
+                  I'm excited to announce that I've been selected to participate in the National Software Contest (NSC)
+                  program, specifically for the INDEX initiative! This is a great opportunity to showcase my software
+                  development skills and contribute to innovative projects.
+                </p>
+
+                <Button
+                  asChild
+                  className={
+                    theme === "light"
+                      ? "bg-indigo-600 hover:bg-indigo-700 text-white"
+                      : "bg-blue-600 hover:bg-blue-700 text-white"
+                  }
+                >
+                  <Link href="/blog/nsc-index" className="no-underline">
+                    Read more →
+                  </Link>
+                </Button>
+
+                <div className="text-sm text-muted-foreground mt-4 flex flex-wrap gap-2">
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    NSC
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Software
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Contest
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    INDEX
+                  </Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={item}>
+            <Card
+              className={`mb-8 ${theme === "light" ? "bg-white border-gray-200 shadow-md hover:shadow-lg transition-shadow" : "hover:bg-accent/50 transition-colors"}`}
+            >
+              <CardHeader>
+                <CardTitle className={`text-2xl sm:text-3xl ${theme === "light" ? "text-gray-900" : ""}`}>
                   Accepted into Super AI Engineer SS5 Level 2! 🎉
                 </CardTitle>
                 <CardDescription className={theme === "light" ? "text-gray-500" : ""}>

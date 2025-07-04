@@ -102,7 +102,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
+                <a
                   href="https://status.jnx03.xyz"
                   className={
                     theme === "light"
@@ -110,9 +110,10 @@ export function Footer() {
                       : "text-muted-foreground hover:text-foreground"
                   }
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Status Page
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
