@@ -44,6 +44,7 @@ pnpm dev
 ## 🚀 GitHub Workflow
 This project uses [GitHub Actions](.github/workflows/ci.yml) to lint and build the Next.js app on every push and pull request. The workflow installs dependencies with **pnpm**, runs `pnpm lint`, and builds the project with `pnpm build`.
 
+
 ## 📊 GitHub Metrics
 The [metrics workflow](.github/workflows/metrics.yml) generates a profile summary with contribution and follower stats.
 
