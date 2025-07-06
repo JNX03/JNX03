@@ -51,6 +51,7 @@
     "date-fns": "4.1.0",
     "embla-carousel-react": "latest",
     "framer-motion": "latest",
+    "he": "latest",
     "i18next": "latest",
     "input-otp": "latest",
     "lucide-react": "^0.454.0",
@@ -81,8 +82,7 @@
     "workbox-precaching": "latest",
     "workbox-routing": "latest",
     "workbox-strategies": "latest",
-    "zod": "^3.24.1",
-    "he": "^1.2.0"
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/node": "^22",

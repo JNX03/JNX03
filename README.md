@@ -9,7 +9,7 @@ I’m **Jean (JNX03)**, a developer and tech enthusiast. I created this profile 
 ---
 
 ## About Me ✨
-```yaml
+\`\`\`yaml
 name: Jean (JNX03)
 from: Earth 🌍 Or maybe not :D
 website: https://jnx03.xyz/
@@ -19,7 +19,7 @@ favorite_tech:
   - Languages: [JavaScript, Python, C++]
   - Tools: [React, Node.js, Docker, Git]
 Goal: "I want to make the world better with my cool tech stuff and change the world"
-```
+\`\`\`
 
 ---
 
