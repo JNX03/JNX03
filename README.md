@@ -34,13 +34,6 @@ Goal: "I want to make the world better with my cool tech stuff and change the wo
 
 ---
 
-## 📦 Getting Started
-Clone the repository and install dependencies using **pnpm**:
-```bash
-pnpm install
-pnpm dev
-```
-
 [![Metrics](https://raw.githubusercontent.com/JNX03/JNX03/main/github-metrics.svg)](https://github.com/JNX03/JNX03)
 
 ---
