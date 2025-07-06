@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import nodemailer from "nodemailer"
+import he from "he"
 
 export async function POST(request: Request) {
   try {
@@ -36,11 +37,11 @@ Message: ${message}
       html: `
 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 5px;">
   <h2 style="color: #4f46e5; margin-bottom: 20px;">New Contact Form Submission</h2>
-  <p><strong>Name:</strong> ${name}</p>
-  <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+  <p><strong>Name:</strong> ${he.encode(name)}</p>
+  <p><strong>Email:</strong> <a href="mailto:${he.encode(email)}">${he.encode(email)}</a></p>
   <p><strong>Message:</strong></p>
   <div style="background-color: #f9fafb; padding: 15px; border-radius: 5px; margin-top: 10px; margin-bottom: 20px;">
-    ${message.replace(/\n/g, "<br>")}
+    ${he.encode(message).replace(/\n/g, "<br>")}
   </div>
   <p style="color: #6b7280; font-size: 12px; margin-top: 20px; border-top: 1px solid #e0e0e0; padding-top: 20px;">This email was sent from your website contact form.</p>
 </div>
