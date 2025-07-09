@@ -25,3 +25,68 @@ jobs:
           plugin_followup: yes
           plugin_languages: yes
           plugin_lines: yes
+
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: github-metrics.isocalendar.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: JNX03
+          template: classic
+          base: ""
+          config_timezone: Asia/Bangkok
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
+
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: github-metrics.languages.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: JNX03
+          template: classic
+          base: ""
+          config_timezone: Asia/Bangkok
+          plugin_languages: yes
+          plugin_languages_limit: 8
+          plugin_languages_ignored: html,css,scss
+
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: github-metrics.lines.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: JNX03
+          template: classic
+          base: ""
+          config_timezone: Asia/Bangkok
+          plugin_lines: yes
+
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: github-metrics.achievements.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: JNX03
+          template: classic
+          base: ""
+          config_timezone: Asia/Bangkok
+          plugin_achievements: yes
+
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: github-metrics.stargazers.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: JNX03
+          template: classic
+          base: ""
+          config_timezone: Asia/Bangkok
+          plugin_stargazers: yes
+
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: github-metrics.followers.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: JNX03
+          template: classic
+          base: ""
+          config_timezone: Asia/Bangkok
+          plugin_people: yes
+          plugin_people_limit: 28
+          plugin_people_types: followers
