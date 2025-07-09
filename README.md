@@ -1,7 +1,6 @@
 # Hi there 👋
 **Welcome to JNX03's GitHub Profile!** 🚀
 
-This profile README is powered by [lowlighter/metrics](https://github.com/lowlighter/metrics) and showcases various GitHub statistics.
 
 ---
 
