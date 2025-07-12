@@ -1,10 +1,26 @@
 User-agent: *
 Allow: /
 
-# Prevent indexing of utility routes
-Disallow: /api/
-Disallow: /s/
+User-agent: Googlebot
+Allow: /
 
-# Sitemaps
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: AI2Bot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
 Sitemap: https://jnx03.xyz/sitemap.xml
-Sitemap: https://jnx03.xyz/sitemap-index.xml
+Sitemap: https://jnx03.xyz/rss.xml
