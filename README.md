@@ -5,27 +5,28 @@
 ---
 
 ## 📊 Metrics
-[![Main Metrics](https://raw.githubusercontent.com/JNX03/JNX03/main/github-metrics.svg)](https://github.com/lowlighter/metrics)
 
-### Additional Metrics
-
-<!-- Isometric commit calendar -->
-![Commit Calendar](./github-metrics.isocalendar.svg)
-
-<!-- Most used languages -->
-![Languages](./github-metrics.languages.svg)
-
-<!-- Lines of code changed -->
-![Lines of Code](./github-metrics.lines.svg)
-
-<!-- Achievements -->
-![Achievements](./github-metrics.achievements.svg)
-
-<!-- Recently starred repositories -->
-![Stargazers](./github-metrics.stargazers.svg)
-
-<!-- Followers information -->
-![Followers](./github-metrics.followers.svg)
+<table>
+  <tr>
+    <td colspan="2">
+      <a href="https://github.com/lowlighter/metrics">
+        <img src="https://raw.githubusercontent.com/JNX03/JNX03/main/github-metrics.svg" alt="Main metrics" />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td><img src="./github-metrics.isocalendar.svg" alt="Commit Calendar" /></td>
+    <td><img src="./github-metrics.languages.svg" alt="Languages" /></td>
+  </tr>
+  <tr>
+    <td><img src="./github-metrics.lines.svg" alt="Lines of Code" /></td>
+    <td><img src="./github-metrics.achievements.svg" alt="Achievements" /></td>
+  </tr>
+  <tr>
+    <td><img src="./github-metrics.stargazers.svg" alt="Stargazers" /></td>
+    <td><img src="./github-metrics.followers.svg" alt="Followers" /></td>
+  </tr>
+</table>
 
 ---
 

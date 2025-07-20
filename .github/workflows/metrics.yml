@@ -68,6 +68,8 @@ jobs:
           base: ""
           config_timezone: Asia/Bangkok
           plugin_achievements: yes
+          plugin_achievements_display: compact
+          plugin_achievements_ignored: projects
 
       - uses: lowlighter/metrics@latest
         with:
