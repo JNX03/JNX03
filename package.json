@@ -67,6 +67,7 @@
     "react-particles": "latest",
     "react-resizable-panels": "latest",
     "recharts": "latest",
+    "rss": "latest",
     "sonner": "latest",
     "svelte": "latest",
     "tailwind-merge": "^2.5.5",

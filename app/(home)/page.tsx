@@ -705,7 +705,8 @@ export default function Home() {
                 "Asia Pacific ICT Alliance Award 2023 Merit Award",
                 "Moodeng AI Challenge Winner",
                 "Thailand Innovation Awards (TIA) Participant",
-                "National Software Contest (NSC) Participant"
+                "National Software Contest (NSC) Participant",
+                "Best Presentation Award from GISTDA - Kibo Robot Programming Challenge"
               ]
             }
           }

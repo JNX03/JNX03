@@ -249,6 +249,80 @@ export default function BlogPage() {
             >
               <CardHeader>
                 <CardTitle className={`text-2xl sm:text-3xl ${theme === "light" ? "text-gray-900" : ""}`}>
+                  Best Presentation Award จำนวน 5,000 บาท จาก GISTDA - Kibo robot - rpc 🏆
+                </CardTitle>
+                <CardDescription className={theme === "light" ? "text-gray-500" : ""}>
+                  Posted on 15 ก.ค. 2568
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="prose dark:prose-invert max-w-none">
+                <p className={`text-base sm:text-lg mb-4 ${theme === "light" ? "text-gray-700" : ""}`}>
+                  I am honored to have received the Best Presentation Award (5,000 Baht) from GISTDA at the Kibo Robot
+                  Programming Challenge. This recognition highlights my team's efforts in developing innovative
+                  solutions for space robotics.
+                </p>
+
+                <Button
+                  asChild
+                  className={
+                    theme === "light"
+                      ? "bg-indigo-600 hover:bg-indigo-700 text-white"
+                      : "bg-blue-600 hover:bg-blue-700 text-white"
+                  }
+                >
+                  <Link href="/blog/gistda-kibo-robot-award" className="no-underline">
+                    Read more →
+                  </Link>
+                </Button>
+
+                <div className="text-sm text-muted-foreground mt-4 flex flex-wrap gap-2">
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    GISTDA
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Kibo Robot
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Award
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Space
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Robotics
+                  </Badge>
+                  <Badge
+                    variant={theme === "light" ? "outline" : "secondary"}
+                    className={theme === "light" ? "border-indigo-200 text-indigo-700 bg-indigo-50" : ""}
+                  >
+                    Presentation
+                  </Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={item}>
+            <Card
+              className={`mb-8 ${theme === "light" ? "bg-white border-gray-200 shadow-md hover:shadow-lg transition-shadow" : "hover:bg-accent/50 transition-colors"}`}
+            >
+              <CardHeader>
+                <CardTitle className={`text-2xl sm:text-3xl ${theme === "light" ? "text-gray-900" : ""}`}>
                   National Software Contest (NSC): Selected for INDEX! 💻
                 </CardTitle>
                 <CardDescription className={theme === "light" ? "text-gray-500" : ""}>
@@ -587,21 +661,6 @@ export default function BlogPage() {
                   I'm a student developer currently based in Thailand, with a deep interest in AI, cybersecurity, and
                   accessibility technology. My journey in tech started with a simple curiosity about how things work,
                   and it has evolved into a mission to create tools and solutions that can help people.
-                </p>
-
-                <h2 className={`text-xl sm:text-2xl font-bold mt-8 mb-4 ${theme === "light" ? "text-gray-900" : ""}`}>
-                  Introducing Project 1x12
-                </h2>
-                <p className={`mb-4 ${theme === "light" ? "text-gray-700" : ""}`}>
-                  I'm thrilled to give you a sneak peek into one of my most ambitious projects yet: Project 1x12. This
-                  is a quantum computing initiative that aims to break the barriers between classical and quantum
-                  computing.
-                </p>
-
-                <p className={`mb-4 ${theme === "light" ? "text-gray-700" : ""}`}>
-                  Project 1x12 exists in a state of superposition - between reality and possibility. It's an
-                  experimental platform that explores the boundaries of quantum mechanics in computing. While I can't
-                  reveal all the details just yet, I've left some breadcrumbs for the curious minds...
                 </p>
 
                 <p className={`mb-4 ${theme === "light" ? "text-gray-700" : ""}`}>
