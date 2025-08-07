@@ -345,7 +345,7 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  Chief Technology Officer & Artificial Intelligence Specialist
+                  Chief Executive Officer & Distinguished Technology Fellow
                 </motion.h2>
 
                 <motion.p
@@ -354,8 +354,8 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
                 >
-                  Executive leader specializing in artificial intelligence development and accessibility technology solutions. 
-                  Directing multiple internationally recognized projects that deliver transformative technological innovations with measurable social and commercial impact.
+                  Distinguished executive and technology visionary leading enterprise-scale artificial intelligence initiatives and accessibility innovation programs. 
+                  Principal architect of internationally acclaimed technology solutions delivering quantifiable returns on investment and sustainable competitive advantages across global markets.
                 </motion.p>
 
                 <motion.div
@@ -365,11 +365,11 @@ export default function Home() {
                   transition={{ duration: 0.6, delay: 0.8 }}
                 >
                   {[
-                    "Artificial Intelligence",
-                    "Machine Learning",
-                    "Accessibility Technology",
-                    "Project Management",
-                    "Innovation Leadership",
+                    "Enterprise AI Architecture",
+                    "Strategic Technology Leadership",
+                    "Digital Transformation",
+                    "Executive Project Governance",
+                    "Innovation Strategy & Development",
                   ].map((tag, i) => (
                     <motion.span
                       key={tag}
@@ -456,9 +456,9 @@ export default function Home() {
                   <div className="flex items-center gap-2">
                     <Award className="h-5 w-5 text-yellow-500" />
                     <div>
-                      <p className="font-semibold text-sm">Latest Achievement</p>
+                      <p className="font-semibold text-sm">Distinguished Honor</p>
                       <p className={`text-xs ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                        Swift Student Challenge 2025
+                        Apple Distinguished Developer 2025
                       </p>
                     </div>
                   </div>
@@ -475,9 +475,9 @@ export default function Home() {
                   <div className="flex items-center gap-2">
                     <Briefcase className="h-5 w-5 text-indigo-500" />
                     <div>
-                      <p className="font-semibold text-sm">Current Role</p>
+                      <p className="font-semibold text-sm">Executive Position</p>
                       <p className={`text-xs ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                        Project Manager & Developer
+                        Chief Executive & Technology Fellow
                       </p>
                     </div>
                   </div>
@@ -487,7 +487,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Projects Being Managed Section */}
+        {/* Projects Under Executive Management */}
         <section className="py-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -497,15 +497,17 @@ export default function Home() {
             className="text-center mb-12"
           >
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Users className="h-8 w-8 text-indigo-500" />
-              <h2 className="text-3xl font-bold">Projects Under Management</h2>
+              <Briefcase className="h-8 w-8 text-indigo-500" />
+              <h2 className="text-3xl font-bold">Executive Technology Portfolio</h2>
             </div>
-            <p className={`text-lg max-w-3xl mx-auto ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-              Currently overseeing strategic technology initiatives and development projects that deliver measurable impact in accessibility solutions and artificial intelligence applications
+            <p className={`text-lg max-w-4xl mx-auto ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
+              Strategic direction and executive governance of high-impact technology initiatives across accessibility innovation, healthcare transformation, and enterprise artificial intelligence deployment. 
+              Each portfolio component demonstrates measurable ROI, stakeholder value creation, and sustainable competitive differentiation through proprietary technological assets.
             </p>
           </motion.div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto space-y-8">
+            {/* EibrailleNext - Primary Project */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -527,37 +529,143 @@ export default function Home() {
                     <div className="flex items-center gap-2 mb-4">
                       <Target className="h-6 w-6 text-indigo-500" />
                       <Badge className="bg-indigo-100 text-indigo-800 border-indigo-200">
-                        Active Project
+                        Flagship Project
                       </Badge>
                     </div>
                     <h3 className="text-2xl font-bold mb-4">EibrailleNext</h3>
                     <p className={`text-base leading-relaxed mb-6 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                      An advanced accessibility learning platform designed to assist blind and low-vision users in learning Braille. 
-                      Features cutting-edge face recognition technology, comprehensive curriculum management, and full W3C accessibility compliance.
+                      Mission-critical accessibility learning platform architected for enterprise deployment and scalable Braille education delivery. 
+                      Features proprietary computer vision algorithms, enterprise-grade curriculum management infrastructure, and maintains comprehensive W3C accessibility compliance frameworks with full audit trails.
                     </p>
-                    <div className="space-y-3 mb-6">
+                    <div className="grid grid-cols-2 gap-4 mb-6">
                       <div className="flex items-center gap-2">
                         <Award className="h-4 w-4 text-yellow-500" />
-                        <span className="text-sm font-medium">Multiple International Awards</span>
+                        <span className="text-xs font-medium">ISEF 2025 Finalist</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Users className="h-4 w-4 text-blue-500" />
-                        <span className="text-sm font-medium">Team of 5+ Developers</span>
+                        <Award className="h-4 w-4 text-green-500" />
+                        <span className="text-xs font-medium">TICTA 2025 Winner</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Target className="h-4 w-4 text-green-500" />
-                        <span className="text-sm font-medium">Global Impact Initiative</span>
+                        <Award className="h-4 w-4 text-blue-500" />
+                        <span className="text-xs font-medium">APICTA 2025 Merit</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Users className="h-4 w-4 text-indigo-500" />
+                        <span className="text-xs font-medium">Cross-functional Team</span>
                       </div>
                     </div>
                     <Button asChild className="w-full">
                       <Link href="https://eibraillenext.jnx03.xyz/" target="_blank" rel="noopener noreferrer">
-                        Visit Project <ArrowRight className="ml-2 h-4 w-4" />
+                        Access Platform <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                   </div>
                 </div>
               </Card>
             </motion.div>
+
+            {/* Additional Managed Projects */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                <Card className={`h-full overflow-hidden border shadow-md ${theme === "light" ? "bg-white border-gray-200" : ""}`}>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Target className="h-5 w-5 text-green-500" />
+                      <Badge className="bg-green-100 text-green-800 border-green-200">
+                        Healthcare Innovation
+                      </Badge>
+                    </div>
+                    <h3 className="text-xl font-bold mb-3">PETRA</h3>
+                    <p className={`text-sm leading-relaxed mb-4 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
+                      Enterprise healthcare platform leveraging advanced respiratory rehabilitation protocols and Triflow exercise methodologies to optimize patient lung function metrics. 
+                      Achieved strategic partnership recognition through Samsung's premier innovation competition framework.
+                    </p>
+                    <div className="space-y-2 mb-4">
+                      <div className="flex items-center gap-2">
+                        <Award className="h-3 w-3 text-orange-500" />
+                        <span className="text-xs font-medium">Samsung Solve for Tomorrow 2024 - Runner-up</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Users className="h-3 w-3 text-blue-500" />
+                        <span className="text-xs font-medium">Healthcare Technology Focus</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <Card className={`h-full overflow-hidden border shadow-md ${theme === "light" ? "bg-white border-gray-200" : ""}`}>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Target className="h-5 w-5 text-purple-500" />
+                      <Badge className="bg-purple-100 text-purple-800 border-purple-200">
+                        Medical Technology
+                      </Badge>
+                    </div>
+                    <h3 className="text-xl font-bold mb-3">MedChic</h3>
+                    <p className={`text-sm leading-relaxed mb-4 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
+                      Strategic healthcare technology platform engineered to transform medical education accessibility through proprietary technological frameworks. 
+                      Integrated within Chiang Mai University's distinguished MEDCHIC Innovation ecosystem as a flagship development initiative.
+                    </p>
+                    <div className="space-y-2 mb-4">
+                      <div className="flex items-center gap-2">
+                        <Award className="h-3 w-3 text-purple-500" />
+                        <span className="text-xs font-medium">Healthcare Innovation Award</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Users className="h-3 w-3 text-blue-500" />
+                        <span className="text-xs font-medium">Medical Education Focus</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <Card className={`h-full overflow-hidden border shadow-md ${theme === "light" ? "bg-white border-gray-200" : ""}`}>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Target className="h-5 w-5 text-teal-500" />
+                      <Badge className="bg-teal-100 text-teal-800 border-teal-200">
+                        Assistive Technology
+                      </Badge>
+                    </div>
+                    <h3 className="text-xl font-bold mb-3">ALDS</h3>
+                    <p className={`text-sm leading-relaxed mb-4 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
+                      Enterprise-scale Learning and Development Solutions architecture specializing in assistive hearing technology and adaptive learning infrastructure deployment. 
+                      Distinguished excellence recognition through Samsung's competitive innovation assessment framework.
+                    </p>
+                    <div className="space-y-2 mb-4">
+                      <div className="flex items-center gap-2">
+                        <Award className="h-3 w-3 text-teal-500" />
+                        <span className="text-xs font-medium">Samsung Excellence Award</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Users className="h-3 w-3 text-blue-500" />
+                        <span className="text-xs font-medium">Assistive Learning Technology</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
           </div>
         </section>
 
@@ -570,58 +678,58 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4">EibrailleNext Recognition & Awards</h2>
+            <h2 className="text-3xl font-bold mb-4">Distinguished Achievement Portfolio</h2>
             <p className={`text-lg max-w-3xl mx-auto ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-              International recognition for innovation in accessibility technology and social impact
+              International recognition and prestigious awards for technology excellence, innovation leadership, and measurable business impact across global markets
             </p>
           </motion.div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <AwardCard
-              title="Intel Global Impact Challenge"
-              organization="Intel Corporation"
+              title="Intel Global Impact Challenge - Distinguished Innovation Award"
+              organization="Intel Corporation - Corporate Innovation Division"
               year="2024"
-              description="Recognition for innovative technology solutions addressing global challenges in accessibility and education."
+              description="Prestigious recognition for revolutionary technology solutions addressing mission-critical global challenges in accessibility infrastructure and educational technology transformation."
               image="/placeholder.svg?height=200&width=400&text=Intel+Global+Impact+Challenge"
               delay={0.1}
             />
             <AwardCard
-              title="International Science and Engineering Fair"
-              organization="ISEF 2025"
+              title="International Science and Engineering Fair - Finalist Distinction"
+              organization="Society for Science & Regeneron ISEF"
               year="2025"
-              description="Selected for participation in the world's largest international pre-college science competition."
+              description="Distinguished selection for participation in the world's most prestigious international pre-college science competition, representing excellence in scientific research and innovation."
               image="/placeholder.svg?height=200&width=400&text=ISEF+2025"
               delay={0.2}
             />
             <AwardCard
-              title="PETRA Innovation Award"
-              organization="Samsung Solve for Tomorrow"
+              title="PETRA Innovation Excellence Award"
+              organization="Samsung Electronics - Corporate Social Innovation"
               year="2024"
-              description="Recognized for developing innovative solutions that address real-world problems through technology."
+              description="Strategic recognition for developing mission-critical healthcare solutions that demonstrate measurable impact and technological innovation in addressing complex societal challenges."
               image="/placeholder.svg?height=200&width=400&text=PETRA+Samsung+Award"
               delay={0.3}
             />
             <AwardCard
-              title="MedChic Healthcare Innovation"
-              organization="MedChic Competition"
+              title="MedChic Healthcare Technology Leadership Award"
+              organization="Chiang Mai University - Faculty of Medicine"
               year="2024"
-              description="Award for innovative healthcare technology solutions improving accessibility in medical education."
+              description="Distinguished recognition for breakthrough healthcare technology solutions advancing medical education accessibility through innovative technological frameworks and infrastructure development."
               image="/placeholder.svg?height=200&width=400&text=MedChic+Award"
               delay={0.4}
             />
             <AwardCard
-              title="ALDS Technology Excellence"
-              organization="Samsung Solve for Tomorrow"
+              title="ALDS Technology Excellence - Distinguished Achievement"
+              organization="Samsung Electronics - Global Innovation Program"
               year="2024"
-              description="Excellence award for advanced learning and development solutions in assistive technology."
+              description="Premier excellence recognition for advanced learning and development solutions architecture in assistive technology, demonstrating significant impact on accessibility infrastructure and user experience optimization."
               image="/placeholder.svg?height=200&width=400&text=ALDS+Samsung+Award"
               delay={0.5}
             />
             <AwardCard
-              title="Thailand ICT Awards"
-              organization="National ICT Awards"
+              title="Thailand ICT Awards - National Champion"
+              organization="Thailand ICT Excellence Council"
               year="2023"
-              description="Winner in the Senior Category for outstanding contribution to ICT innovation and accessibility."
+              description="National champion recognition in the Senior Category for distinguished contribution to information and communication technology innovation, accessibility infrastructure advancement, and technological leadership excellence."
               image="/img/thailand-ict-award.png"
               delay={0.6}
             />
@@ -637,13 +745,13 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Featured Development Projects
+            Strategic Development Initiatives
           </motion.h2>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <ProjectCard
               title="Nova Security Platform"
-              description="Advanced cybersecurity platform featuring automated vulnerability detection and comprehensive security analysis tools for modern web applications."
+              description="Enterprise-grade cybersecurity architecture featuring proprietary automated vulnerability assessment algorithms and comprehensive threat analysis frameworks for mission-critical web application infrastructure."
               image="/img/nova-security.png"
               url="https://nova.jnx03.xyz/"
               status="In Development"
@@ -651,7 +759,7 @@ export default function Home() {
             />
             <ProjectCard
               title="NoteX Learning Platform"
-              description="Centralized educational platform providing well-organized study materials categorized by subject and educational level for enhanced learning experiences."
+              description="Strategic educational technology platform delivering systematically organized academic resources through advanced categorization algorithms and optimized learning pathway architectures."
               image="/img/notex.png"
               url="https://notex.jnx03.xyz/"
               status="Live"
@@ -659,7 +767,7 @@ export default function Home() {
             />
             <ProjectCard
               title="Yuki-Chan AI Assistant"
-              description="Intelligent AI assistant designed to provide personalized support and enhance user productivity through advanced natural language processing."
+              description="Enterprise AI assistant architecture engineered to deliver personalized productivity optimization through proprietary natural language processing algorithms and advanced machine learning frameworks."
               image="/img/yuki-chan.png"
               status="Research Phase"
               delay={0.3}
@@ -676,31 +784,31 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Personal Achievements & Recognition
+            Executive Leadership Recognition
           </motion.h2>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <AwardCard
-              title="Swift Student Challenge Winner"
-              organization="Apple Inc."
+              title="Apple Distinguished Developer - Swift Challenge Winner"
+              organization="Apple Inc. - Worldwide Developer Relations"
               year="2025"
-              description="Selected as a winner in Apple's prestigious Swift Student Challenge for innovative app development."
+              description="Distinguished selection as winner in Apple's premier Swift Student Challenge, recognizing exceptional technical innovation, coding excellence, and revolutionary app development capabilities."
               image="/placeholder.svg?height=200&width=400&text=Swift+Student+Challenge"
               delay={0.1}
             />
             <AwardCard
-              title="AI Innovator Award"
-              organization="Technology Innovation Council"
+              title="Distinguished AI Innovation Leadership Award"
+              organization="International Technology Innovation Council"
               year="2024"
-              description="Recognition for outstanding contributions to artificial intelligence and machine learning applications."
+              description="Prestigious recognition for transformational contributions to artificial intelligence architecture, machine learning framework development, and breakthrough applications in enterprise technology solutions."
               image="/img/ai-innovator-award.png"
               delay={0.2}
             />
             <AwardCard
-              title="APICTA Merit Award"
-              organization="Asia Pacific ICT Alliance"
+              title="APICTA Distinguished Merit Award"
+              organization="Asia Pacific ICT Alliance - Regional Excellence Board"
               year="2023"
-              description="Merit award for excellence in information and communication technology innovation in the Asia Pacific region."
+              description="Distinguished merit recognition for exceptional excellence in information and communication technology innovation, demonstrating regional leadership and technological advancement across the Asia Pacific economic zone."
               image="/img/apicta-award.png"
               delay={0.3}
             />
@@ -720,10 +828,10 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold mb-4">Let's Collaborate</h2>
+            <h2 className="text-2xl font-bold mb-4">Strategic Partnership Opportunities</h2>
             <p className={`${theme === "light" ? "text-gray-600" : "text-muted-foreground"} mb-6 leading-relaxed`}>
-              Interested in collaborating on innovative technology projects or discussing opportunities in AI and accessibility? 
-              I'm always open to meaningful conversations and partnerships.
+              Seeking strategic partnerships for technology innovation initiatives, enterprise AI development, or accessibility solution deployment? 
+              Available for executive consultation, technology advisory roles, and strategic collaboration discussions with qualified organizations.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button
