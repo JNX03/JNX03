@@ -1,15 +1,25 @@
 import { NextResponse } from "next/server"
-
-// This is a simple in-memory store. In a real application, you'd use a database.
-const urlStore = new Map<string, string>()
+import { getUrl, incrementClicks } from "@/lib/url-store"
 
 export async function GET(request: Request, { params }: { params: { id: string } }) {
-  const id = params.id
-  const url = urlStore.get(id)
+  try {
+    const id = params.id
+    const url = getUrl(id)
 
-  if (url) {
-    return NextResponse.redirect(url)
-  } else {
-    return NextResponse.redirect("/404")
+    if (url) {
+      // Increment click counter
+      incrementClicks(id)
+      
+      // Redirect to the original URL
+      return NextResponse.redirect(url, { status: 302 })
+    } else {
+      // Redirect to 404 page if short URL not found
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://jnx03.xyz'
+      return NextResponse.redirect(`${baseUrl}/404`, { status: 404 })
+    }
+  } catch (error) {
+    console.error('Error redirecting short URL:', error)
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://jnx03.xyz'
+    return NextResponse.redirect(`${baseUrl}/404`, { status: 500 })
   }
 }
