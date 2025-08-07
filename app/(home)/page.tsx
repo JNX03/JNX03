@@ -456,9 +456,9 @@ export default function Home() {
                   <div className="flex items-center gap-2">
                     <Award className="h-5 w-5 text-yellow-500" />
                     <div>
-                      <p className="font-semibold text-sm">Distinguished Honor</p>
+                      <p className="font-semibold text-sm">Latest Achievement</p>
                       <p className={`text-xs ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                        Apple Distinguished Developer 2025
+                        Swift Student Challenge 2025 Winner
                       </p>
                     </div>
                   </div>
@@ -534,25 +534,25 @@ export default function Home() {
                     </div>
                     <h3 className="text-2xl font-bold mb-4">EibrailleNext</h3>
                     <p className={`text-base leading-relaxed mb-6 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                      Mission-critical accessibility learning platform architected for enterprise deployment and scalable Braille education delivery. 
-                      Features proprietary computer vision algorithms, enterprise-grade curriculum management infrastructure, and maintains comprehensive W3C accessibility compliance frameworks with full audit trails.
+                      Advanced accessibility learning platform designed to assist blind and low-vision users in learning Braille. 
+                      Features cutting-edge face recognition technology, comprehensive curriculum management, and maintains full W3C accessibility compliance standards.
                     </p>
                     <div className="grid grid-cols-2 gap-4 mb-6">
                       <div className="flex items-center gap-2">
                         <Award className="h-4 w-4 text-yellow-500" />
-                        <span className="text-xs font-medium">ISEF 2025 Finalist</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Award className="h-4 w-4 text-green-500" />
-                        <span className="text-xs font-medium">TICTA 2025 Winner</span>
+                        <span className="text-xs font-medium">Thailand ICT Awards 2023</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Award className="h-4 w-4 text-blue-500" />
-                        <span className="text-xs font-medium">APICTA 2025 Merit</span>
+                        <span className="text-xs font-medium">APICTA 2023 Merit</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Users className="h-4 w-4 text-indigo-500" />
-                        <span className="text-xs font-medium">Cross-functional Team</span>
+                        <span className="text-xs font-medium">Accessibility Focus</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Target className="h-4 w-4 text-green-500" />
+                        <span className="text-xs font-medium">Global Impact</span>
                       </div>
                     </div>
                     <Button asChild className="w-full">
@@ -577,23 +577,23 @@ export default function Home() {
                   <CardContent className="p-6">
                     <div className="flex items-center gap-2 mb-4">
                       <Target className="h-5 w-5 text-green-500" />
-                      <Badge className="bg-green-100 text-green-800 border-green-200">
-                        Healthcare Innovation
+                      <Badge className="bg-yellow-100 text-yellow-800 border-yellow-200">
+                        AI/ML Innovation
                       </Badge>
                     </div>
-                    <h3 className="text-xl font-bold mb-3">PETRA</h3>
+                    <h3 className="text-xl font-bold mb-3">MooDong AI</h3>
                     <p className={`text-sm leading-relaxed mb-4 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                      Enterprise healthcare platform leveraging advanced respiratory rehabilitation protocols and Triflow exercise methodologies to optimize patient lung function metrics. 
-                      Achieved strategic partnership recognition through Samsung's premier innovation competition framework.
+                      Multi-task LSTM and vision model for zoo keeper augmentation system that requires no manual labels. 
+                      Winner of Track 3 in the prestigious Moodeng AI Challenge competition.
                     </p>
                     <div className="space-y-2 mb-4">
                       <div className="flex items-center gap-2">
-                        <Award className="h-3 w-3 text-orange-500" />
-                        <span className="text-xs font-medium">Samsung Solve for Tomorrow 2024 - Runner-up</span>
+                        <Award className="h-3 w-3 text-yellow-500" />
+                        <span className="text-xs font-medium">Moodeng AI Challenge Winner</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Users className="h-3 w-3 text-blue-500" />
-                        <span className="text-xs font-medium">Healthcare Technology Focus</span>
+                        <span className="text-xs font-medium">AI/ML Technology Focus</span>
                       </div>
                     </div>
                   </CardContent>
@@ -610,23 +610,23 @@ export default function Home() {
                   <CardContent className="p-6">
                     <div className="flex items-center gap-2 mb-4">
                       <Target className="h-5 w-5 text-purple-500" />
-                      <Badge className="bg-purple-100 text-purple-800 border-purple-200">
-                        Medical Technology
+                      <Badge className="bg-blue-100 text-blue-800 border-blue-200">
+                        Educational Technology
                       </Badge>
                     </div>
-                    <h3 className="text-xl font-bold mb-3">MedChic</h3>
+                    <h3 className="text-xl font-bold mb-3">Syntaxia</h3>
                     <p className={`text-sm leading-relaxed mb-4 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                      Strategic healthcare technology platform engineered to transform medical education accessibility through proprietary technological frameworks. 
-                      Integrated within Chiang Mai University's distinguished MEDCHIC Innovation ecosystem as a flagship development initiative.
+                      Innovative educational app designed to make learning programming concepts more accessible and engaging. 
+                      Winner of Apple's prestigious Swift Student Challenge 2025 with advanced SwiftUI implementation.
                     </p>
                     <div className="space-y-2 mb-4">
                       <div className="flex items-center gap-2">
-                        <Award className="h-3 w-3 text-purple-500" />
-                        <span className="text-xs font-medium">Healthcare Innovation Award</span>
+                        <Award className="h-3 w-3 text-blue-500" />
+                        <span className="text-xs font-medium">Swift Student Challenge 2025</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Users className="h-3 w-3 text-blue-500" />
-                        <span className="text-xs font-medium">Medical Education Focus</span>
+                        <span className="text-xs font-medium">Educational Technology</span>
                       </div>
                     </div>
                   </CardContent>
@@ -643,23 +643,23 @@ export default function Home() {
                   <CardContent className="p-6">
                     <div className="flex items-center gap-2 mb-4">
                       <Target className="h-5 w-5 text-teal-500" />
-                      <Badge className="bg-teal-100 text-teal-800 border-teal-200">
-                        Assistive Technology
+                      <Badge className="bg-purple-100 text-purple-800 border-purple-200">
+                        Space & Robotics
                       </Badge>
                     </div>
-                    <h3 className="text-xl font-bold mb-3">ALDS</h3>
+                    <h3 className="text-xl font-bold mb-3">Space Robotics</h3>
                     <p className={`text-sm leading-relaxed mb-4 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                      Enterprise-scale Learning and Development Solutions architecture specializing in assistive hearing technology and adaptive learning infrastructure deployment. 
-                      Distinguished excellence recognition through Samsung's competitive innovation assessment framework.
+                      Advanced robotics programming solutions for space applications developed for the GISTDA Kibo Robot Programming Challenge. 
+                      Awarded Best Presentation Award for innovative approach to space robotics and AI integration.
                     </p>
                     <div className="space-y-2 mb-4">
                       <div className="flex items-center gap-2">
-                        <Award className="h-3 w-3 text-teal-500" />
-                        <span className="text-xs font-medium">Samsung Excellence Award</span>
+                        <Award className="h-3 w-3 text-purple-500" />
+                        <span className="text-xs font-medium">GISTDA Best Presentation</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Users className="h-3 w-3 text-blue-500" />
-                        <span className="text-xs font-medium">Assistive Learning Technology</span>
+                        <span className="text-xs font-medium">Space & Robotics</span>
                       </div>
                     </div>
                   </CardContent>
@@ -686,43 +686,43 @@ export default function Home() {
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <AwardCard
-              title="Intel Global Impact Challenge - Distinguished Innovation Award"
-              organization="Intel Corporation - Corporate Innovation Division"
+              title="Moodeng AI Challenge Winner"
+              organization="Track 3 Competition"
               year="2024"
-              description="Prestigious recognition for revolutionary technology solutions addressing mission-critical global challenges in accessibility infrastructure and educational technology transformation."
-              image="/placeholder.svg?height=200&width=400&text=Intel+Global+Impact+Challenge"
+              description="Winner for MooDong, a multi-task LSTM and vision model for zoo keeper augmentation, requiring no manual labels."
+              image="/placeholder.svg?height=200&width=400&text=Moodeng+AI+Challenge"
               delay={0.1}
             />
             <AwardCard
-              title="International Science and Engineering Fair - Finalist Distinction"
-              organization="Society for Science & Regeneron ISEF"
+              title="GISTDA Kibo Robot Programming Challenge"
+              organization="GISTDA - National Space Agency"
               year="2025"
-              description="Distinguished selection for participation in the world's most prestigious international pre-college science competition, representing excellence in scientific research and innovation."
-              image="/placeholder.svg?height=200&width=400&text=ISEF+2025"
+              description="Best Presentation Award (5,000 Baht) for innovative solutions in space robotics and effective communication of complex technical concepts."
+              image="/placeholder.svg?height=200&width=400&text=GISTDA+Kibo+Robot"
               delay={0.2}
             />
             <AwardCard
-              title="PETRA Innovation Excellence Award"
-              organization="Samsung Electronics - Corporate Social Innovation"
+              title="Thailand Innovation Awards (TIA)"
+              organization="National Innovation Agency"
               year="2024"
-              description="Strategic recognition for developing mission-critical healthcare solutions that demonstrate measurable impact and technological innovation in addressing complex societal challenges."
-              image="/placeholder.svg?height=200&width=400&text=PETRA+Samsung+Award"
+              description="Selected participant in the Thailand Innovation Awards INDEX and Camp program, showcasing innovative technology solutions."
+              image="/placeholder.svg?height=200&width=400&text=TIA+INDEX+Camp"
               delay={0.3}
             />
             <AwardCard
-              title="MedChic Healthcare Technology Leadership Award"
-              organization="Chiang Mai University - Faculty of Medicine"
+              title="National Software Contest (NSC)"
+              organization="National Electronics and Computer Technology Center"
               year="2024"
-              description="Distinguished recognition for breakthrough healthcare technology solutions advancing medical education accessibility through innovative technological frameworks and infrastructure development."
-              image="/placeholder.svg?height=200&width=400&text=MedChic+Award"
+              description="Selected participant in the National Software Contest INDEX program, demonstrating excellence in software development and innovation."
+              image="/placeholder.svg?height=200&width=400&text=NSC+INDEX"
               delay={0.4}
             />
             <AwardCard
-              title="ALDS Technology Excellence - Distinguished Achievement"
-              organization="Samsung Electronics - Global Innovation Program"
+              title="Super AI Engineer Hackathon"
+              organization="AI Association of Thailand"
               year="2024"
-              description="Premier excellence recognition for advanced learning and development solutions architecture in assistive technology, demonstrating significant impact on accessibility infrastructure and user experience optimization."
-              image="/placeholder.svg?height=200&width=400&text=ALDS+Samsung+Award"
+              description="3rd Place in MD&A Disclosure Quality Assessment track, demonstrating proficiency in AI engineering and data analysis."
+              image="/placeholder.svg?height=200&width=400&text=Super+AI+Hackathon"
               delay={0.5}
             />
             <AwardCard
@@ -789,26 +789,26 @@ export default function Home() {
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <AwardCard
-              title="Apple Distinguished Developer - Swift Challenge Winner"
-              organization="Apple Inc. - Worldwide Developer Relations"
+              title="Swift Student Challenge 2025 Winner"
+              organization="Apple Inc."
               year="2025"
-              description="Distinguished selection as winner in Apple's premier Swift Student Challenge, recognizing exceptional technical innovation, coding excellence, and revolutionary app development capabilities."
-              image="/placeholder.svg?height=200&width=400&text=Swift+Student+Challenge"
+              description="Selected as a winner for the Syntaxia project, an innovative educational app built with SwiftUI that makes programming concepts more accessible and engaging."
+              image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-PcDiryVpDmgMgr3xXGbYGh1mMu3fvs.png"
               delay={0.1}
             />
             <AwardCard
-              title="Distinguished AI Innovation Leadership Award"
-              organization="International Technology Innovation Council"
+              title="AI Innovator Award 2024"
+              organization="Technology Innovation Council"
               year="2024"
-              description="Prestigious recognition for transformational contributions to artificial intelligence architecture, machine learning framework development, and breakthrough applications in enterprise technology solutions."
+              description="Winner (1st Place) for innovative contributions in AI technology and outstanding achievements in artificial intelligence applications."
               image="/img/ai-innovator-award.png"
               delay={0.2}
             />
             <AwardCard
-              title="APICTA Distinguished Merit Award"
-              organization="Asia Pacific ICT Alliance - Regional Excellence Board"
+              title="Asia Pacific ICT Alliance Award 2023 (APICTA2023)"
+              organization="Asia Pacific ICT Alliance"
               year="2023"
-              description="Distinguished merit recognition for exceptional excellence in information and communication technology innovation, demonstrating regional leadership and technological advancement across the Asia Pacific economic zone."
+              description="Merit Award for excellence in information and communication technology innovation on an international level across the Asia Pacific region."
               image="/img/apicta-award.png"
               delay={0.3}
             />
