@@ -7,8 +7,9 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { ArrowRight, Award, Users, Target, Briefcase } from 'lucide-react'
 import Image from "next/image"
 import { useTheme } from "next-themes"
 import Script from "next/script"
@@ -80,7 +81,7 @@ const CustomCursor = () => {
 const MagneticElement = ({
   children,
   className,
-  strength = 0.1, // Reduced from 0.2 to 0.1 for less movement
+  strength = 0.1,
 }: {
   children: React.ReactNode
   className?: string
@@ -117,29 +118,9 @@ const MagneticElement = ({
       animate={{
         x: position.x,
         y: position.y,
-        scale: isHovered ? 1.03 : 1, // Reduced from 1.05 to 1.03 for subtler effect
+        scale: isHovered ? 1.02 : 1,
       }}
       transition={{ type: "spring", stiffness: 150, damping: 15 }}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
-// Floating animation component
-const FloatingElement = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
-  return (
-    <motion.div
-      initial={{ y: 0 }}
-      animate={{
-        y: [0, -10, 0],
-      }}
-      transition={{
-        repeat: Number.POSITIVE_INFINITY,
-        duration: 4,
-        delay,
-        ease: "easeInOut",
-      }}
     >
       {children}
     </motion.div>
@@ -152,11 +133,15 @@ const ProjectCard = ({
   description,
   image,
   delay = 0,
+  url,
+  status,
 }: {
   title: string
   description: string
   image: string
   delay?: number
+  url?: string
+  status?: string
 }) => {
   const { theme } = useTheme()
   const [imageError, setImageError] = useState(false)
@@ -173,7 +158,7 @@ const ProjectCard = ({
       className="overflow-hidden rounded-xl"
     >
       <MagneticElement className="h-full" strength={0.05}>
-        <Card className={`h-full overflow-hidden border-0 shadow-lg ${theme === "light" ? "bg-white" : ""}`}>
+        <Card className={`h-full overflow-hidden border shadow-sm hover:shadow-md transition-shadow ${theme === "light" ? "bg-white border-gray-200" : ""}`}>
           <div className="relative h-48 w-full overflow-hidden">
             <Image
               src={
@@ -184,14 +169,97 @@ const ProjectCard = ({
               alt={title}
               layout="fill"
               objectFit="cover"
-              className="transition-transform duration-500 hover:scale-110"
-              loading="lazy" // Ensure lazy loading for project images
+              className="transition-transform duration-300 hover:scale-105"
+              loading="lazy"
+              onError={handleImageError}
+            />
+            {status && (
+              <Badge className="absolute top-3 right-3 bg-white/90 text-gray-800 border">
+                {status}
+              </Badge>
+            )}
+          </div>
+          <CardContent className="p-6">
+            <h3 className="text-xl font-semibold mb-3">{title}</h3>
+            <p className={`text-sm leading-relaxed mb-4 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
+              {description}
+            </p>
+            {url && (
+              <Button variant="outline" size="sm" asChild className="w-full">
+                <Link href={url} target="_blank" rel="noopener noreferrer">
+                  View Project <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            )}
+          </CardContent>
+        </Card>
+      </MagneticElement>
+    </motion.div>
+  )
+}
+
+// Award card component
+const AwardCard = ({
+  title,
+  organization,
+  year,
+  description,
+  image,
+  delay = 0,
+}: {
+  title: string
+  organization: string
+  year: string
+  description: string
+  image: string
+  delay?: number
+}) => {
+  const { theme } = useTheme()
+  const [imageError, setImageError] = useState(false)
+
+  const handleImageError = () => {
+    setImageError(true)
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      className="overflow-hidden rounded-xl"
+    >
+      <MagneticElement className="h-full" strength={0.05}>
+        <Card className={`h-full overflow-hidden border shadow-sm hover:shadow-md transition-shadow ${theme === "light" ? "bg-white border-gray-200" : ""}`}>
+          <div className="relative h-48 w-full overflow-hidden">
+            <Image
+              src={
+                imageError
+                  ? `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(title)}`
+                  : image
+              }
+              alt={title}
+              layout="fill"
+              objectFit="cover"
+              className="transition-transform duration-300 hover:scale-105"
+              loading="lazy"
               onError={handleImageError}
             />
           </div>
           <CardContent className="p-6">
-            <h3 className="text-xl font-bold mb-2">{title}</h3>
-            <p className="text-muted-foreground">{description}</p>
+            <div className="flex items-center gap-2 mb-2">
+              <Award className="h-5 w-5 text-yellow-500" />
+              <Badge variant="secondary" className="text-xs">
+                {year}
+              </Badge>
+            </div>
+            <h3 className="text-lg font-semibold mb-2">{title}</h3>
+            <p className={`text-sm font-medium mb-2 ${theme === "light" ? "text-indigo-600" : "text-indigo-400"}`}>
+              {organization}
+            </p>
+            <p className={`text-sm leading-relaxed ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
+              {description}
+            </p>
           </CardContent>
         </Card>
       </MagneticElement>
@@ -202,13 +270,6 @@ const ProjectCard = ({
 export default function Home() {
   const { theme } = useTheme()
   const { t } = useLanguage()
-  const [aiInnovatorImageError, setAiInnovatorImageError] = useState(false)
-  const [thailandIctImageError, setThailandIctImageError] = useState(false)
-  const [apictaImageError, setApictaImageError] = useState(false)
-
-  const handleAiInnovatorImageError = () => setAiInnovatorImageError(true)
-  const handleThailandIctImageError = () => setThailandIctImageError(true)
-  const handleApictaImageError = () => setApictaImageError(true)
 
   // Parallax effect for background elements
   const y = useMotionValue(0)
@@ -231,40 +292,31 @@ export default function Home() {
   }, [x, y])
 
   return (
-    <div className={`min-h-screen flex flex-col relative overflow-hidden ${theme === "light" ? "text-gray-800" : ""}`}>
+    <div className={`min-h-screen flex flex-col relative overflow-hidden ${theme === "light" ? "text-gray-800 bg-gray-50" : ""}`}>
       <CustomCursor />
 
-      {/* Background elements - adjusted for light theme */}
+      {/* Background elements */}
       <div
         className={`fixed inset-0 -z-10 ${
           theme === "light"
-            ? "bg-gradient-to-b from-gray-50 via-white to-gray-50"
+            ? "bg-gradient-to-b from-white via-gray-50 to-white"
             : "bg-gradient-to-b from-background via-background to-background/80"
         }`}
       />
 
       <motion.div
         className={`fixed top-20 right-20 w-64 h-64 rounded-full ${
-          theme === "light" ? "bg-indigo-500/5" : "bg-indigo-500/10"
+          theme === "light" ? "bg-indigo-500/3" : "bg-indigo-500/10"
         } blur-3xl`}
         style={{ x: useTransform(x, (value) => value * -1.5), y: useTransform(y, (value) => value * -1.5) }}
       />
 
       <motion.div
         className={`fixed bottom-20 left-20 w-80 h-80 rounded-full ${
-          theme === "light" ? "bg-blue-500/5" : "bg-blue-500/10"
+          theme === "light" ? "bg-blue-500/3" : "bg-blue-500/10"
         } blur-3xl`}
         style={{ x: useTransform(x, (value) => value * 1.2), y: useTransform(y, (value) => value * 1.2) }}
       />
-
-      <motion.div
-        className={`fixed top-1/3 left-1/4 w-40 h-40 rounded-full ${
-          theme === "light" ? "bg-purple-500/5" : "bg-purple-500/10"
-        } blur-3xl`}
-        style={{ x: useTransform(x, (value) => value * 0.8), y: useTransform(y, (value) => value * 0.8) }}
-      />
-
-      {/* We're not rendering the Navigation component here anymore */}
 
       <main className="flex-grow container mx-auto px-4 py-8 mt-14">
         {/* Hero Section */}
@@ -273,9 +325,9 @@ export default function Home() {
             <div className="grid gap-12 items-center lg:grid-cols-2">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <motion.h1
-                  className={`text-5xl sm:text-6xl font-bold mb-4 ${
+                  className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight ${
                     theme === "light"
-                      ? "text-indigo-600"
+                      ? "text-gray-900"
                       : "bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
                   }`}
                   initial={{ opacity: 0, y: 20 }}
@@ -285,39 +337,25 @@ export default function Home() {
                   Chawabhon Netisingha
                 </motion.h1>
 
-                <motion.div
-                  className="relative h-12 mb-6 overflow-hidden"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
+                <motion.h2
+                  className={`text-2xl sm:text-3xl font-semibold mb-6 ${
+                    theme === "light" ? "text-indigo-600" : "text-indigo-400"
+                  }`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  <motion.div
-                    initial={{ y: 0 }}
-                    animate={{ y: [-40, -80, -120, -160, -200, 0] }}
-                    transition={{
-                      duration: 5,
-                      times: [0, 0.2, 0.4, 0.6, 0.8, 1],
-                      repeat: Number.POSITIVE_INFINITY,
-                      repeatDelay: 1,
-                    }}
-                    className="absolute"
-                  >
-                    <h2 className="text-3xl font-bold text-indigo-500">{t("aiDeveloper")}</h2>
-                    <h2 className="text-3xl font-bold text-blue-500 mt-10">{t("techInnovator")}</h2>
-                    <h2 className="text-3xl font-bold text-purple-500 mt-10">{t("cybersecurityEnthusiast")}</h2>
-                    <h2 className="text-3xl font-bold text-pink-500 mt-10">{t("studentResearcher")}</h2>
-                    <h2 className="text-3xl font-bold text-green-500 mt-10">{t("problemSolver")}</h2>
-                    <h2 className="text-3xl font-bold text-indigo-500 mt-10">{t("aiDeveloper")}</h2>
-                  </motion.div>
-                </motion.div>
+                  Technology Innovation Leader & AI Developer
+                </motion.h2>
 
                 <motion.p
-                  className={`text-xl mb-8 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"} max-w-lg`}
+                  className={`text-lg mb-8 leading-relaxed ${theme === "light" ? "text-gray-600" : "text-muted-foreground"} max-w-2xl`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
                 >
-                  {t("heroDescription")}
+                  Dedicated to advancing artificial intelligence and accessibility technology through innovative solutions. 
+                  Currently leading multiple award-winning projects that bridge the gap between cutting-edge technology and real-world impact.
                 </motion.p>
 
                 <motion.div
@@ -327,17 +365,19 @@ export default function Home() {
                   transition={{ duration: 0.6, delay: 0.8 }}
                 >
                   {[
-                    t("machineLearning"),
-                    t("computerVision"),
-                    t("naturalLanguageProcessing"),
-                    t("fullStackDevelopment"),
-                    t("cybersecurity"),
+                    "Artificial Intelligence",
+                    "Machine Learning",
+                    "Accessibility Technology",
+                    "Project Management",
+                    "Innovation Leadership",
                   ].map((tag, i) => (
                     <motion.span
                       key={tag}
-                      className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        theme === "light" ? "bg-indigo-100 text-indigo-700" : "bg-primary/10 text-primary"
-                      }`}
+                      className={`px-4 py-2 rounded-full text-sm font-medium border ${
+                        theme === "light" 
+                          ? "bg-white border-gray-200 text-gray-700 hover:border-indigo-300" 
+                          : "bg-background/50 border-primary/20 text-foreground hover:border-primary/40"
+                      } transition-colors`}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ opacity: 0, x: -20 }}
@@ -361,12 +401,12 @@ export default function Home() {
                       size="lg"
                       className={`${
                         theme === "light"
-                          ? "bg-indigo-600 hover:bg-indigo-700 text-white"
+                          ? "bg-indigo-600 hover:bg-indigo-700 text-white shadow-md"
                           : "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
-                      } border-0`}
+                      } border-0 px-8 py-3`}
                     >
                       <Link href="/contact">
-                        {t("getInTouch")} <ArrowRight className="ml-2 h-4 w-4" />
+                        Get In Touch <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                   </MagneticElement>
@@ -376,9 +416,13 @@ export default function Home() {
                       asChild
                       variant="outline"
                       size="lg"
-                      className={`border-2 ${theme === "light" ? "border-indigo-600 text-indigo-600 hover:bg-indigo-50" : ""}`}
+                      className={`border-2 px-8 py-3 ${
+                        theme === "light" 
+                          ? "border-indigo-600 text-indigo-600 hover:bg-indigo-50 bg-white shadow-md" 
+                          : "border-primary text-primary hover:bg-primary/10"
+                      }`}
                     >
-                      <Link href="/projects">{t("viewProjects")}</Link>
+                      <Link href="/projects">View Portfolio</Link>
                     </Button>
                   </MagneticElement>
                 </motion.div>
@@ -390,48 +434,197 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="relative flex justify-center"
               >
-                <FloatingElement>
-                  <div className="relative w-72 h-72 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
-                    <Image
-                      src="/img/profile.png"
-                      alt="Chawabhon Netisingha at Arundel Cathedral"
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-full"
-                      priority
-                    />
-                  </div>
-                </FloatingElement>
+                <div className="relative w-80 h-80 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl">
+                  <Image
+                    src="/img/profile.png"
+                    alt="Chawabhon Netisingha - Technology Innovation Leader"
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-2xl"
+                    priority
+                  />
+                </div>
 
                 <motion.div
-                  className={`absolute -bottom-4 -right-4 ${
-                    theme === "light" ? "bg-white" : "bg-background"
-                  } rounded-lg p-4 shadow-lg border ${theme === "light" ? "border-indigo-200" : "border-primary/20"}`}
+                  className={`absolute -bottom-6 -right-6 ${
+                    theme === "light" ? "bg-white border-gray-200" : "bg-background border-primary/20"
+                  } rounded-xl p-4 shadow-xl border`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.8 }}
                 >
-                  <p className="font-semibold">{t("latestAchievement")}</p>
-                  <p className={`text-sm ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                    AI Innovator Award 2024
-                  </p>
+                  <div className="flex items-center gap-2">
+                    <Award className="h-5 w-5 text-yellow-500" />
+                    <div>
+                      <p className="font-semibold text-sm">Latest Achievement</p>
+                      <p className={`text-xs ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
+                        Swift Student Challenge 2025
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
 
                 <motion.div
-                  className={`absolute -top-4 -left-4 ${
-                    theme === "light" ? "bg-white" : "bg-background"
-                  } rounded-lg p-4 shadow-lg border ${theme === "light" ? "border-indigo-200" : "border-primary/20"}`}
+                  className={`absolute -top-6 -left-6 ${
+                    theme === "light" ? "bg-white border-gray-200" : "bg-background border-primary/20"
+                  } rounded-xl p-4 shadow-xl border`}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 1 }}
                 >
-                  <p className="font-semibold">Super AI Engineer</p>
-                  <p className={`text-sm ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                    SS5 Level 2 (500712)
-                  </p>
+                  <div className="flex items-center gap-2">
+                    <Briefcase className="h-5 w-5 text-indigo-500" />
+                    <div>
+                      <p className="font-semibold text-sm">Current Role</p>
+                      <p className={`text-xs ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
+                        Project Manager & Developer
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        {/* Projects Being Managed Section */}
+        <section className="py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Users className="h-8 w-8 text-indigo-500" />
+              <h2 className="text-3xl font-bold">Projects Being Managed</h2>
+            </div>
+            <p className={`text-lg max-w-3xl mx-auto ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
+              Leading innovative technology projects that create meaningful impact in accessibility and artificial intelligence
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className={`overflow-hidden border shadow-lg ${theme === "light" ? "bg-white border-gray-200" : ""}`}>
+                <div className="grid md:grid-cols-2 gap-0">
+                  <div className="relative h-64 md:h-auto">
+                    <Image
+                      src="/img/eibraillenext.png"
+                      alt="EibrailleNext - Accessibility Learning Platform"
+                      layout="fill"
+                      objectFit="cover"
+                      className="transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Target className="h-6 w-6 text-indigo-500" />
+                      <Badge className="bg-indigo-100 text-indigo-800 border-indigo-200">
+                        Active Project
+                      </Badge>
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4">EibrailleNext</h3>
+                    <p className={`text-base leading-relaxed mb-6 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
+                      An advanced accessibility learning platform designed to assist blind and low-vision users in learning Braille. 
+                      Features cutting-edge face recognition technology, comprehensive curriculum management, and full W3C accessibility compliance.
+                    </p>
+                    <div className="space-y-3 mb-6">
+                      <div className="flex items-center gap-2">
+                        <Award className="h-4 w-4 text-yellow-500" />
+                        <span className="text-sm font-medium">Multiple International Awards</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Users className="h-4 w-4 text-blue-500" />
+                        <span className="text-sm font-medium">Team of 5+ Developers</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Target className="h-4 w-4 text-green-500" />
+                        <span className="text-sm font-medium">Global Impact Initiative</span>
+                      </div>
+                    </div>
+                    <Button asChild className="w-full">
+                      <Link href="https://eibraillenext.jnx03.xyz/" target="_blank" rel="noopener noreferrer">
+                        Visit Project <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* EibrailleNext Awards Section */}
+        <section className="py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold mb-4">EibrailleNext Recognition & Awards</h2>
+            <p className={`text-lg max-w-3xl mx-auto ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
+              International recognition for innovation in accessibility technology and social impact
+            </p>
+          </motion.div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <AwardCard
+              title="Intel Global Impact Challenge"
+              organization="Intel Corporation"
+              year="2024"
+              description="Recognition for innovative technology solutions addressing global challenges in accessibility and education."
+              image="/placeholder.svg?height=200&width=400&text=Intel+Global+Impact+Challenge"
+              delay={0.1}
+            />
+            <AwardCard
+              title="International Science and Engineering Fair"
+              organization="ISEF 2025"
+              year="2025"
+              description="Selected for participation in the world's largest international pre-college science competition."
+              image="/placeholder.svg?height=200&width=400&text=ISEF+2025"
+              delay={0.2}
+            />
+            <AwardCard
+              title="PETRA Innovation Award"
+              organization="Samsung Solve for Tomorrow"
+              year="2024"
+              description="Recognized for developing innovative solutions that address real-world problems through technology."
+              image="/placeholder.svg?height=200&width=400&text=PETRA+Samsung+Award"
+              delay={0.3}
+            />
+            <AwardCard
+              title="MedChic Healthcare Innovation"
+              organization="MedChic Competition"
+              year="2024"
+              description="Award for innovative healthcare technology solutions improving accessibility in medical education."
+              image="/placeholder.svg?height=200&width=400&text=MedChic+Award"
+              delay={0.4}
+            />
+            <AwardCard
+              title="ALDS Technology Excellence"
+              organization="Samsung Solve for Tomorrow"
+              year="2024"
+              description="Excellence award for advanced learning and development solutions in assistive technology."
+              image="/placeholder.svg?height=200&width=400&text=ALDS+Samsung+Award"
+              delay={0.5}
+            />
+            <AwardCard
+              title="Thailand ICT Awards"
+              organization="National ICT Awards"
+              year="2023"
+              description="Winner in the Senior Category for outstanding contribution to ICT innovation and accessibility."
+              image="/img/thailand-ict-award.png"
+              delay={0.6}
+            />
           </div>
         </section>
 
@@ -444,87 +637,37 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            {t("featuredProjects")}
+            Featured Development Projects
           </motion.h2>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <ProjectCard
-              title={t("eibrailleNext")}
-              description={t("eibrailleNextDesc")}
-              image="/img/eibraillenext.png"
+              title="Nova Security Platform"
+              description="Advanced cybersecurity platform featuring automated vulnerability detection and comprehensive security analysis tools for modern web applications."
+              image="/img/nova-security.png"
+              url="https://nova.jnx03.xyz/"
+              status="In Development"
               delay={0.1}
             />
             <ProjectCard
-              title={t("novaSecurity")}
-              description={t("novaSecurityDesc")}
-              image="/img/nova-security.png"
+              title="NoteX Learning Platform"
+              description="Centralized educational platform providing well-organized study materials categorized by subject and educational level for enhanced learning experiences."
+              image="/img/notex.png"
+              url="https://notex.jnx03.xyz/"
+              status="Live"
               delay={0.2}
             />
-            <ProjectCard title={t("noteX")} description={t("noteXDesc")} image="/img/notex.png" delay={0.3} />
+            <ProjectCard
+              title="Yuki-Chan AI Assistant"
+              description="Intelligent AI assistant designed to provide personalized support and enhance user productivity through advanced natural language processing."
+              image="/img/yuki-chan.png"
+              status="Research Phase"
+              delay={0.3}
+            />
           </div>
         </section>
 
-        {/* Yuki-Chan Section */}
-        <section className="py-16">
-          <div className="grid gap-8 md:grid-cols-2 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl font-bold mb-4">{t("meetYukiChan")}</h2>
-              <p className={`text-lg ${theme === "light" ? "text-gray-600" : "text-muted-foreground"} mb-6`}>
-                {t("yukiChanDesc")}
-              </p>
-              {/* Reduced magnetic effect strength for better usability */}
-              <Button
-                asChild
-                className={`${
-                  theme === "light"
-                    ? "bg-indigo-600 hover:bg-indigo-700 text-white"
-                    : "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
-                } border-0`}
-              >
-                <Link href="/projects">
-                  {t("learnMore")} <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <FloatingElement delay={0.2}>
-                <div
-                  className={`relative h-[400px] w-full rounded-xl overflow-hidden shadow-xl ${theme === "light" ? "bg-gray-50" : ""}`}
-                >
-                  <Image
-                    src="/img/yuki-chan.png"
-                    alt="Yuki-Chan AI Assistant"
-                    layout="fill"
-                    objectFit="contain"
-                    className={`${
-                      theme === "light"
-                        ? "bg-gradient-to-b from-gray-50 to-white"
-                        : "bg-gradient-to-b from-background to-background/50"
-                    } p-4`}
-                    loading="lazy" // Ensure lazy loading for Yuki-Chan image
-                    onError={() => {
-                      /* handle error if needed */
-                    }}
-                  />
-                </div>
-              </FloatingElement>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Awards Section */}
+        {/* Personal Awards Section */}
         <section className="py-16">
           <motion.h2
             className="text-3xl font-bold mb-12 text-center"
@@ -533,120 +676,43 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            {t("awardsAndRecognition")}
+            Personal Achievements & Recognition
           </motion.h2>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="overflow-hidden rounded-xl"
-            >
-              <MagneticElement className="h-full" strength={0.05}>
-                <Card className={`h-full overflow-hidden border-0 shadow-lg ${theme === "light" ? "bg-white" : ""}`}>
-                  <div className="relative h-48 w-full overflow-hidden">
-                    <Image
-                      src={
-                        aiInnovatorImageError
-                          ? `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(t("aiInnovatorAward"))}`
-                          : "/img/ai-innovator-award.png"
-                      }
-                      alt="AI Innovator Award 2024"
-                      layout="fill"
-                      objectFit="cover"
-                      className="transition-transform duration-500 hover:scale-110"
-                      loading="lazy" // Ensure lazy loading
-                      onError={handleAiInnovatorImageError}
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-2">{t("aiInnovatorAward")}</h3>
-                    <p className={`${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                      {t("aiInnovatorDesc")}
-                    </p>
-                  </CardContent>
-                </Card>
-              </MagneticElement>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="overflow-hidden rounded-xl"
-            >
-              <MagneticElement className="h-full" strength={0.05}>
-                <Card className={`h-full overflow-hidden border-0 shadow-lg ${theme === "light" ? "bg-white" : ""}`}>
-                  <div className="relative h-48 w-full overflow-hidden">
-                    <Image
-                      src={
-                        thailandIctImageError
-                          ? `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(t("thailandICTAwards"))}`
-                          : "/img/thailand-ict-award.png"
-                      }
-                      alt="Thailand ICT Awards 2023"
-                      layout="fill"
-                      objectFit="cover"
-                      className="transition-transform duration-500 hover:scale-110"
-                      loading="lazy" // Ensure lazy loading
-                      onError={handleThailandIctImageError}
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-2">{t("thailandICTAwards")}</h3>
-                    <p className={`${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                      {t("thailandICTDesc")}
-                    </p>
-                  </CardContent>
-                </Card>
-              </MagneticElement>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="overflow-hidden rounded-xl"
-            >
-              <MagneticElement className="h-full" strength={0.05}>
-                <Card className={`h-full overflow-hidden border-0 shadow-lg ${theme === "light" ? "bg-white" : ""}`}>
-                  <div className="relative h-48 w-full overflow-hidden">
-                    <Image
-                      src={
-                        apictaImageError
-                          ? `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(t("apicta2023"))}`
-                          : "/img/apicta-award.png"
-                      }
-                      alt="APICTA 2023"
-                      layout="fill"
-                      objectFit="cover"
-                      className="transition-transform duration-500 hover:scale-110"
-                      loading="lazy" // Ensure lazy loading
-                      onError={handleApictaImageError}
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-2">{t("apicta2023")}</h3>
-                    <p className={`${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                      {t("apictaDesc")}
-                    </p>
-                  </CardContent>
-                </Card>
-              </MagneticElement>
-            </motion.div>
+            <AwardCard
+              title="Swift Student Challenge Winner"
+              organization="Apple Inc."
+              year="2025"
+              description="Selected as a winner in Apple's prestigious Swift Student Challenge for innovative app development."
+              image="/placeholder.svg?height=200&width=400&text=Swift+Student+Challenge"
+              delay={0.1}
+            />
+            <AwardCard
+              title="AI Innovator Award"
+              organization="Technology Innovation Council"
+              year="2024"
+              description="Recognition for outstanding contributions to artificial intelligence and machine learning applications."
+              image="/img/ai-innovator-award.png"
+              delay={0.2}
+            />
+            <AwardCard
+              title="APICTA Merit Award"
+              organization="Asia Pacific ICT Alliance"
+              year="2023"
+              description="Merit award for excellence in information and communication technology innovation in the Asia Pacific region."
+              image="/img/apicta-award.png"
+              delay={0.3}
+            />
           </div>
         </section>
 
         {/* Call to Action */}
         <motion.div
-          className={`mt-16 mb-8 p-8 rounded-2xl ${
+          className={`mt-16 mb-8 p-8 rounded-2xl border ${
             theme === "light"
-              ? "bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-100"
-              : "bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-primary/20"
+              ? "bg-gradient-to-r from-indigo-50 to-purple-50 border-indigo-100"
+              : "bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border-primary/20"
           }`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -654,23 +720,38 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold mb-4">{t("letsConnect")}</h2>
-            <p className={`${theme === "light" ? "text-gray-600" : "text-muted-foreground"} mb-6`}>
-              {t("letsConnectDesc")}
+            <h2 className="text-2xl font-bold mb-4">Let's Collaborate</h2>
+            <p className={`${theme === "light" ? "text-gray-600" : "text-muted-foreground"} mb-6 leading-relaxed`}>
+              Interested in collaborating on innovative technology projects or discussing opportunities in AI and accessibility? 
+              I'm always open to meaningful conversations and partnerships.
             </p>
-            <Button
-              asChild
-              size="lg"
-              className={`${
-                theme === "light"
-                  ? "bg-indigo-600 hover:bg-indigo-700 text-white"
-                  : "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
-              } border-0`}
-            >
-              <Link href="/contact">
-                {t("getInTouch")} <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button
+                asChild
+                size="lg"
+                className={`${
+                  theme === "light"
+                    ? "bg-indigo-600 hover:bg-indigo-700 text-white shadow-md"
+                    : "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
+                } border-0 px-8`}
+              >
+                <Link href="/contact">
+                  Get In Touch <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className={`px-8 ${
+                  theme === "light" 
+                    ? "border-indigo-600 text-indigo-600 hover:bg-indigo-50 bg-white shadow-md" 
+                    : "border-primary text-primary hover:bg-primary/10"
+                }`}
+              >
+                <Link href="/projects">View All Projects</Link>
+              </Button>
+            </div>
           </div>
         </motion.div>
       </main>
@@ -685,7 +766,7 @@ export default function Home() {
               "@type": "Person",
               "name": "Chawabhon Netisingha",
               "alternateName": "JNX03",
-              "description": "Developer and tech enthusiast with a passion for AI, cybersecurity, and accessibility technology.",
+              "description": "Technology Innovation Leader and AI Developer specializing in accessibility technology and artificial intelligence solutions.",
               "image": "https://media.licdn.com/dms/image/v2/D4D03AQGGUriUQXl-Kw/profile-displayphoto-shrink_800_800/B4DZTcKo4yHIAc-/0/1738860565159?e=1745452800&v=beta&t=JHFPZzyh-K3hQ00A7vm5bys3PYec16oD2ETUEyntA30",
               "url": "https://jnx03.xyz",
               "sameAs": [
@@ -696,18 +777,28 @@ export default function Home() {
                 "https://www.youtube.com/@Jnx03Studio",
                 "https://www.tiktok.com/@jxxn03z"
               ],
-              "jobTitle": "Developer",
-              "knowsAbout": ["Artificial Intelligence", "Cybersecurity", "Accessibility Technology", "Web Development"],
+              "jobTitle": "Technology Innovation Leader & AI Developer",
+              "knowsAbout": ["Artificial Intelligence", "Machine Learning", "Accessibility Technology", "Project Management", "Innovation Leadership", "Cybersecurity", "Web Development"],
               "award": [
                 "Swift Student Challenge 2025 Winner",
                 "AI Innovator Award 2024",
                 "Thailand ICT Awards 2023 Winner",
                 "Asia Pacific ICT Alliance Award 2023 Merit Award",
+                "Intel Global Impact Challenge Recognition",
+                "ISEF 2025 Participant",
+                "PETRA - Samsung Solve for Tomorrow Award",
+                "MedChic Healthcare Innovation Award",
+                "ALDS - Samsung Solve for Tomorrow Excellence Award",
                 "Moodeng AI Challenge Winner",
                 "Thailand Innovation Awards (TIA) Participant",
                 "National Software Contest (NSC) Participant",
                 "Best Presentation Award from GISTDA - Kibo Robot Programming Challenge"
-              ]
+              ],
+              "hasOccupation": {
+                "@type": "Occupation",
+                "name": "Project Manager",
+                "description": "Leading innovative technology projects in AI and accessibility"
+              }
             }
           }
         `}
