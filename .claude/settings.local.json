@@ -5,7 +5,8 @@
       "Bash(npm run dev:*)",
       "Bash(node:*)",
       "Bash(del test-url-shortener.js)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": []
   }
