@@ -345,7 +345,7 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  Technology Innovation Leader & AI Developer
+                  Chief Technology Officer & Artificial Intelligence Specialist
                 </motion.h2>
 
                 <motion.p
@@ -354,8 +354,8 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
                 >
-                  Dedicated to advancing artificial intelligence and accessibility technology through innovative solutions. 
-                  Currently leading multiple award-winning projects that bridge the gap between cutting-edge technology and real-world impact.
+                  Executive leader specializing in artificial intelligence development and accessibility technology solutions. 
+                  Directing multiple internationally recognized projects that deliver transformative technological innovations with measurable social and commercial impact.
                 </motion.p>
 
                 <motion.div
@@ -498,10 +498,10 @@ export default function Home() {
           >
             <div className="flex items-center justify-center gap-3 mb-4">
               <Users className="h-8 w-8 text-indigo-500" />
-              <h2 className="text-3xl font-bold">Projects Being Managed</h2>
+              <h2 className="text-3xl font-bold">Projects Under Management</h2>
             </div>
             <p className={`text-lg max-w-3xl mx-auto ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-              Leading innovative technology projects that create meaningful impact in accessibility and artificial intelligence
+              Currently overseeing strategic technology initiatives and development projects that deliver measurable impact in accessibility solutions and artificial intelligence applications
             </p>
           </motion.div>
 
