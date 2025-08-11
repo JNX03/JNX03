@@ -43,19 +43,28 @@ jobs:
           template: classic
           base: ""
           config_timezone: Asia/Bangkok
-          plugin_achievements: yes
-          plugin_achievements_limit: 8
+          plugin_stargazers: yes
+          plugin_stargazers_charts_type: classic
+          plugin_followers: yes
           plugin_isocalendar: yes
           plugin_isocalendar_duration: half-year
           config_padding: 0, 8 + 11%
           filename: github-metrics-right.svg
   
-      - name: Generate Snake Animation
+      - name: Generate Snake Animation Light
         uses: Platane/snk@v3
         with:
           github_user_name: JNX03
           outputs: |
             github-snake.svg?palette=github-light
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Snake Animation Dark
+        uses: Platane/snk@v3
+        with:
+          github_user_name: JNX03
+          outputs: |
             github-snake-dark.svg?palette=github-dark
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
