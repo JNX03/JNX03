@@ -24,6 +24,6 @@
 
 ![github contribution grid snake animation](https://raw.githubusercontent.com/JNX03/JNX03/output/github-contribution-grid-snake.svg)
 
-![github contribution grid snake animation](https://raw.githubusercontent.com/JNX03/JNX03/output/github-contribution-grid-snake-dark.svg)
+![github contribution grid snake animation](https://raw.githubusercontent.com/JNX03/JNX03/output/github-contribution-grid-snake-dark.svg?palette=github-dark)
 
 </div>
