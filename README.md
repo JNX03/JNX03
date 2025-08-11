@@ -6,14 +6,14 @@
 
 <p align="center">
   <a href="#">
-    <img width="400" align="top" src="https://gist.githubusercontent.com/JNX03/7b91e5c1e018c9e35d38669d2fbd6e97/raw/github-metrics.svg" />
+    <img width="400" align="top" src="./github-metrics-left.svg" />
   </a>
   &emsp;
   <a href="#">
-    <img width="400" align="top" src="https://gist.githubusercontent.com/JNX03/b688af797a7cf82ab466dacd7bc10d0d/raw/github-metrics.svg" />
+    <img width="400" align="top" src="./github-metrics-right.svg" />
   </a>
 </p>
 
-![GitHub Snake Light](https://gist.githubusercontent.com/JNX03/62c190858bed9a108ce5811f715d2e55/raw/github-snake.svg#gh-light-mode-only)
+![GitHub Snake Light](./github-snake.svg#gh-light-mode-only)
 
-![GitHub Snake Dark](https://gist.githubusercontent.com/JNX03/62c190858bed9a108ce5811f715d2e55/raw/github-snake-dark.svg#gh-dark-mode-only)
+![GitHub Snake Dark](./github-snake-dark.svg#gh-dark-mode-only)
