@@ -13,7 +13,3 @@
     <img width="400" align="top" src="./github-metrics-right.svg" />
   </a>
 </p>
-
-![GitHub Snake Light](./github-snake.svg#gh-light-mode-only)
-
-![GitHub Snake Dark](./github-snake-dark.svg#gh-dark-mode-only)
