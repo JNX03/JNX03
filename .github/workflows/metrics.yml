@@ -181,115 +181,126 @@ jobs:
             ]
           };
 
-          // Create a clean, horizontal layout like GitHub metrics
-          function createAwardBadge(text, color = '#586069', textColor = '#ffffff') {
-            const width = Math.max(text.length * 6.5 + 14, 50);
+          // Simple, compatible awards display
+          function createAwardBadge(text, color = '#586069') {
+            const width = Math.max(text.length * 6.5 + 12, 45);
             const escapedText = escapeXml(text);
             return {
               width,
-              svg: `<rect x="0" y="0" width="${width}" height="18" rx="3" fill="${color}" opacity="0.8"/>
-                   <text x="${width/2}" y="12" text-anchor="middle" fill="${textColor}" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">${escapedText}</text>`
+              svg: `<rect x="0" y="0" width="${width}" height="18" rx="3" fill="${color}"/>
+                   <text x="${width/2}" y="12" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">${escapedText}</text>`
             };
           }
 
-          // Horizontal layout with sections side by side
           let svgContent = '';
-          let maxHeight = 0;
+          let currentY = 20;
 
-          // Section 1: Competition Awards (Left column)
-          let section1 = '';
-          let y1 = 20;
-          section1 += `<text x="15" y="${y1}" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600">🏆 Competition Awards</text>`;
-          y1 += 20;
+          // Simple header
+          svgContent += `
+            <rect x="0" y="0" width="800" height="50" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+            <text x="400" y="25" text-anchor="middle" fill="#24292f" font-family="Arial,sans-serif" font-size="18" font-weight="bold">🏆 JNX03 Awards & Recognition</text>
+            <text x="400" y="40" text-anchor="middle" fill="#656d76" font-family="Arial,sans-serif" font-size="12">Competitions • Projects • Open Source</text>
+          `;
+          currentY += 70;
 
-          // Key competitions with top awards
-          const keyComps = [
-            { name: 'Eibraille', awards: ['1st ISEF', '1st INTEL', '1st TICTA 2024', '2nd NSC 2024'] },
-            { name: 'MooDong', awards: ['1st MIT AI Challenge'] },
-            { name: 'Syntaxia', awards: ['Winner WWDC 2025'] },
-            { name: 'MalariaX', awards: ['1st SCI-Project', 'Stage 2 INTEL 2025'] }
-          ];
+          function addSection(title, projects, isWide = false) {
+            // Section header
+            svgContent += `<rect x="10" y="${currentY}" width="780" height="2" fill="#d0d7de"/>`;
+            currentY += 15;
+            svgContent += `<text x="15" y="${currentY}" fill="#24292f" font-family="Arial,sans-serif" font-size="14" font-weight="bold">${escapeXml(title)}</text>`;
+            currentY += 25;
 
-          keyComps.forEach(comp => {
-            section1 += `<text x="20" y="${y1}" fill="#0969da" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="500">${escapeXml(comp.name)}</text>`;
-            y1 += 15;
-            
-            let x1 = 25;
-            comp.awards.slice(0, 2).forEach(award => { // Show top 2 awards
-              let color = '#28a745';
-              if (award.includes('1st')) color = '#ffd700';
-              else if (award.includes('2nd')) color = '#c0c0c0';
-              else if (award.includes('Winner')) color = '#f85149';
-              
-              const badge = createAwardBadge(award, color);
-              section1 += `<g transform="translate(${x1}, ${y1-12})">${badge.svg}</g>`;
-              x1 += badge.width + 5;
+            Object.entries(projects).forEach(([name, data]) => {
+              // Project name
+              svgContent += `<text x="20" y="${currentY}" fill="#0969da" font-family="Arial,sans-serif" font-size="12" font-weight="bold">${escapeXml(name)}</text>`;
+              currentY += 18;
+
+              // URL/Status
+              if (data.url) {
+                svgContent += `<text x="25" y="${currentY}" fill="#656d76" font-family="Arial,sans-serif" font-size="10">🌐 ${escapeXml(data.url)}</text>`;
+                currentY += 14;
+              }
+              if (data.status) {
+                svgContent += `<text x="25" y="${currentY}" fill="#656d76" font-family="Arial,sans-serif" font-size="10">📝 ${escapeXml(data.status)}</text>`;
+                currentY += 14;
+              }
+              if (data.name) {
+                svgContent += `<text x="25" y="${currentY}" fill="#656d76" font-family="Arial,sans-serif" font-size="10">${escapeXml(data.name)}</text>`;
+                currentY += 14;
+              }
+              if (data.urls) {
+                data.urls.forEach(url => {
+                  svgContent += `<text x="25" y="${currentY}" fill="#656d76" font-family="Arial,sans-serif" font-size="9">🔗 ${escapeXml(url)}</text>`;
+                  currentY += 12;
+                });
+              }
+
+              // Links badges
+              if (data.links) {
+                let badgeX = 25;
+                data.links.forEach(link => {
+                  const badge = createAwardBadge(link, '#0969da');
+                  svgContent += `<g transform="translate(${badgeX}, ${currentY - 14})">${badge.svg}</g>`;
+                  badgeX += badge.width + 5;
+                });
+                currentY += 8;
+              }
+
+              // Awards badges
+              if (data.awards && data.awards.length > 0) {
+                let badgeX = 25;
+                data.awards.forEach(award => {
+                  let color = '#28a745'; // Default green
+                  if (award.includes('1st')) color = '#ffd700'; // Gold
+                  else if (award.includes('2nd') || award.includes('2rd')) color = '#c0c0c0'; // Silver
+                  else if (award.includes('Winner')) color = '#dc3545'; // Red
+                  else if (award.includes('Finalist')) color = '#17a2b8'; // Teal
+                  else if (award.includes('Merit')) color = '#fd7e14'; // Orange
+
+                  const badge = createAwardBadge(award, color);
+                  
+                  // Wrap to next line if too wide
+                  if (badgeX + badge.width > 750) {
+                    badgeX = 25;
+                    currentY += 22;
+                  }
+                  
+                  svgContent += `<g transform="translate(${badgeX}, ${currentY - 14})">${badge.svg}</g>`;
+                  badgeX += badge.width + 5;
+                });
+                currentY += 8;
+              }
+              currentY += 15; // Space between projects
             });
-            y1 += 18;
-          });
+            currentY += 10; // Extra space after section
+          }
 
-          maxHeight = Math.max(maxHeight, y1);
+          // Add all sections
+          addSection('🏆 Competition Projects', awards.competitions);
+          addSection('💻 Personal Projects', awards.personal);
+          addSection('🔒 Team Projects (Archive)', awards.teamArchive, true);
+          addSection('🚀 Team Projects (Ongoing)', awards.teamOngoing);
 
-          // Section 2: Active Projects (Middle column)
-          let section2 = '';
-          let y2 = 20;
-          const col2X = 240;
-          section2 += `<text x="${col2X}" y="${y2}" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600">🚀 Active Projects</text>`;
-          y2 += 20;
+          // Open source contributions
+          svgContent += `<rect x="10" y="${currentY}" width="780" height="2" fill="#d0d7de"/>`;
+          currentY += 15;
+          svgContent += `<text x="15" y="${currentY}" fill="#24292f" font-family="Arial,sans-serif" font-size="14" font-weight="bold">🤝 Open Source Contributions</text>`;
+          currentY += 25;
 
-          const activeProjects = [
-            { name: 'INDEXS', status: 'NSC • INTEL • TIA', url: 'Index.jnx03.xyz' },
-            { name: 'CytoScanZ', awards: ['1st SCI-Project', '1st INTEL 2025'] },
-            { name: 'NeuroSync PlayKit', status: 'Samsung Solve 2025' },
-            { name: 'SecureNetKit', links: ['PyPI', 'NPM'] }
-          ];
-
-          activeProjects.forEach(proj => {
-            section2 += `<text x="${col2X + 5}" y="${y2}" fill="#0969da" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="500">${escapeXml(proj.name)}</text>`;
-            y2 += 15;
-
-            if (proj.awards) {
-              let x2 = col2X + 10;
-              proj.awards.slice(0, 2).forEach(award => {
-                const badge = createAwardBadge(award, '#28a745');
-                section2 += `<g transform="translate(${x2}, ${y2-12})">${badge.svg}</g>`;
-                x2 += badge.width + 5;
-              });
-            } else if (proj.status) {
-              section2 += `<text x="${col2X + 10}" y="${y2}" fill="#656d76" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10">${escapeXml(proj.status)}</text>`;
-            } else if (proj.links) {
-              let x2 = col2X + 10;
-              proj.links.forEach(link => {
-                const badge = createAwardBadge(link, '#0969da');
-                section2 += `<g transform="translate(${x2}, ${y2-12})">${badge.svg}</g>`;
-                x2 += badge.width + 5;
-              });
-            }
-            y2 += 18;
-          });
-
-          maxHeight = Math.max(maxHeight, y2);
-
-          // Section 3: Open Source (Right column)
-          let section3 = '';
-          let y3 = 20;
-          const col3X = 460;
-          section3 += `<text x="${col3X}" y="${y3}" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600">🤝 Open Source</text>`;
-          y3 += 20;
-
-          let x3 = col3X + 5;
+          let contribX = 20;
           awards.contributions.forEach(contrib => {
             const badge = createAwardBadge(contrib, '#6f42c1');
-            section3 += `<g transform="translate(${x3}, ${y3-12})">${badge.svg}</g>`;
-            y3 += 22;
+            if (contribX + badge.width > 750) {
+              contribX = 20;
+              currentY += 25;
+            }
+            svgContent += `<g transform="translate(${contribX}, ${currentY - 12})">${badge.svg}</g>`;
+            contribX += badge.width + 8;
           });
 
-          maxHeight = Math.max(maxHeight, y3);
+          currentY += 30;
 
-          // Combine all sections
-          svgContent = section1 + section2 + section3;
-
-          const finalSvg = `<svg width="700" height="${maxHeight + 10}" xmlns="http://www.w3.org/2000/svg" class="">
+          const finalSvg = `<svg width="800" height="${currentY}" xmlns="http://www.w3.org/2000/svg">
             ${svgContent}
           </svg>`;
 

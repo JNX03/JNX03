@@ -1,17 +1,120 @@
-<svg width="700" height="182" xmlns="http://www.w3.org/2000/svg" class="">
-  <text x="15" y="20" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600">🏆 Competition Awards</text><text x="20" y="40" fill="#0969da" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="500">Eibraille</text><g transform="translate(25, 43)"><rect x="0" y="0" width="66" height="18" rx="3" fill="#ffd700" opacity="0.8"/>
-         <text x="33" y="12" text-anchor="middle" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">1st ISEF</text></g><g transform="translate(96, 43)"><rect x="0" y="0" width="72.5" height="18" rx="3" fill="#ffd700" opacity="0.8"/>
-         <text x="36.25" y="12" text-anchor="middle" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">1st INTEL</text></g><text x="20" y="73" fill="#0969da" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="500">MooDong</text><g transform="translate(25, 76)"><rect x="0" y="0" width="144" height="18" rx="3" fill="#ffd700" opacity="0.8"/>
-         <text x="72" y="12" text-anchor="middle" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">1st MIT AI Challenge</text></g><text x="20" y="106" fill="#0969da" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="500">Syntaxia</text><g transform="translate(25, 109)"><rect x="0" y="0" width="118" height="18" rx="3" fill="#f85149" opacity="0.8"/>
-         <text x="59" y="12" text-anchor="middle" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">Winner WWDC 2025</text></g><text x="20" y="139" fill="#0969da" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="500">MalariaX</text><g transform="translate(25, 142)"><rect x="0" y="0" width="111.5" height="18" rx="3" fill="#ffd700" opacity="0.8"/>
-         <text x="55.75" y="12" text-anchor="middle" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">1st SCI-Project</text></g><g transform="translate(141.5, 142)"><rect x="0" y="0" width="131" height="18" rx="3" fill="#28a745" opacity="0.8"/>
-         <text x="65.5" y="12" text-anchor="middle" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">Stage 2 INTEL 2025</text></g><text x="240" y="20" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600">🚀 Active Projects</text><text x="245" y="40" fill="#0969da" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="500">INDEXS</text><text x="250" y="55" fill="#656d76" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10">NSC • INTEL • TIA</text><text x="245" y="73" fill="#0969da" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="500">CytoScanZ</text><g transform="translate(250, 76)"><rect x="0" y="0" width="111.5" height="18" rx="3" fill="#28a745" opacity="0.8"/>
-         <text x="55.75" y="12" text-anchor="middle" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">1st SCI-Project</text></g><g transform="translate(366.5, 76)"><rect x="0" y="0" width="105" height="18" rx="3" fill="#28a745" opacity="0.8"/>
-         <text x="52.5" y="12" text-anchor="middle" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">1st INTEL 2025</text></g><text x="245" y="106" fill="#0969da" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="500">NeuroSync PlayKit</text><text x="250" y="121" fill="#656d76" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10">Samsung Solve 2025</text><text x="245" y="139" fill="#0969da" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="500">SecureNetKit</text><g transform="translate(250, 142)"><rect x="0" y="0" width="50" height="18" rx="3" fill="#0969da" opacity="0.8"/>
-         <text x="25" y="12" text-anchor="middle" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">PyPI</text></g><g transform="translate(305, 142)"><rect x="0" y="0" width="50" height="18" rx="3" fill="#0969da" opacity="0.8"/>
-         <text x="25" y="12" text-anchor="middle" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">NPM</text></g><text x="460" y="20" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600">🤝 Open Source</text><g transform="translate(465, 28)"><rect x="0" y="0" width="85.5" height="18" rx="3" fill="#6f42c1" opacity="0.8"/>
-         <text x="42.75" y="12" text-anchor="middle" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">Monkey Type</text></g><g transform="translate(465, 50)"><rect x="0" y="0" width="85.5" height="18" rx="3" fill="#6f42c1" opacity="0.8"/>
-         <text x="42.75" y="12" text-anchor="middle" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">ultralytics</text></g><g transform="translate(465, 72)"><rect x="0" y="0" width="124.5" height="18" rx="3" fill="#6f42c1" opacity="0.8"/>
-         <text x="62.25" y="12" text-anchor="middle" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">THU-MIG (YoloV10)</text></g><g transform="translate(465, 94)"><rect x="0" y="0" width="150.5" height="18" rx="3" fill="#6f42c1" opacity="0.8"/>
-         <text x="75.25" y="12" text-anchor="middle" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" font-weight="500">rigvedrs/YOLO-V12-CAM</text></g>
+<svg width="1400" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- Column 1: My Project (Competition) -->
+  <text x="10" y="20" fill="#24292f" font-family="Arial,sans-serif" font-size="12" font-weight="bold">My Project (Competition)</text>
+  
+  <text x="15" y="40" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">INDEXS</text>
+  <text x="15" y="52" fill="#656d76" font-family="Arial,sans-serif" font-size="8">Website: Index.jnx03.xyz</text>
+  <text x="15" y="62" fill="#656d76" font-family="Arial,sans-serif" font-size="8">App - Wait for review</text>
+  <rect x="15" y="67" width="30" height="12" rx="2" fill="#28a745"/>
+  <text x="30" y="75" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">NSC</text>
+  <rect x="48" y="67" width="38" height="12" rx="2" fill="#28a745"/>
+  <text x="67" y="75" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">INTEL</text>
+  <rect x="89" y="67" width="28" height="12" rx="2" fill="#28a745"/>
+  <text x="103" y="75" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">TIA</text>
+
+  <text x="15" y="100" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">MooDong</text>
+  <rect x="15" y="105" width="140" height="12" rx="2" fill="#ffd700"/>
+  <text x="85" y="113" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st MIT Moodeng AI Challenge</text>
+
+  <text x="15" y="135" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">Syntaxia</text>
+  <rect x="15" y="140" width="100" height="12" rx="2" fill="#dc3545"/>
+  <text x="65" y="148" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Winner WWDC 2025</text>
+
+  <!-- Column 2: My Project (Misc) -->
+  <text x="200" y="20" fill="#24292f" font-family="Arial,sans-serif" font-size="12" font-weight="bold">My Project (Misc)</text>
+  
+  <text x="205" y="40" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">HMO</text>
+  <text x="205" y="52" fill="#656d76" font-family="Arial,sans-serif" font-size="8">Hear me once</text>
+
+  <text x="205" y="75" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">SecureNetKit</text>
+  <text x="205" y="87" fill="#656d76" font-family="Arial,sans-serif" font-size="7">PyPI: test.pypi.org/project/jnxbetasec</text>
+  <text x="205" y="97" fill="#656d76" font-family="Arial,sans-serif" font-size="7">NPM: npmjs.com/package/jnxbetasec</text>
+  <rect x="205" y="102" width="35" height="12" rx="2" fill="#0969da"/>
+  <text x="222.5" y="110" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">PyPI</text>
+  <rect x="245" y="102" width="30" height="12" rx="2" fill="#0969da"/>
+  <text x="260" y="110" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">NPM</text>
+
+  <text x="205" y="135" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">Acora</text>
+  <text x="205" y="147" fill="#656d76" font-family="Arial,sans-serif" font-size="8">Website: Acora.jnx03.xyz</text>
+
+  <!-- Column 3: Team Project (Archive) -->
+  <text x="380" y="20" fill="#24292f" font-family="Arial,sans-serif" font-size="12" font-weight="bold">Team Project (Archive)</text>
+  
+  <text x="385" y="40" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">Eibraille</text>
+  <rect x="385" y="45" width="45" height="12" rx="2" fill="#ffd700"/>
+  <text x="407.5" y="53" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st ISEF</text>
+  <rect x="435" y="45" width="50" height="12" rx="2" fill="#ffd700"/>
+  <text x="460" y="53" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st INTEL</text>
+  <rect x="490" y="45" width="60" height="12" rx="2" fill="#ffd700"/>
+  <text x="520" y="53" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st TICTA 2024</text>
+  <rect x="385" y="62" width="65" height="12" rx="2" fill="#c0c0c0"/>
+  <text x="417.5" y="70" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd APICTA 2024</text>
+  <rect x="455" y="62" width="75" height="12" rx="2" fill="#fd7e14"/>
+  <text x="492.5" y="70" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Merit SCI-PROJECT</text>
+  <rect x="535" y="62" width="60" height="12" rx="2" fill="#c0c0c0"/>
+  <text x="565" y="70" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd NSC 2024</text>
+  <rect x="385" y="79" width="55" height="12" rx="2" fill="#ffd700"/>
+  <text x="412.5" y="87" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st YSC 2024</text>
+  <rect x="445" y="79" width="55" height="12" rx="2" fill="#ffd700"/>
+  <text x="472.5" y="87" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st TIA 2024</text>
+  <rect x="505" y="79" width="110" height="12" rx="2" fill="#ffd700"/>
+  <text x="560" y="87" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st AI INNOVATOR CMKL 2024</text>
+
+  <text x="385" y="110" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">PETRA</text>
+  <rect x="385" y="115" width="120" height="12" rx="2" fill="#c0c0c0"/>
+  <text x="445" y="123" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd Samsung Solve for Tomorrow 2024</text>
+  <rect x="510" y="115" width="85" height="12" rx="2" fill="#fd7e14"/>
+  <text x="552.5" y="123" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Merit MEDCHICK 2025</text>
+
+  <text x="385" y="140" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">ALDS</text>
+  <rect x="385" y="145" width="130" height="12" rx="2" fill="#28a745"/>
+  <text x="450" y="153" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Samsung Solve for Tomorrow 2024</text>
+
+  <text x="385" y="170" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">PASX+</text>
+  <rect x="385" y="175" width="65" height="12" rx="2" fill="#c0c0c0"/>
+  <text x="417.5" y="183" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd TICTA 2023</text>
+  <rect x="455" y="175" width="70" height="12" rx="2" fill="#c0c0c0"/>
+  <text x="490" y="183" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd APICTA 2023</text>
+
+  <text x="385" y="200" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">Kamora</text>
+  <rect x="385" y="205" width="85" height="12" rx="2" fill="#28a745"/>
+  <text x="427.5" y="213" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">FTC Thailand 2024</text>
+
+  <text x="385" y="230" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">WrPower</text>
+  <rect x="385" y="235" width="55" height="12" rx="2" fill="#28a745"/>
+  <text x="412.5" y="243" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">FLL 2023</text>
+
+  <text x="385" y="260" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">WasteTD</text>
+  <rect x="385" y="265" width="105" height="12" rx="2" fill="#17a2b8"/>
+  <text x="437.5" y="273" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Finalist GoSoft Hackathon</text>
+
+  <!-- Column 4: Team Project (Ongoing) -->
+  <text x="680" y="20" fill="#24292f" font-family="Arial,sans-serif" font-size="12" font-weight="bold">Team Project (Ongoing)</text>
+  
+  <text x="685" y="40" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">MalariaX</text>
+  <rect x="685" y="45" width="75" height="12" rx="2" fill="#ffd700"/>
+  <text x="722.5" y="53" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st SCI-Project</text>
+  <rect x="765" y="45" width="85" height="12" rx="2" fill="#28a745"/>
+  <text x="807.5" y="53" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Stage 2 INTEL 2025</text>
+
+  <text x="685" y="75" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">CytoScanZ</text>
+  <rect x="685" y="80" width="75" height="12" rx="2" fill="#ffd700"/>
+  <text x="722.5" y="88" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st SCI-Project</text>
+  <rect x="765" y="80" width="70" height="12" rx="2" fill="#ffd700"/>
+  <text x="800" y="88" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st INTEL 2025</text>
+
+  <text x="685" y="110" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">NeuroSync PlayKit</text>
+  <text x="685" y="122" fill="#656d76" font-family="Arial,sans-serif" font-size="8">Ongoing: Samsung Solve for Tomorrow 2025</text>
+
+  <!-- Column 5: Contribute Project -->
+  <text x="900" y="20" fill="#24292f" font-family="Arial,sans-serif" font-size="12" font-weight="bold">Contribute Project</text>
+  
+  <rect x="905" y="35" width="75" height="12" rx="2" fill="#6f42c1"/>
+  <text x="942.5" y="43" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Monkey Type</text>
+  <rect x="985" y="35" width="65" height="12" rx="2" fill="#6f42c1"/>
+  <text x="1017.5" y="43" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">ultralytics</text>
+  <rect x="1055" y="35" width="105" height="12" rx="2" fill="#6f42c1"/>
+  <text x="1107.5" y="43" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">THU-MIG(YoloV10)</text>
+  <rect x="905" y="52" width="120" height="12" rx="2" fill="#6f42c1"/>
+  <text x="965" y="60" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">rigvedrs/YOLO-V12-CAM</text>
 </svg>
