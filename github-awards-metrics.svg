@@ -1,120 +1,123 @@
 <svg width="1400" height="350" xmlns="http://www.w3.org/2000/svg">
-  <!-- Column 1: My Project (Competition) -->
-  <text x="10" y="20" fill="#24292f" font-family="Arial,sans-serif" font-size="12" font-weight="bold">My Project (Competition)</text>
+  <!-- Background -->
+  <rect x="0" y="0" width="1400" height="350" fill="#0d1117"/>
   
-  <text x="15" y="40" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">INDEXS</text>
-  <text x="15" y="52" fill="#656d76" font-family="Arial,sans-serif" font-size="8">Website: Index.jnx03.xyz</text>
-  <text x="15" y="62" fill="#656d76" font-family="Arial,sans-serif" font-size="8">App - Wait for review</text>
-  <rect x="15" y="67" width="30" height="12" rx="2" fill="#28a745"/>
-  <text x="30" y="75" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">NSC</text>
-  <rect x="48" y="67" width="38" height="12" rx="2" fill="#28a745"/>
-  <text x="67" y="75" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">INTEL</text>
-  <rect x="89" y="67" width="28" height="12" rx="2" fill="#28a745"/>
-  <text x="103" y="75" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">TIA</text>
+  <!-- Column 1: My Project (Competition) -->
+  <text x="140" y="20" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="bold">My Project (Competition)</text>
+  
+  <text x="140" y="40" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">INDEXS</text>
+  <text x="140" y="52" text-anchor="middle" fill="#8b949e" font-family="Arial,sans-serif" font-size="8">Website: Index.jnx03.xyz</text>
+  <text x="140" y="62" text-anchor="middle" fill="#8b949e" font-family="Arial,sans-serif" font-size="8">App - Wait for review</text>
+  <rect x="95" y="67" width="30" height="12" rx="2" fill="#28a745"/>
+  <text x="110" y="75" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">NSC</text>
+  <rect x="128" y="67" width="38" height="12" rx="2" fill="#28a745"/>
+  <text x="147" y="75" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">INTEL</text>
+  <rect x="169" y="67" width="28" height="12" rx="2" fill="#28a745"/>
+  <text x="183" y="75" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">TIA</text>
 
-  <text x="15" y="100" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">MooDong</text>
-  <rect x="15" y="105" width="140" height="12" rx="2" fill="#ffd700"/>
-  <text x="85" y="113" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st MIT Moodeng AI Challenge</text>
+  <text x="140" y="100" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">MooDong</text>
+  <rect x="70" y="105" width="140" height="12" rx="2" fill="#ffd700"/>
+  <text x="140" y="113" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st MIT Moodeng AI Challenge</text>
 
-  <text x="15" y="135" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">Syntaxia</text>
-  <rect x="15" y="140" width="100" height="12" rx="2" fill="#dc3545"/>
-  <text x="65" y="148" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Winner WWDC 2025</text>
+  <text x="140" y="135" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">Syntaxia</text>
+  <rect x="90" y="140" width="100" height="12" rx="2" fill="#dc3545"/>
+  <text x="140" y="148" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Winner WWDC 2025</text>
 
   <!-- Column 2: My Project (Misc) -->
-  <text x="200" y="20" fill="#24292f" font-family="Arial,sans-serif" font-size="12" font-weight="bold">My Project (Misc)</text>
+  <text x="420" y="20" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="bold">My Project (Misc)</text>
   
-  <text x="205" y="40" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">HMO</text>
-  <text x="205" y="52" fill="#656d76" font-family="Arial,sans-serif" font-size="8">Hear me once</text>
+  <text x="420" y="40" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">HMO</text>
+  <text x="420" y="52" text-anchor="middle" fill="#8b949e" font-family="Arial,sans-serif" font-size="8">Hear me once</text>
 
-  <text x="205" y="75" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">SecureNetKit</text>
-  <text x="205" y="87" fill="#656d76" font-family="Arial,sans-serif" font-size="7">PyPI: test.pypi.org/project/jnxbetasec</text>
-  <text x="205" y="97" fill="#656d76" font-family="Arial,sans-serif" font-size="7">NPM: npmjs.com/package/jnxbetasec</text>
-  <rect x="205" y="102" width="35" height="12" rx="2" fill="#0969da"/>
-  <text x="222.5" y="110" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">PyPI</text>
-  <rect x="245" y="102" width="30" height="12" rx="2" fill="#0969da"/>
-  <text x="260" y="110" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">NPM</text>
+  <text x="420" y="75" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">SecureNetKit</text>
+  <text x="420" y="87" text-anchor="middle" fill="#8b949e" font-family="Arial,sans-serif" font-size="7">PyPI: test.pypi.org/project/jnxbetasec</text>
+  <text x="420" y="97" text-anchor="middle" fill="#8b949e" font-family="Arial,sans-serif" font-size="7">NPM: npmjs.com/package/jnxbetasec</text>
+  <rect x="387" y="102" width="35" height="12" rx="2" fill="#0969da"/>
+  <text x="404.5" y="110" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">PyPI</text>
+  <rect x="427" y="102" width="30" height="12" rx="2" fill="#0969da"/>
+  <text x="442" y="110" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">NPM</text>
 
-  <text x="205" y="135" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">Acora</text>
-  <text x="205" y="147" fill="#656d76" font-family="Arial,sans-serif" font-size="8">Website: Acora.jnx03.xyz</text>
+  <text x="420" y="135" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">Acora</text>
+  <text x="420" y="147" text-anchor="middle" fill="#8b949e" font-family="Arial,sans-serif" font-size="8">Website: Acora.jnx03.xyz</text>
 
   <!-- Column 3: Team Project (Archive) -->
-  <text x="380" y="20" fill="#24292f" font-family="Arial,sans-serif" font-size="12" font-weight="bold">Team Project (Archive)</text>
+  <text x="700" y="20" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="bold">Team Project (Archive)</text>
   
-  <text x="385" y="40" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">Eibraille</text>
-  <rect x="385" y="45" width="45" height="12" rx="2" fill="#ffd700"/>
-  <text x="407.5" y="53" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st ISEF</text>
-  <rect x="435" y="45" width="50" height="12" rx="2" fill="#ffd700"/>
-  <text x="460" y="53" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st INTEL</text>
-  <rect x="490" y="45" width="60" height="12" rx="2" fill="#ffd700"/>
-  <text x="520" y="53" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st TICTA 2024</text>
-  <rect x="385" y="62" width="65" height="12" rx="2" fill="#c0c0c0"/>
-  <text x="417.5" y="70" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd APICTA 2024</text>
-  <rect x="455" y="62" width="75" height="12" rx="2" fill="#fd7e14"/>
-  <text x="492.5" y="70" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Merit SCI-PROJECT</text>
-  <rect x="535" y="62" width="60" height="12" rx="2" fill="#c0c0c0"/>
-  <text x="565" y="70" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd NSC 2024</text>
-  <rect x="385" y="79" width="55" height="12" rx="2" fill="#ffd700"/>
-  <text x="412.5" y="87" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st YSC 2024</text>
-  <rect x="445" y="79" width="55" height="12" rx="2" fill="#ffd700"/>
-  <text x="472.5" y="87" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st TIA 2024</text>
-  <rect x="505" y="79" width="110" height="12" rx="2" fill="#ffd700"/>
-  <text x="560" y="87" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st AI INNOVATOR CMKL 2024</text>
+  <text x="700" y="40" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">Eibraille</text>
+  <rect x="562" y="45" width="45" height="12" rx="2" fill="#ffd700"/>
+  <text x="584.5" y="53" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st ISEF</text>
+  <rect x="612" y="45" width="50" height="12" rx="2" fill="#ffd700"/>
+  <text x="637" y="53" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st INTEL</text>
+  <rect x="667" y="45" width="60" height="12" rx="2" fill="#ffd700"/>
+  <text x="697" y="53" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st TICTA 2024</text>
+  <rect x="732" y="45" width="65" height="12" rx="2" fill="#ffd700"/>
+  <text x="764.5" y="53" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st YSC 2024</text>
+  <rect x="802" y="45" width="55" height="12" rx="2" fill="#ffd700"/>
+  <text x="829.5" y="53" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st TIA 2024</text>
+  <rect x="590" y="62" width="65" height="12" rx="2" fill="#c0c0c0"/>
+  <text x="622.5" y="70" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd APICTA 2024</text>
+  <rect x="660" y="62" width="75" height="12" rx="2" fill="#fd7e14"/>
+  <text x="697.5" y="70" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Merit SCI-PROJECT</text>
+  <rect x="740" y="62" width="60" height="12" rx="2" fill="#c0c0c0"/>
+  <text x="770" y="70" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd NSC 2024</text>
+  <rect x="617" y="79" width="110" height="12" rx="2" fill="#ffd700"/>
+  <text x="672" y="87" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st AI INNOVATOR CMKL 2024</text>
 
-  <text x="385" y="110" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">PETRA</text>
-  <rect x="385" y="115" width="120" height="12" rx="2" fill="#c0c0c0"/>
-  <text x="445" y="123" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd Samsung Solve for Tomorrow 2024</text>
-  <rect x="510" y="115" width="85" height="12" rx="2" fill="#fd7e14"/>
-  <text x="552.5" y="123" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Merit MEDCHICK 2025</text>
+  <text x="700" y="110" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">PETRA</text>
+  <rect x="580" y="115" width="120" height="12" rx="2" fill="#c0c0c0"/>
+  <text x="640" y="123" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd Samsung Solve for Tomorrow 2024</text>
+  <rect x="705" y="115" width="85" height="12" rx="2" fill="#fd7e14"/>
+  <text x="747.5" y="123" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Merit MEDCHICK 2025</text>
 
-  <text x="385" y="140" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">ALDS</text>
-  <rect x="385" y="145" width="130" height="12" rx="2" fill="#28a745"/>
-  <text x="450" y="153" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Samsung Solve for Tomorrow 2024</text>
+  <text x="700" y="140" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">ALDS</text>
+  <rect x="635" y="145" width="130" height="12" rx="2" fill="#28a745"/>
+  <text x="700" y="153" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Samsung Solve for Tomorrow 2024</text>
 
-  <text x="385" y="170" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">PASX+</text>
-  <rect x="385" y="175" width="65" height="12" rx="2" fill="#c0c0c0"/>
-  <text x="417.5" y="183" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd TICTA 2023</text>
-  <rect x="455" y="175" width="70" height="12" rx="2" fill="#c0c0c0"/>
-  <text x="490" y="183" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd APICTA 2023</text>
+  <text x="700" y="170" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">PASX+</text>
+  <rect x="632" y="175" width="65" height="12" rx="2" fill="#c0c0c0"/>
+  <text x="664.5" y="183" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd TICTA 2023</text>
+  <rect x="702" y="175" width="70" height="12" rx="2" fill="#c0c0c0"/>
+  <text x="737" y="183" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">2nd APICTA 2023</text>
 
-  <text x="385" y="200" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">Kamora</text>
-  <rect x="385" y="205" width="85" height="12" rx="2" fill="#28a745"/>
-  <text x="427.5" y="213" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">FTC Thailand 2024</text>
+  <text x="700" y="200" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">Kamora</text>
+  <rect x="657" y="205" width="85" height="12" rx="2" fill="#28a745"/>
+  <text x="699.5" y="213" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">FTC Thailand 2024</text>
 
-  <text x="385" y="230" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">WrPower</text>
-  <rect x="385" y="235" width="55" height="12" rx="2" fill="#28a745"/>
-  <text x="412.5" y="243" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">FLL 2023</text>
+  <text x="700" y="230" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">WrPower</text>
+  <rect x="672" y="235" width="55" height="12" rx="2" fill="#28a745"/>
+  <text x="699.5" y="243" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">FLL 2023</text>
 
-  <text x="385" y="260" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">WasteTD</text>
-  <rect x="385" y="265" width="105" height="12" rx="2" fill="#17a2b8"/>
-  <text x="437.5" y="273" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Finalist GoSoft Hackathon</text>
+  <text x="700" y="260" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">WasteTD</text>
+  <rect x="647" y="265" width="105" height="12" rx="2" fill="#17a2b8"/>
+  <text x="699.5" y="273" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Finalist GoSoft Hackathon</text>
 
   <!-- Column 4: Team Project (Ongoing) -->
-  <text x="680" y="20" fill="#24292f" font-family="Arial,sans-serif" font-size="12" font-weight="bold">Team Project (Ongoing)</text>
+  <text x="980" y="20" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="bold">Team Project (Ongoing)</text>
   
-  <text x="685" y="40" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">MalariaX</text>
-  <rect x="685" y="45" width="75" height="12" rx="2" fill="#ffd700"/>
-  <text x="722.5" y="53" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st SCI-Project</text>
-  <rect x="765" y="45" width="85" height="12" rx="2" fill="#28a745"/>
-  <text x="807.5" y="53" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Stage 2 INTEL 2025</text>
+  <text x="980" y="40" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">MalariaX</text>
+  <rect x="905" y="45" width="75" height="12" rx="2" fill="#ffd700"/>
+  <text x="942.5" y="53" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st SCI-Project</text>
+  <rect x="985" y="45" width="85" height="12" rx="2" fill="#28a745"/>
+  <text x="1027.5" y="53" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Stage 2 INTEL 2025</text>
 
-  <text x="685" y="75" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">CytoScanZ</text>
-  <rect x="685" y="80" width="75" height="12" rx="2" fill="#ffd700"/>
-  <text x="722.5" y="88" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st SCI-Project</text>
-  <rect x="765" y="80" width="70" height="12" rx="2" fill="#ffd700"/>
-  <text x="800" y="88" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st INTEL 2025</text>
+  <text x="980" y="75" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">CytoScanZ</text>
+  <rect x="905" y="80" width="75" height="12" rx="2" fill="#ffd700"/>
+  <text x="942.5" y="88" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st SCI-Project</text>
+  <rect x="985" y="80" width="70" height="12" rx="2" fill="#ffd700"/>
+  <text x="1020" y="88" text-anchor="middle" fill="#000000" font-family="Arial,sans-serif" font-size="7" font-weight="bold">1st INTEL 2025</text>
 
-  <text x="685" y="110" fill="#0969da" font-family="Arial,sans-serif" font-size="10" font-weight="bold">NeuroSync PlayKit</text>
-  <text x="685" y="122" fill="#656d76" font-family="Arial,sans-serif" font-size="8">Ongoing: Samsung Solve for Tomorrow 2025</text>
+  <text x="980" y="110" text-anchor="middle" fill="#58a6ff" font-family="Arial,sans-serif" font-size="10" font-weight="bold">NeuroSync PlayKit</text>
+  <text x="980" y="122" text-anchor="middle" fill="#8b949e" font-family="Arial,sans-serif" font-size="8">Ongoing: Samsung Solve for Tomorrow 2025</text>
 
   <!-- Column 5: Contribute Project -->
-  <text x="900" y="20" fill="#24292f" font-family="Arial,sans-serif" font-size="12" font-weight="bold">Contribute Project</text>
+  <text x="1260" y="20" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="bold">Contribute Project</text>
   
-  <rect x="905" y="35" width="75" height="12" rx="2" fill="#6f42c1"/>
-  <text x="942.5" y="43" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Monkey Type</text>
-  <rect x="985" y="35" width="65" height="12" rx="2" fill="#6f42c1"/>
-  <text x="1017.5" y="43" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">ultralytics</text>
-  <rect x="1055" y="35" width="105" height="12" rx="2" fill="#6f42c1"/>
-  <text x="1107.5" y="43" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">THU-MIG(YoloV10)</text>
-  <rect x="905" y="52" width="120" height="12" rx="2" fill="#6f42c1"/>
-  <text x="965" y="60" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">rigvedrs/YOLO-V12-CAM</text>
+  <rect x="1185" y="35" width="75" height="12" rx="2" fill="#6f42c1"/>
+  <text x="1222.5" y="43" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">Monkey Type</text>
+  <rect x="1265" y="35" width="65" height="12" rx="2" fill="#6f42c1"/>
+  <text x="1297.5" y="43" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">ultralytics</text>
+  <rect x="1177" y="52" width="105" height="12" rx="2" fill="#6f42c1"/>
+  <text x="1229.5" y="60" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">THU-MIG(YoloV10)</text>
+  <rect x="1287" y="52" width="103" height="12" rx="2" fill="#6f42c1"/>
+  <text x="1338.5" y="60" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="7" font-weight="bold">rigvedrs/YOLO-V12-CAM</text>
 </svg>
