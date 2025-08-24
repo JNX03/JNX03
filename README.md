@@ -10,10 +10,6 @@
   </a>
 </p>
 
----
-
-<h3 align="center">🏆 Awards & Recognition</h3>
-
 <p align="center">
   <a href="#">
     <img width="1400" src="./github-awards-metrics.svg" />
