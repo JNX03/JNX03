@@ -271,238 +271,100 @@ export default function Home() {
   const { theme } = useTheme()
   const { t } = useLanguage()
 
-  // Parallax effect for background elements
-  const y = useMotionValue(0)
-  const x = useMotionValue(0)
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const { innerWidth, innerHeight } = window
-      const moveX = (e.clientX - innerWidth / 2) / 50
-      const moveY = (e.clientY - innerHeight / 2) / 50
-
-      x.set(moveX)
-      y.set(moveY)
-    }
-
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-    }
-  }, [x, y])
-
   return (
-    <div className={`min-h-screen flex flex-col relative overflow-hidden ${theme === "light" ? "text-gray-800 bg-gray-50" : ""}`}>
+    <div className={`min-h-screen flex flex-col relative ${theme === "light" ? "text-gray-900 bg-white" : "bg-background"}`}>
       <CustomCursor />
 
-      {/* Background elements */}
+      {/* Subtle background gradient */}
       <div
         className={`fixed inset-0 -z-10 ${
           theme === "light"
-            ? "bg-gradient-to-b from-white via-gray-50 to-white"
-            : "bg-gradient-to-b from-background via-background to-background/80"
+            ? "bg-white"
+            : "bg-gradient-to-b from-background to-background/95"
         }`}
       />
 
-      <motion.div
-        className={`fixed top-20 right-20 w-64 h-64 rounded-full ${
-          theme === "light" ? "bg-indigo-500/3" : "bg-indigo-500/10"
-        } blur-3xl`}
-        style={{ x: useTransform(x, (value) => value * -1.5), y: useTransform(y, (value) => value * -1.5) }}
-      />
+      <main className="flex-grow max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Hero Section - Cleaner & Minimal */}
+        <section className="pt-32 pb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-4xl"
+          >
+            <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] ${
+              theme === "light" ? "text-gray-900" : "text-white"
+            }`}>
+              Chawabhon Netisingha
+            </h1>
 
-      <motion.div
-        className={`fixed bottom-20 left-20 w-80 h-80 rounded-full ${
-          theme === "light" ? "bg-blue-500/3" : "bg-blue-500/10"
-        } blur-3xl`}
-        style={{ x: useTransform(x, (value) => value * 1.2), y: useTransform(y, (value) => value * 1.2) }}
-      />
+            <p className={`text-xl sm:text-2xl mb-8 leading-relaxed ${
+              theme === "light" ? "text-gray-600" : "text-gray-400"
+            }`}>
+              Developer & Technology Innovator specializing in AI, accessibility, and digital experiences.
+            </p>
 
-      <main className="flex-grow container mx-auto px-4 py-8 mt-14">
-        {/* Hero Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="grid gap-12 items-center lg:grid-cols-2">
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-                <motion.h1
-                  className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight ${
+            <div className="flex flex-wrap gap-3 mb-12">
+              {["AI & Machine Learning", "Accessibility Tech", "Web Development", "Swift & iOS"].map((tag) => (
+                <span
+                  key={tag}
+                  className={`px-3 py-1 text-sm ${
                     theme === "light"
-                      ? "text-gray-900"
-                      : "bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-                  }`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                      ? "bg-gray-100 text-gray-700"
+                      : "bg-gray-800 text-gray-300"
+                  } rounded-full`}
                 >
-                  Chawabhon Netisingha
-                </motion.h1>
-
-                <motion.h2
-                  className={`text-2xl sm:text-3xl font-semibold mb-6 ${
-                    theme === "light" ? "text-indigo-600" : "text-indigo-400"
-                  }`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
-                  Chief Executive Officer & Distinguished Technology Fellow
-                </motion.h2>
-
-                <motion.p
-                  className={`text-lg mb-8 leading-relaxed ${theme === "light" ? "text-gray-600" : "text-muted-foreground"} max-w-2xl`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                >
-                  Distinguished executive and technology visionary leading enterprise-scale artificial intelligence initiatives and accessibility innovation programs. 
-                  Principal architect of internationally acclaimed technology solutions delivering quantifiable returns on investment and sustainable competitive advantages across global markets.
-                </motion.p>
-
-                <motion.div
-                  className="flex flex-wrap gap-3 mb-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
-                >
-                  {[
-                    "Enterprise AI Architecture",
-                    "Strategic Technology Leadership",
-                    "Digital Transformation",
-                    "Executive Project Governance",
-                    "Innovation Strategy & Development",
-                  ].map((tag, i) => (
-                    <motion.span
-                      key={tag}
-                      className={`px-4 py-2 rounded-full text-sm font-medium border ${
-                        theme === "light" 
-                          ? "bg-white border-gray-200 text-gray-700 hover:border-indigo-300" 
-                          : "bg-background/50 border-primary/20 text-foreground hover:border-primary/40"
-                      } transition-colors`}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: 0.8 + i * 0.1 }}
-                    >
-                      {tag}
-                    </motion.span>
-                  ))}
-                </motion.div>
-
-                <motion.div
-                  className="flex flex-wrap gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1 }}
-                >
-                  <MagneticElement strength={0.05}>
-                    <Button
-                      asChild
-                      size="lg"
-                      className={`${
-                        theme === "light"
-                          ? "bg-indigo-600 hover:bg-indigo-700 text-white shadow-md"
-                          : "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
-                      } border-0 px-8 py-3`}
-                    >
-                      <Link href="/contact">
-                        Get In Touch <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </MagneticElement>
-
-                  <MagneticElement strength={0.05}>
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="lg"
-                      className={`border-2 px-8 py-3 ${
-                        theme === "light" 
-                          ? "border-indigo-600 text-indigo-600 hover:bg-indigo-50 bg-white shadow-md" 
-                          : "border-primary text-primary hover:bg-primary/10"
-                      }`}
-                    >
-                      <Link href="/projects">View Portfolio</Link>
-                    </Button>
-                  </MagneticElement>
-                </motion.div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="relative flex justify-center"
-              >
-                <div className="relative w-80 h-80 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl">
-                  <Image
-                    src="/img/profile.png"
-                    alt="Chawabhon Netisingha - Technology Innovation Leader"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-2xl"
-                    priority
-                  />
-                </div>
-
-                <motion.div
-                  className={`absolute -bottom-6 -right-6 ${
-                    theme === "light" ? "bg-white border-gray-200" : "bg-background border-primary/20"
-                  } rounded-xl p-4 shadow-xl border`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.8 }}
-                >
-                  <div className="flex items-center gap-2">
-                    <Award className="h-5 w-5 text-yellow-500" />
-                    <div>
-                      <p className="font-semibold text-sm">Latest Achievement</p>
-                      <p className={`text-xs ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                        Swift Student Challenge 2025 Winner
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className={`absolute -top-6 -left-6 ${
-                    theme === "light" ? "bg-white border-gray-200" : "bg-background border-primary/20"
-                  } rounded-xl p-4 shadow-xl border`}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1 }}
-                >
-                  <div className="flex items-center gap-2">
-                    <Briefcase className="h-5 w-5 text-indigo-500" />
-                    <div>
-                      <p className="font-semibold text-sm">Executive Position</p>
-                      <p className={`text-xs ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                        Chief Executive & Technology Fellow
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
+                  {tag}
+                </span>
+              ))}
             </div>
-          </div>
+
+            <div className="flex flex-wrap gap-4">
+              <Button
+                asChild
+                size="lg"
+                className={`${
+                  theme === "light"
+                    ? "bg-gray-900 hover:bg-gray-800 text-white"
+                    : "bg-white hover:bg-gray-100 text-black"
+                }`}
+              >
+                <Link href="/contact">
+                  Get In Touch <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className={`${
+                  theme === "light"
+                    ? "border-gray-300 text-gray-900 hover:bg-gray-50"
+                    : "border-gray-700 text-white hover:bg-gray-900"
+                }`}
+              >
+                <Link href="/projects">View Projects</Link>
+              </Button>
+            </div>
+          </motion.div>
         </section>
 
-        {/* Projects Under Executive Management */}
-        <section className="py-16">
+        {/* Featured Projects */}
+        <section className="py-20 border-t border-gray-200 dark:border-gray-800">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="mb-16"
           >
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Briefcase className="h-8 w-8 text-indigo-500" />
-              <h2 className="text-3xl font-bold">Executive Technology Portfolio</h2>
-            </div>
-            <p className={`text-lg max-w-4xl mx-auto ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-              Strategic direction and executive governance of high-impact technology initiatives across accessibility innovation, healthcare transformation, and enterprise artificial intelligence deployment. 
-              Each portfolio component demonstrates measurable ROI, stakeholder value creation, and sustainable competitive differentiation through proprietary technological assets.
+            <h2 className={`text-4xl font-bold mb-4 ${theme === "light" ? "text-gray-900" : "text-white"}`}>
+              Featured Projects
+            </h2>
+            <p className={`text-lg max-w-3xl ${theme === "light" ? "text-gray-600" : "text-gray-400"}`}>
+              Selected works in AI, accessibility technology, and educational platforms that have won international awards and recognition.
             </p>
           </motion.div>
 

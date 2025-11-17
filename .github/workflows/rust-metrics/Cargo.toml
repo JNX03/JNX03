@@ -1,0 +1,13 @@
+[package]
+name = "metrics-generator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+svg = "0.17"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[[bin]]
+name = "metrics-generator"
+path = "src/main.rs"
