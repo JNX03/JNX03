@@ -1,775 +1,413 @@
 "use client"
 
-import type React from "react"
-
-import { useEffect, useState, useRef } from "react"
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Award, Users, Target, Briefcase } from 'lucide-react'
+import { ArrowRight, Github, Linkedin, Mail, ExternalLink } from 'lucide-react'
 import Image from "next/image"
 import { useTheme } from "next-themes"
 import Script from "next/script"
-import { useLanguage } from "@/lib/i18n"
-
-// Custom cursor component
-const CustomCursor = () => {
-  const cursorX = useMotionValue(-100)
-  const cursorY = useMotionValue(-100)
-  const { theme } = useTheme()
-
-  const springConfig = { damping: 25, stiffness: 700 }
-  const cursorXSpring = useSpring(cursorX, springConfig)
-  const cursorYSpring = useSpring(cursorY, springConfig)
-
-  useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX)
-      cursorY.set(e.clientY)
-    }
-
-    window.addEventListener("mousemove", moveCursor)
-    return () => {
-      window.removeEventListener("mousemove", moveCursor)
-    }
-  }, [cursorX, cursorY])
-
-  // Adjust cursor color based on theme
-  const dotColor = theme === "light" ? "rgba(79, 70, 229, 0.6)" : "rgba(79, 70, 229, 0.6)"
-  const ringColor = theme === "light" ? "rgba(79, 70, 229, 0.3)" : "rgba(79, 70, 229, 0.3)"
-
-  return (
-    <>
-      <motion.div
-        className="cursor-dot hidden md:block"
-        style={{
-          position: "fixed",
-          left: cursorXSpring,
-          top: cursorYSpring,
-          width: "12px",
-          height: "12px",
-          borderRadius: "50%",
-          backgroundColor: dotColor,
-          pointerEvents: "none",
-          zIndex: 9999,
-          transform: "translate(-50%, -50%)",
-        }}
-      />
-      <motion.div
-        className="cursor-ring hidden md:block"
-        style={{
-          position: "fixed",
-          left: cursorXSpring,
-          top: cursorYSpring,
-          width: "40px",
-          height: "40px",
-          borderRadius: "50%",
-          border: `2px solid ${ringColor}`,
-          pointerEvents: "none",
-          zIndex: 9998,
-          transform: "translate(-50%, -50%)",
-        }}
-      />
-    </>
-  )
-}
-
-// Magnetic element component with reduced movement for better usability
-const MagneticElement = ({
-  children,
-  className,
-  strength = 0.1,
-}: {
-  children: React.ReactNode
-  className?: string
-  strength?: number
-}) => {
-  const ref = useRef<HTMLDivElement>(null)
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [isHovered, setIsHovered] = useState(false)
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return
-
-    const { clientX, clientY } = e
-    const { left, top, width, height } = ref.current.getBoundingClientRect()
-
-    const x = (clientX - (left + width / 2)) * strength
-    const y = (clientY - (top + height / 2)) * strength
-
-    setPosition({ x, y })
-  }
-
-  const handleMouseLeave = () => {
-    setPosition({ x: 0, y: 0 })
-    setIsHovered(false)
-  }
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      animate={{
-        x: position.x,
-        y: position.y,
-        scale: isHovered ? 1.02 : 1,
-      }}
-      transition={{ type: "spring", stiffness: 150, damping: 15 }}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
-// Project card component
-const ProjectCard = ({
-  title,
-  description,
-  image,
-  delay = 0,
-  url,
-  status,
-}: {
-  title: string
-  description: string
-  image: string
-  delay?: number
-  url?: string
-  status?: string
-}) => {
-  const { theme } = useTheme()
-  const [imageError, setImageError] = useState(false)
-
-  const handleImageError = () => {
-    setImageError(true)
-  }
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.5 }}
-      className="overflow-hidden rounded-xl"
-    >
-      <MagneticElement className="h-full" strength={0.05}>
-        <Card className={`h-full overflow-hidden border shadow-sm hover:shadow-md transition-shadow ${theme === "light" ? "bg-white border-gray-200" : ""}`}>
-          <div className="relative h-48 w-full overflow-hidden">
-            <Image
-              src={
-                imageError
-                  ? `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(title)}`
-                  : image || "/placeholder.svg"
-              }
-              alt={title}
-              layout="fill"
-              objectFit="cover"
-              className="transition-transform duration-300 hover:scale-105"
-              loading="lazy"
-              onError={handleImageError}
-            />
-            {status && (
-              <Badge className="absolute top-3 right-3 bg-white/90 text-gray-800 border">
-                {status}
-              </Badge>
-            )}
-          </div>
-          <CardContent className="p-6">
-            <h3 className="text-xl font-semibold mb-3">{title}</h3>
-            <p className={`text-sm leading-relaxed mb-4 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-              {description}
-            </p>
-            {url && (
-              <Button variant="outline" size="sm" asChild className="w-full">
-                <Link href={url} target="_blank" rel="noopener noreferrer">
-                  View Project <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            )}
-          </CardContent>
-        </Card>
-      </MagneticElement>
-    </motion.div>
-  )
-}
-
-// Award card component
-const AwardCard = ({
-  title,
-  organization,
-  year,
-  description,
-  image,
-  delay = 0,
-}: {
-  title: string
-  organization: string
-  year: string
-  description: string
-  image: string
-  delay?: number
-}) => {
-  const { theme } = useTheme()
-  const [imageError, setImageError] = useState(false)
-
-  const handleImageError = () => {
-    setImageError(true)
-  }
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      className="overflow-hidden rounded-xl"
-    >
-      <MagneticElement className="h-full" strength={0.05}>
-        <Card className={`h-full overflow-hidden border shadow-sm hover:shadow-md transition-shadow ${theme === "light" ? "bg-white border-gray-200" : ""}`}>
-          <div className="relative h-48 w-full overflow-hidden">
-            <Image
-              src={
-                imageError
-                  ? `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(title)}`
-                  : image
-              }
-              alt={title}
-              layout="fill"
-              objectFit="cover"
-              className="transition-transform duration-300 hover:scale-105"
-              loading="lazy"
-              onError={handleImageError}
-            />
-          </div>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-2 mb-2">
-              <Award className="h-5 w-5 text-yellow-500" />
-              <Badge variant="secondary" className="text-xs">
-                {year}
-              </Badge>
-            </div>
-            <h3 className="text-lg font-semibold mb-2">{title}</h3>
-            <p className={`text-sm font-medium mb-2 ${theme === "light" ? "text-indigo-600" : "text-indigo-400"}`}>
-              {organization}
-            </p>
-            <p className={`text-sm leading-relaxed ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-              {description}
-            </p>
-          </CardContent>
-        </Card>
-      </MagneticElement>
-    </motion.div>
-  )
-}
 
 export default function Home() {
   const { theme } = useTheme()
-  const { t } = useLanguage()
+
+  const projects = [
+    {
+      title: "EibrailleNext",
+      description: "Advanced accessibility learning platform for blind and low-vision users",
+      tags: ["AI", "Accessibility", "Education"],
+      link: "https://eibraillenext.jnx03.xyz/",
+      year: "2024"
+    },
+    {
+      title: "Syntaxia",
+      description: "Educational app for learning programming concepts",
+      tags: ["Education", "Swift", "iOS"],
+      link: "#",
+      year: "2025"
+    },
+    {
+      title: "MooDong AI",
+      description: "Multi-task LSTM and vision model for zoo keeper augmentation",
+      tags: ["AI", "Machine Learning"],
+      link: "#",
+      year: "2024"
+    },
+    {
+      title: "Nova Security",
+      description: "Cybersecurity platform with automated vulnerability assessment",
+      tags: ["Security", "AI"],
+      link: "https://nova.jnx03.xyz/",
+      year: "2024"
+    },
+  ]
 
   return (
-    <div className={`min-h-screen flex flex-col relative ${theme === "light" ? "text-gray-900 bg-white" : "bg-background"}`}>
-      <CustomCursor />
+    <div className={`min-h-screen ${theme === "light" ? "bg-white text-gray-900" : "bg-background text-foreground"}`}>
 
-      {/* Subtle background gradient */}
-      <div
-        className={`fixed inset-0 -z-10 ${
-          theme === "light"
-            ? "bg-white"
-            : "bg-gradient-to-b from-background to-background/95"
-        }`}
-      />
+      {/* Hero Section */}
+      <section className="min-h-[90vh] flex items-center justify-center px-6 py-20">
+        <div className="max-w-6xl w-full">
+          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
 
-      <main className="flex-grow max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Hero Section - Cleaner & Minimal */}
-        <section className="pt-32 pb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-4xl"
-          >
-            <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] ${
-              theme === "light" ? "text-gray-900" : "text-white"
-            }`}>
-              Chawabhon Netisingha
-            </h1>
-
-            <p className={`text-xl sm:text-2xl mb-8 leading-relaxed ${
-              theme === "light" ? "text-gray-600" : "text-gray-400"
-            }`}>
-              Developer & Technology Innovator specializing in AI, accessibility, and digital experiences.
-            </p>
-
-            <div className="flex flex-wrap gap-3 mb-12">
-              {["AI & Machine Learning", "Accessibility Tech", "Web Development", "Swift & iOS"].map((tag) => (
-                <span
-                  key={tag}
-                  className={`px-3 py-1 text-sm ${
-                    theme === "light"
-                      ? "bg-gray-100 text-gray-700"
-                      : "bg-gray-800 text-gray-300"
-                  } rounded-full`}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap gap-4">
-              <Button
-                asChild
-                size="lg"
-                className={`${
-                  theme === "light"
-                    ? "bg-gray-900 hover:bg-gray-800 text-white"
-                    : "bg-white hover:bg-gray-100 text-black"
-                }`}
-              >
-                <Link href="/contact">
-                  Get In Touch <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className={`${
-                  theme === "light"
-                    ? "border-gray-300 text-gray-900 hover:bg-gray-50"
-                    : "border-gray-700 text-white hover:bg-gray-900"
-                }`}
-              >
-                <Link href="/projects">View Projects</Link>
-              </Button>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* Featured Projects */}
-        <section className="py-20 border-t border-gray-200 dark:border-gray-800">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16"
-          >
-            <h2 className={`text-4xl font-bold mb-4 ${theme === "light" ? "text-gray-900" : "text-white"}`}>
-              Featured Projects
-            </h2>
-            <p className={`text-lg max-w-3xl ${theme === "light" ? "text-gray-600" : "text-gray-400"}`}>
-              Selected works in AI, accessibility technology, and educational platforms that have won international awards and recognition.
-            </p>
-          </motion.div>
-
-          <div className="max-w-6xl mx-auto space-y-8">
-            {/* EibrailleNext - Primary Project */}
+            {/* Left - Text Content */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <Card className={`overflow-hidden border shadow-lg ${theme === "light" ? "bg-white border-gray-200" : ""}`}>
-                <div className="grid md:grid-cols-2 gap-0">
-                  <div className="relative h-64 md:h-auto">
-                    <Image
-                      src="/img/eibraillenext.png"
-                      alt="EibrailleNext - Accessibility Learning Platform"
-                      layout="fill"
-                      objectFit="cover"
-                      className="transition-transform duration-300 hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-8">
-                    <div className="flex items-center gap-2 mb-4">
-                      <Target className="h-6 w-6 text-indigo-500" />
-                      <Badge className="bg-indigo-100 text-indigo-800 border-indigo-200">
-                        Flagship Project
-                      </Badge>
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4">EibrailleNext</h3>
-                    <p className={`text-base leading-relaxed mb-6 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                      Advanced accessibility learning platform designed to assist blind and low-vision users in learning Braille. 
-                      Features cutting-edge face recognition technology, comprehensive curriculum management, and maintains full W3C accessibility compliance standards.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4 mb-6">
-                      <div className="flex items-center gap-2">
-                        <Award className="h-4 w-4 text-yellow-500" />
-                        <span className="text-xs font-medium">Thailand ICT Awards 2023</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Award className="h-4 w-4 text-blue-500" />
-                        <span className="text-xs font-medium">APICTA 2023 Merit</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Users className="h-4 w-4 text-indigo-500" />
-                        <span className="text-xs font-medium">Accessibility Focus</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Target className="h-4 w-4 text-green-500" />
-                        <span className="text-xs font-medium">Global Impact</span>
-                      </div>
-                    </div>
-                    <Button asChild className="w-full">
-                      <Link href="https://eibraillenext.jnx03.xyz/" target="_blank" rel="noopener noreferrer">
-                        Access Platform <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              </Card>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className={`text-sm font-medium mb-8 ${
+                  theme === "light" ? "text-gray-600" : "text-gray-400"
+                }`}
+              >
+                DEVELOPER & TECHNOLOGY INNOVATOR
+              </motion.p>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-[1.05] tracking-tight"
+              >
+                Chawabhon
+                <br />
+                Netisingha
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className={`text-lg sm:text-xl leading-relaxed mb-10 max-w-lg ${
+                  theme === "light" ? "text-gray-600" : "text-gray-400"
+                }`}
+              >
+                Creating impactful technology solutions in AI, accessibility, and digital experiences.
+                Swift Student Challenge 2025 Winner.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-wrap gap-4 mb-10"
+              >
+                <Button
+                  asChild
+                  size="lg"
+                  className={`rounded-full px-6 ${
+                    theme === "light"
+                      ? "bg-gray-900 hover:bg-gray-800 text-white"
+                      : "bg-white hover:bg-gray-100 text-black"
+                  }`}
+                >
+                  <Link href="/projects">
+                    View Work <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+
+                <Button
+                  asChild
+                  variant="ghost"
+                  size="lg"
+                  className="rounded-full px-6"
+                >
+                  <Link href="/contact">Contact</Link>
+                </Button>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="flex gap-4"
+              >
+                <Link
+                  href="https://github.com/JNX03"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-2 rounded-lg transition-colors ${
+                    theme === "light"
+                      ? "hover:bg-gray-100"
+                      : "hover:bg-gray-800"
+                  }`}
+                  aria-label="GitHub"
+                >
+                  <Github className="h-5 w-5" />
+                </Link>
+                <Link
+                  href="https://www.linkedin.com/in/chawabhon-netisingha-4a60a034a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-2 rounded-lg transition-colors ${
+                    theme === "light"
+                      ? "hover:bg-gray-100"
+                      : "hover:bg-gray-800"
+                  }`}
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className={`p-2 rounded-lg transition-colors ${
+                    theme === "light"
+                      ? "hover:bg-gray-100"
+                      : "hover:bg-gray-800"
+                  }`}
+                  aria-label="Email"
+                >
+                  <Mail className="h-5 w-5" />
+                </Link>
+              </motion.div>
             </motion.div>
 
-            {/* Additional Managed Projects */}
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                <Card className={`h-full overflow-hidden border shadow-md ${theme === "light" ? "bg-white border-gray-200" : ""}`}>
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-4">
-                      <Target className="h-5 w-5 text-green-500" />
-                      <Badge className="bg-yellow-100 text-yellow-800 border-yellow-200">
-                        AI/ML Innovation
-                      </Badge>
-                    </div>
-                    <h3 className="text-xl font-bold mb-3">MooDong AI</h3>
-                    <p className={`text-sm leading-relaxed mb-4 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                      Multi-task LSTM and vision model for zoo keeper augmentation system that requires no manual labels. 
-                      Winner of Track 3 in the prestigious Moodeng AI Challenge competition.
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center gap-2">
-                        <Award className="h-3 w-3 text-yellow-500" />
-                        <span className="text-xs font-medium">Moodeng AI Challenge Winner</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Users className="h-3 w-3 text-blue-500" />
-                        <span className="text-xs font-medium">AI/ML Technology Focus</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <Card className={`h-full overflow-hidden border shadow-md ${theme === "light" ? "bg-white border-gray-200" : ""}`}>
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-4">
-                      <Target className="h-5 w-5 text-purple-500" />
-                      <Badge className="bg-blue-100 text-blue-800 border-blue-200">
-                        Educational Technology
-                      </Badge>
-                    </div>
-                    <h3 className="text-xl font-bold mb-3">Syntaxia</h3>
-                    <p className={`text-sm leading-relaxed mb-4 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                      Innovative educational app designed to make learning programming concepts more accessible and engaging. 
-                      Winner of Apple's prestigious Swift Student Challenge 2025 with advanced SwiftUI implementation.
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center gap-2">
-                        <Award className="h-3 w-3 text-blue-500" />
-                        <span className="text-xs font-medium">Swift Student Challenge 2025</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Users className="h-3 w-3 text-blue-500" />
-                        <span className="text-xs font-medium">Educational Technology</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <Card className={`h-full overflow-hidden border shadow-md ${theme === "light" ? "bg-white border-gray-200" : ""}`}>
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-4">
-                      <Target className="h-5 w-5 text-teal-500" />
-                      <Badge className="bg-purple-100 text-purple-800 border-purple-200">
-                        Space & Robotics
-                      </Badge>
-                    </div>
-                    <h3 className="text-xl font-bold mb-3">Space Robotics</h3>
-                    <p className={`text-sm leading-relaxed mb-4 ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-                      Advanced robotics programming solutions for space applications developed for the GISTDA Kibo Robot Programming Challenge. 
-                      Awarded Best Presentation Award for innovative approach to space robotics and AI integration.
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center gap-2">
-                        <Award className="h-3 w-3 text-purple-500" />
-                        <span className="text-xs font-medium">GISTDA Best Presentation</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Users className="h-3 w-3 text-blue-500" />
-                        <span className="text-xs font-medium">Space & Robotics</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </div>
+            {/* Right - Profile Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative order-first lg:order-last"
+            >
+              <div className={`relative aspect-square max-w-md mx-auto rounded-3xl overflow-hidden ${
+                theme === "light" ? "shadow-2xl" : "shadow-none"
+              }`}>
+                <Image
+                  src="/img/profile.png"
+                  alt="Chawabhon Netisingha"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </motion.div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* EibrailleNext Awards Section */}
-        <section className="py-16">
+      {/* About Section */}
+      <section className={`py-24 px-6 ${
+        theme === "light" ? "bg-gray-50" : "bg-gray-900/20"
+      }`}>
+        <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
           >
-            <h2 className="text-3xl font-bold mb-4">Distinguished Achievement Portfolio</h2>
-            <p className={`text-lg max-w-3xl mx-auto ${theme === "light" ? "text-gray-600" : "text-muted-foreground"}`}>
-              International recognition and prestigious awards for technology excellence, innovation leadership, and measurable business impact across global markets
+            <h2 className="text-4xl sm:text-5xl font-bold">About</h2>
+            <div className={`text-lg leading-relaxed space-y-4 ${
+              theme === "light" ? "text-gray-600" : "text-gray-400"
+            }`}>
+              <p>
+                I'm a developer and technology innovator focused on creating solutions that make a difference.
+                My work spans artificial intelligence, accessibility technology, and educational platforms.
+              </p>
+              <p>
+                Currently working on projects that have won international recognition, including the Swift Student Challenge 2025,
+                Moodeng AI Challenge, and Thailand ICT Awards.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Featured Projects */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-16"
+          >
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Selected Work</h2>
+            <p className={`text-lg max-w-2xl ${
+              theme === "light" ? "text-gray-600" : "text-gray-400"
+            }`}>
+              Projects in AI, accessibility, and education
             </p>
           </motion.div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <AwardCard
-              title="Moodeng AI Challenge Winner"
-              organization="Track 3 Competition"
-              year="2024"
-              description="Winner for MooDong, a multi-task LSTM and vision model for zoo keeper augmentation, requiring no manual labels."
-              image="/placeholder.svg?height=200&width=400&text=Moodeng+AI+Challenge"
-              delay={0.1}
-            />
-            <AwardCard
-              title="GISTDA Kibo Robot Programming Challenge"
-              organization="GISTDA - National Space Agency"
-              year="2025"
-              description="Best Presentation Award (5,000 Baht) for innovative solutions in space robotics and effective communication of complex technical concepts."
-              image="/placeholder.svg?height=200&width=400&text=GISTDA+Kibo+Robot"
-              delay={0.2}
-            />
-            <AwardCard
-              title="Thailand Innovation Awards (TIA)"
-              organization="National Innovation Agency"
-              year="2024"
-              description="Selected participant in the Thailand Innovation Awards INDEX and Camp program, showcasing innovative technology solutions."
-              image="/placeholder.svg?height=200&width=400&text=TIA+INDEX+Camp"
-              delay={0.3}
-            />
-            <AwardCard
-              title="National Software Contest (NSC)"
-              organization="National Electronics and Computer Technology Center"
-              year="2024"
-              description="Selected participant in the National Software Contest INDEX program, demonstrating excellence in software development and innovation."
-              image="/placeholder.svg?height=200&width=400&text=NSC+INDEX"
-              delay={0.4}
-            />
-            <AwardCard
-              title="Super AI Engineer Hackathon"
-              organization="AI Association of Thailand"
-              year="2024"
-              description="3rd Place in MD&A Disclosure Quality Assessment track, demonstrating proficiency in AI engineering and data analysis."
-              image="/placeholder.svg?height=200&width=400&text=Super+AI+Hackathon"
-              delay={0.5}
-            />
-            <AwardCard
-              title="Thailand ICT Awards - National Champion"
-              organization="Thailand ICT Excellence Council"
-              year="2023"
-              description="National champion recognition in the Senior Category for distinguished contribution to information and communication technology innovation, accessibility infrastructure advancement, and technological leadership excellence."
-              image="/img/thailand-ict-award.png"
-              delay={0.6}
-            />
-          </div>
-        </section>
-
-        {/* Featured Projects Section */}
-        <section className="py-16">
-          <motion.h2
-            className="text-3xl font-bold mb-12 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            Strategic Development Initiatives
-          </motion.h2>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <ProjectCard
-              title="Nova Security Platform"
-              description="Enterprise-grade cybersecurity architecture featuring proprietary automated vulnerability assessment algorithms and comprehensive threat analysis frameworks for mission-critical web application infrastructure."
-              image="/img/nova-security.png"
-              url="https://nova.jnx03.xyz/"
-              status="In Development"
-              delay={0.1}
-            />
-            <ProjectCard
-              title="NoteX Learning Platform"
-              description="Strategic educational technology platform delivering systematically organized academic resources through advanced categorization algorithms and optimized learning pathway architectures."
-              image="/img/notex.png"
-              url="https://notex.jnx03.xyz/"
-              status="Live"
-              delay={0.2}
-            />
-            <ProjectCard
-              title="Yuki-Chan AI Assistant"
-              description="Enterprise AI assistant architecture engineered to deliver personalized productivity optimization through proprietary natural language processing algorithms and advanced machine learning frameworks."
-              image="/img/yuki-chan.png"
-              status="Research Phase"
-              delay={0.3}
-            />
-          </div>
-        </section>
-
-        {/* Personal Awards Section */}
-        <section className="py-16">
-          <motion.h2
-            className="text-3xl font-bold mb-12 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            Executive Leadership Recognition
-          </motion.h2>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <AwardCard
-              title="Swift Student Challenge 2025 Winner"
-              organization="Apple Inc."
-              year="2025"
-              description="Selected as a winner for the Syntaxia project, an innovative educational app built with SwiftUI that makes programming concepts more accessible and engaging."
-              image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-PcDiryVpDmgMgr3xXGbYGh1mMu3fvs.png"
-              delay={0.1}
-            />
-            <AwardCard
-              title="AI Innovator Award 2024"
-              organization="Technology Innovation Council"
-              year="2024"
-              description="Winner (1st Place) for innovative contributions in AI technology and outstanding achievements in artificial intelligence applications."
-              image="/img/ai-innovator-award.png"
-              delay={0.2}
-            />
-            <AwardCard
-              title="Asia Pacific ICT Alliance Award 2023 (APICTA2023)"
-              organization="Asia Pacific ICT Alliance"
-              year="2023"
-              description="Merit Award for excellence in information and communication technology innovation on an international level across the Asia Pacific region."
-              image="/img/apicta-award.png"
-              delay={0.3}
-            />
-          </div>
-        </section>
-
-        {/* Call to Action */}
-        <motion.div
-          className={`mt-16 mb-8 p-8 rounded-2xl border ${
-            theme === "light"
-              ? "bg-gradient-to-r from-indigo-50 to-purple-50 border-indigo-100"
-              : "bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border-primary/20"
-          }`}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold mb-4">Strategic Partnership Opportunities</h2>
-            <p className={`${theme === "light" ? "text-gray-600" : "text-muted-foreground"} mb-6 leading-relaxed`}>
-              Seeking strategic partnerships for technology innovation initiatives, enterprise AI development, or accessibility solution deployment? 
-              Available for executive consultation, technology advisory roles, and strategic collaboration discussions with qualified organizations.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button
-                asChild
-                size="lg"
-                className={`${
-                  theme === "light"
-                    ? "bg-indigo-600 hover:bg-indigo-700 text-white shadow-md"
-                    : "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
-                } border-0 px-8`}
+          <div className="space-y-6">
+            {projects.map((project, index) => (
+              <motion.article
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Link href="/contact">
-                  Get In Touch <ArrowRight className="ml-2 h-4 w-4" />
+                <Link
+                  href={project.link}
+                  className={`block p-6 sm:p-8 rounded-2xl transition-all hover:scale-[1.01] ${
+                    theme === "light"
+                      ? "bg-white hover:shadow-lg border border-gray-200"
+                      : "bg-gray-900/40 hover:bg-gray-900/60 border border-gray-800"
+                  }`}
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                    <div>
+                      <h3 className="text-2xl font-semibold mb-2 flex items-center gap-2">
+                        {project.title}
+                        <ExternalLink className="h-4 w-4 opacity-50" />
+                      </h3>
+                      <p className={theme === "light" ? "text-gray-600" : "text-gray-400"}>
+                        {project.description}
+                      </p>
+                    </div>
+                    <span className={`text-sm font-medium whitespace-nowrap ${
+                      theme === "light" ? "text-gray-500" : "text-gray-500"
+                    }`}>
+                      {project.year}
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className={`text-xs px-3 py-1 rounded-full ${
+                          theme === "light"
+                            ? "bg-gray-100 text-gray-700"
+                            : "bg-gray-800 text-gray-300"
+                        }`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className={`px-8 ${
-                  theme === "light" 
-                    ? "border-indigo-600 text-indigo-600 hover:bg-indigo-50 bg-white shadow-md" 
-                    : "border-primary text-primary hover:bg-primary/10"
-                }`}
-              >
-                <Link href="/projects">View All Projects</Link>
-              </Button>
-            </div>
+              </motion.article>
+            ))}
           </div>
-        </motion.div>
-      </main>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mt-12 text-center"
+          >
+            <Button
+              asChild
+              variant="ghost"
+              size="lg"
+              className="rounded-full"
+            >
+              <Link href="/projects">
+                View All Projects <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Recognition */}
+      <section className={`py-24 px-6 ${
+        theme === "light" ? "bg-gray-50" : "bg-gray-900/20"
+      }`}>
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl sm:text-5xl font-bold mb-12">Recognition</h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                "Swift Student Challenge 2025 Winner",
+                "Moodeng AI Challenge Winner",
+                "AI Innovator Award 2024",
+                "Thailand ICT Awards 2023",
+                "APICTA 2023 Merit Award",
+                "GISTDA Best Presentation Award",
+              ].map((award, index) => (
+                <motion.div
+                  key={award}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, delay: index * 0.05 }}
+                  className={`p-4 rounded-xl ${
+                    theme === "light" ? "bg-white border border-gray-200" : "bg-gray-900/40 border border-gray-800"
+                  }`}
+                >
+                  <p className="font-medium">{award}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="py-32 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              Let's work together
+            </h2>
+            <p className={`text-lg mb-10 max-w-2xl mx-auto ${
+              theme === "light" ? "text-gray-600" : "text-gray-400"
+            }`}>
+              Interested in collaborating on a project or discussing technology innovation?
+              I'd love to hear from you.
+            </p>
+            <Button
+              asChild
+              size="lg"
+              className={`rounded-full px-8 ${
+                theme === "light"
+                  ? "bg-gray-900 hover:bg-gray-800 text-white"
+                  : "bg-white hover:bg-gray-100 text-black"
+              }`}
+            >
+              <Link href="/contact">
+                Get in Touch <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </motion.div>
+        </div>
+      </section>
 
       <Footer />
+
       <Script id="homepage-schema" type="application/ld+json">
         {`
           {
             "@context": "https://schema.org",
-            "@type": "ProfilePage",
-            "mainEntity": {
-              "@type": "Person",
-              "name": "Chawabhon Netisingha",
-              "alternateName": "JNX03",
-              "description": "Technology Innovation Leader and AI Developer specializing in accessibility technology and artificial intelligence solutions.",
-              "image": "https://media.licdn.com/dms/image/v2/D4D03AQGGUriUQXl-Kw/profile-displayphoto-shrink_800_800/B4DZTcKo4yHIAc-/0/1738860565159?e=1745452800&v=beta&t=JHFPZzyh-K3hQ00A7vm5bys3PYec16oD2ETUEyntA30",
-              "url": "https://jnx03.xyz",
-              "sameAs": [
-                "https://github.com/JNX03",
-                "https://www.linkedin.com/in/chawabhon-netisingha-4a60a034a",
-                "https://www.instagram.com/jxxn03z/",
-                "https://www.youtube.com/@Jnx03",
-                "https://www.youtube.com/@Jnx03Studio",
-                "https://www.tiktok.com/@jxxn03z"
-              ],
-              "jobTitle": "Technology Innovation Leader & AI Developer",
-              "knowsAbout": ["Artificial Intelligence", "Machine Learning", "Accessibility Technology", "Project Management", "Innovation Leadership", "Cybersecurity", "Web Development"],
-              "award": [
-                "Swift Student Challenge 2025 Winner",
-                "AI Innovator Award 2024",
-                "Thailand ICT Awards 2023 Winner",
-                "Asia Pacific ICT Alliance Award 2023 Merit Award",
-                "Intel Global Impact Challenge Recognition",
-                "ISEF 2025 Participant",
-                "PETRA - Samsung Solve for Tomorrow Award",
-                "MedChic Healthcare Innovation Award",
-                "ALDS - Samsung Solve for Tomorrow Excellence Award",
-                "Moodeng AI Challenge Winner",
-                "Thailand Innovation Awards (TIA) Participant",
-                "National Software Contest (NSC) Participant",
-                "Best Presentation Award from GISTDA - Kibo Robot Programming Challenge"
-              ],
-              "hasOccupation": {
-                "@type": "Occupation",
-                "name": "Project Manager",
-                "description": "Leading innovative technology projects in AI and accessibility"
-              }
-            }
+            "@type": "Person",
+            "name": "Chawabhon Netisingha",
+            "alternateName": "JNX03",
+            "description": "Developer and technology innovator specializing in AI, accessibility, and digital experiences",
+            "image": "https://jnx03.xyz/img/profile.png",
+            "url": "https://jnx03.xyz",
+            "sameAs": [
+              "https://github.com/JNX03",
+              "https://www.linkedin.com/in/chawabhon-netisingha-4a60a034a"
+            ],
+            "jobTitle": "Developer & Technology Innovator",
+            "award": [
+              "Swift Student Challenge 2025 Winner",
+              "Moodeng AI Challenge Winner 2024",
+              "AI Innovator Award 2024",
+              "Thailand ICT Awards 2023 Winner"
+            ]
           }
         `}
       </Script>
