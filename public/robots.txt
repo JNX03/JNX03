@@ -1,26 +1,72 @@
+# robots.txt for https://jnx03.xyz
+
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /s/
+Disallow: /_next/
+Disallow: /admin/
 
+# Sitemaps
+Sitemap: https://jnx03.xyz/sitemap.xml
+Sitemap: https://jnx03.xyz/sitemap-index.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Search engines
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0.5
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 0.5
 
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# Social media bots
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# AI crawlers
 User-agent: GPTBot
 Allow: /
 
-User-agent: Bytespider
-Allow: /
-
-User-agent: AI2Bot
+User-agent: ChatGPT-User
 Allow: /
 
 User-agent: CCBot
 Allow: /
 
-User-agent: OAI-SearchBot
+User-agent: anthropic-ai
 Allow: /
 
-Sitemap: https://jnx03.xyz/sitemap.xml
-Sitemap: https://jnx03.xyz/rss.xml
+User-agent: Claude-Web
+Allow: /
+
+# Bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

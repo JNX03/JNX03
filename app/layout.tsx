@@ -20,9 +20,12 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "JNX03 - Developer Portfolio | AI, Cybersecurity & Accessibility",
+  title: {
+    default: "Chawabhon Netisingha | Developer & Technology Innovator",
+    template: "%s | JNX03"
+  },
   description:
-    "Jean (JNX03)'s personal portfolio showcasing projects and skills in AI, cybersecurity, and accessibility technology. Award-winning developer from Thailand.",
+    "Developer and technology innovator specializing in AI, accessibility technology, and digital experiences. Swift Student Challenge 2025 Winner and award-winning developer from Thailand creating impactful solutions.",
   metadataBase: new URL("https://jnx03.xyz"),
   alternates: {
     canonical: "/",
@@ -32,10 +35,21 @@ export const metadata: Metadata = {
     },
   },
   manifest: "/manifest.json",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
-    title: "JNX03 - Developer Portfolio | AI, Cybersecurity & Accessibility",
+    title: "Chawabhon Netisingha | Developer & Technology Innovator",
     description:
-      "Jean (JNX03)'s personal portfolio showcasing projects and skills in AI, cybersecurity, and accessibility technology. Award-winning developer from Thailand.",
+      "Developer and technology innovator specializing in AI, accessibility technology, and digital experiences. Swift Student Challenge 2025 Winner creating award-winning solutions.",
     url: "https://jnx03.xyz",
     siteName: "JNX03 Portfolio",
     images: [
@@ -43,7 +57,7 @@ export const metadata: Metadata = {
         url: "https://jnx03.xyz/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "JNX03 Portfolio",
+        alt: "JNX03 Portfolio - Chawabhon Netisingha",
       },
     ],
     locale: "en_US",
@@ -51,33 +65,52 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "JNX03 - Developer Portfolio | AI, Cybersecurity & Accessibility",
+    title: "Chawabhon Netisingha | Developer & Technology Innovator",
     description:
-      "Jean (JNX03)'s personal portfolio showcasing projects and skills in AI, cybersecurity, and accessibility technology. Award-winning developer from Thailand.",
+      "Developer and technology innovator specializing in AI, accessibility, and digital experiences. Swift Student Challenge 2025 Winner.",
     images: ["https://jnx03.xyz/og-image.jpg"],
     creator: "@jxxn03z",
+    site: "@jxxn03z",
   },
   icons: {
-    icon: "https://avatars.githubusercontent.com/u/112270477?v=4",
+    icon: [
+      { url: "https://avatars.githubusercontent.com/u/112270477?v=4" },
+      { url: "https://avatars.githubusercontent.com/u/112270477?v=4", sizes: "32x32", type: "image/png" },
+    ],
     shortcut: "https://avatars.githubusercontent.com/u/112270477?v=4",
-    apple: "https://avatars.githubusercontent.com/u/112270477?v=4",
+    apple: [
+      { url: "https://avatars.githubusercontent.com/u/112270477?v=4" },
+      { url: "https://avatars.githubusercontent.com/u/112270477?v=4", sizes: "180x180", type: "image/png" },
+    ],
   },
   keywords: [
     "JNX03",
     "Chawabhon Netisingha",
-    "developer",
-    "AI",
+    "developer portfolio",
+    "AI developer",
+    "machine learning",
     "artificial intelligence",
-    "cybersecurity",
-    "accessibility",
-    "Thailand",
-    "portfolio",
+    "accessibility technology",
+    "web development",
+    "Swift development",
+    "iOS development",
+    "Thailand developer",
     "Swift Student Challenge",
+    "Swift Student Challenge 2025",
     "EibrailleNext",
     "Notex",
-    "Nova",
+    "Nova Security",
+    "Syntaxia",
+    "award-winning developer",
+    "technology innovation",
+    "full-stack developer",
   ],
-  authors: [{ name: "Chawabhon Netisingha", url: "https://jnx03.xyz" }],
+  authors: [
+    { name: "Chawabhon Netisingha", url: "https://jnx03.xyz" },
+    { name: "JNX03", url: "https://jnx03.xyz" }
+  ],
+  creator: "Chawabhon Netisingha",
+  publisher: "Chawabhon Netisingha",
   category: "Technology",
   verification: {
     google: "google-site-verification=YOUR_VERIFICATION_CODE", // Replace with your actual verification code
@@ -94,7 +127,9 @@ export const metadata: Metadata = {
     email: true,
     url: true,
   },
-    generator: 'v0.dev'
+  other: {
+    'google-site-verification': 'YOUR_VERIFICATION_CODE',
+  },
 }
 
 // Move themeColor to viewport export
