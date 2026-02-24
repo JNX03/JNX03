@@ -1,76 +1,76 @@
-name: Metrics
+# name: Metrics
 
-on:
-  schedule: [{cron: "0 0 * * 1"}]
-  workflow_dispatch:
-  push: {branches: ["master", "main"]}
+# on:
+#   schedule: [{cron: "0 0 * * 1"}]
+#   workflow_dispatch:
+#   push: {branches: ["master", "main"]}
 
-jobs:
-  generate_profile:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
+# jobs:
+#   generate_profile:
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: write
+#     steps:
+#       - uses: actions/checkout@v4
 
-      - name: Generate Metrics Left Panel
-        uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          user: JNX03
-          template: classic
-          base: header, activity, community
-          config_timezone: Asia/Bangkok
-          plugin_languages: yes
-          plugin_languages_colors: github
-          plugin_languages_limit: 8
-          plugin_languages_ignored: html, css
-          plugin_languages_details: lines, percentage
-          plugin_languages_indepth: yes
-          plugin_habits: yes
-          plugin_habits_facts: yes
-          plugin_habits_charts: no
-          config_padding: 0, 8 + 11%
-          filename: github-metrics-left.svg
+#       - name: Generate Metrics Left Panel
+#         uses: lowlighter/metrics@latest
+#         with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           user: JNX03
+#           template: classic
+#           base: header, activity, community
+#           config_timezone: Asia/Bangkok
+#           plugin_languages: yes
+#           plugin_languages_colors: github
+#           plugin_languages_limit: 8
+#           plugin_languages_ignored: html, css
+#           plugin_languages_details: lines, percentage
+#           plugin_languages_indepth: yes
+#           plugin_habits: yes
+#           plugin_habits_facts: yes
+#           plugin_habits_charts: no
+#           config_padding: 0, 8 + 11%
+#           filename: github-metrics-left.svg
           
-      - name: Generate Metrics Right Panel
-        uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          user: JNX03
-          template: classic
-          base: ""
-          config_timezone: Asia/Bangkok
-          plugin_stargazers: yes
-          plugin_stargazers_charts_type: classic
-          plugin_followers: yes
-          plugin_isocalendar: yes
-          plugin_isocalendar_duration: half-year
-          config_padding: 0, 8 + 11%
-          filename: github-metrics-right.svg
+#       - name: Generate Metrics Right Panel
+#         uses: lowlighter/metrics@latest
+#         with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           user: JNX03
+#           template: classic
+#           base: ""
+#           config_timezone: Asia/Bangkok
+#           plugin_stargazers: yes
+#           plugin_stargazers_charts_type: classic
+#           plugin_followers: yes
+#           plugin_isocalendar: yes
+#           plugin_isocalendar_duration: half-year
+#           config_padding: 0, 8 + 11%
+#           filename: github-metrics-right.svg
   
-      - name: Generate Snake Animation Light
-        uses: Platane/snk@v3
-        with:
-          github_user_name: JNX03
-          outputs: |
-            github-snake.svg?palette=github-light
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Generate Snake Animation Light
+#         uses: Platane/snk@v3
+#         with:
+#           github_user_name: JNX03
+#           outputs: |
+#             github-snake.svg?palette=github-light
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate Snake Animation Dark
-        uses: Platane/snk@v3
-        with:
-          github_user_name: JNX03
-          outputs: |
-            github-snake-dark.svg?palette=github-dark
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Generate Snake Animation Dark
+#         uses: Platane/snk@v3
+#         with:
+#           github_user_name: JNX03
+#           outputs: |
+#             github-snake-dark.svg?palette=github-dark
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit and Push
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add *.svg
-          git diff --staged --quiet || git commit -m "Update metrics and snake animation"
-          git push
+#       - name: Commit and Push
+#         run: |
+#           git config --local user.email "action@github.com"
+#           git config --local user.name "GitHub Action"
+#           git add *.svg
+#           git diff --staged --quiet || git commit -m "Update metrics and snake animation"
+#           git push
